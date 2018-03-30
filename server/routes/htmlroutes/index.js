@@ -4,6 +4,6 @@ const userRoutes = require('./userroutes');
 
 
 router.use('/quest', questRoutes);
-router.use('./user', userRoutes);
+router.use('/user', userRoutes);
 
 module.exports = router;

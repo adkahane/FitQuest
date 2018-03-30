@@ -17,10 +17,6 @@ const UserSchema = new Schema({
         type:String,
         default:'url/to/placeholder.jpg'
     },
-    level:{
-        type: String,
-        default:'base level brah!'
-    },
     points:{
         type: Number,
         default: 0
