@@ -35,7 +35,12 @@ _renderMyMap = () => {
       <View style={styles.container}>
         <FitHeader />
         <FitButtons />
-        <FitStats />
+        
+        {this.state.visible ? this._renderMyCamera() : null}
+        {!this.state.visible ? this._renderMyMap() : null}
+        <TouchableOpacity  onPress={()=>{this.setState({visible: true})}} style={styles.button} >
+          <Text style={styles.buttonText} >Open Camera</Text>
+        </TouchableOpacity>
 
       </View>
     );
