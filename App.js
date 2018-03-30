@@ -4,6 +4,11 @@ import FitHeader from './components/FitHeader';
 import FitButtons from './components/FitButtons';
 import FitMap from './components/FitMap';
 import Camera from './components/Camera/camera.js';
+import FitHome from './components/FitHome';
+import FitFooter from './components/FitFooter';
+import FitStats from './components/FitStats';
+import Authentication from './components/Authentication';
+
 
 
 
@@ -30,12 +35,13 @@ _renderMyMap = () => {
       <View style={styles.container}>
         <FitHeader />
         <FitButtons />
-
+        
         {this.state.visible ? this._renderMyCamera() : null}
         {!this.state.visible ? this._renderMyMap() : null}
         <TouchableOpacity  onPress={()=>{this.setState({visible: true})}} style={styles.button} >
           <Text style={styles.buttonText} >Open Camera</Text>
         </TouchableOpacity>
+
       </View>
     );
   }
