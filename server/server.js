@@ -1,9 +1,10 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-import path from 'path';
-import routes from './routes';
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes');
+const path = require('path');
 
+// app.use(express.static('./');
 const app = new express();
 const PORT = process.env.PORT || 3333;
 
@@ -14,7 +15,7 @@ app.use(routes);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitquestdb");
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fitquestdb');
 
 
 app.listen(PORT, function(){

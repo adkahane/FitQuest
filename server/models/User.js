@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     },
     avatar_url:{
         type:String,
-        default:'url/to/defaultfile.jpg'
+        default:'url/to/placeholder.jpg'
     },
     level:{
         type: String,
