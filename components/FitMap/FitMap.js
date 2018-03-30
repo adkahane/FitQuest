@@ -11,19 +11,16 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 class FitMap extends React.Component {
 
   state = {
-    location: {
-      "coords": {
-        "accuracy": 65,
-        "altitude": 54.543243408203125,
-        "altitudeAccuracy": 10,
-        "heading": -1,
-        "latitude": 37.871732795815525,
-        "longitude": -122.27066792384305,
-        "speed": -1,
-      },
-      "timestamp": 1522374444583.582,
+    quest: {
+      latitude: [],
+      longitude: [],
+      speed:[],
+      timestamp: []
     },
-    errorMessage: null,
+    location: {
+      latitude:  37.871732795815525,
+      longitude:  -122.27066792384305
+    } 
   };
 
   componentWillMount() {
@@ -48,7 +45,14 @@ class FitMap extends React.Component {
       {enableHighAccuracy: true, distanceInterval: 5},
       (location)=> {
         console.log(location);
-        this.setState({location})
+        this.state.quest.latitude.push(location.coords.latitude); 
+        this.state.quest.longitude.push(location.coords.longitude);
+        this.state.quest.speed.push(location.coords.speed);
+        this.state.quest.timestamp.push(location.timestamp);
+        console.log(this.state.quest);
+        console.log(`The longitude of location is: ${location.coords.latitude}
+                     The latitude of location is: ${location.coords.longitude}`);
+        this.setState({ location.latitude: location.coords.latitude, location.longitude: location.coords.longitude } })
       }
     );
   };
@@ -60,8 +64,8 @@ class FitMap extends React.Component {
             style={ styles.container }
             showsUserLocation={ true }
             region={
-              {latitude: this.state.location.coords.latitude, 
-               longitude: this.state.location.coords.longitude, 
+              {latitude: this.state.location.latitude, 
+               longitude: this.state.location.longitude, 
                latitudeDelta: LATITUDE_DELTA, 
                longitudeDelta: LONGITUDE_DELTA }
             }/>  
