@@ -4,7 +4,7 @@ import User from './models';
 module.exports= {
 
     getUser: function(req,res){
-        User.findOne({_id: req.params._id}), function(err, dbObj){
+        User.findOne({auth_id: req.params.id}), function(err, dbObj){
             if(err){
                 return err;
             } else {

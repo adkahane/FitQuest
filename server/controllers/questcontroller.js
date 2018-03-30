@@ -11,7 +11,15 @@ module.exports = {
             }
         }
     },
-    
+    getHighestQuest: function(req,res){
+        Quest.find({challenged_id:req.params.id}).sort({quest_score:-1}).limit(1), function(err,dbObj){
+            if(err){
+                return err;
+            } else {
+                res.json(dbObj);
+            }
+        }
+    },    
     getQuest: function(req,res){
         Quest.findOne({_id: req.params._id}), function(err, dbObj){
             if(err){

@@ -7,7 +7,7 @@ import Camera from './components/Camera/camera.js';
 
 
 
-//type Props = {};
+type Props = {};
 export default class App extends Component<Props> {
 
   constructor(props){
