@@ -3,12 +3,8 @@ import * as Questcontroller from '../controllers/questcontroller';
 const router = new Router();
 
 
-router.route('/quests').get(Questcontroller.getQuests);
+router.route('/').get(Questcontroller.getQuests);
 
-router.route('/quest/:id').get(Questcontroller.getQuest);
-
-router.route('/quest').post(Questcontroller.addQuest);
-
-
+router.route('/:id').get(Questcontroller.getQuest);
 
 export default router;

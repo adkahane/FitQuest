@@ -4,9 +4,5 @@ const router = new Router();
 
 Router.route('/user:id').get(UserController.getUser);
 
-Router.route('/user').post(UserController.addUser);
-
-Router.route('/user:id').post(UserController.updateUser);
-
- export default router;
+export default router;
 
