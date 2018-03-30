@@ -35,6 +35,9 @@ _renderMyMap = () => {
       <View style={styles.container}>
         <FitHeader />
         <FitButtons />
+
+        {this.state.visible ? this._renderMyCamera() : this._renderMyMap() }
+
         {(() => {
           switch (this.state.visible) {
             case true:   return (
@@ -49,9 +52,9 @@ _renderMyMap = () => {
             );
           }
         })()}
-        
 
-        {this.state.visible ? this._renderMyCamera() : this._renderMyMap() }
+
+
       </View>
     );
   }
