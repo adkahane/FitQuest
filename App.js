@@ -4,6 +4,11 @@ import FitHeader from './components/FitHeader';
 import FitButtons from './components/FitButtons';
 import FitMap from './components/FitMap';
 import Camera from './components/Camera/camera.js';
+import FitHome from './components/FitHome';
+import FitFooter from './components/FitFooter';
+import FitStats from './components/FitStats';
+import Authentication from './components/Authentication';
+
 
 
 
@@ -47,7 +52,6 @@ _renderMyMap = () => {
         
 
         {this.state.visible ? this._renderMyCamera() : this._renderMyMap() }
-        
       </View>
     );
   }
@@ -56,18 +60,21 @@ _renderMyMap = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(134, 249, 5, 1))',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: "flex-start"
   },
   button: {
-    marginBottom: 30,
-    width: 260,
+    marginTop: '2%',
+    width: '75%',
+    height: '8%',
     alignItems: 'center',
-    backgroundColor: '#2196F3'
+    backgroundColor: 'rgba(49, 111,244, 1)'
   },
   buttonText: {
     padding: 20,
-    color: 'white'
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 19
   }
 });
