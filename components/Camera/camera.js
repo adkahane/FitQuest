@@ -116,31 +116,14 @@ export default class CameraScreen extends React.Component {
         type={this.state.type}
         ratio={this.state.ratio}
         focusDepth={this.state.depth}>
+       
         <View
           style={{
-            flex: 0.5,
-            backgroundColor: 'transparent',
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            paddingTop: Constants.statusBarHeight / 2,
-          }}>
-        </View>
-        <View
-          style={{
-            flex: 0.4,
-            backgroundColor: 'transparent',
-            flexDirection: 'row',
-            alignSelf: 'flex-end',
-            marginBottom: -5,
-          }}>
-        </View>
-        <View
-          style={{
-            flex: 0.1,
+            flex: .65,
             // paddingBottom: isIPhoneX ? 20 : 0,
             backgroundColor: 'transparent',
             flexDirection: 'row',
-            alignSelf: 'flex-end',
+            alignSelf: 'center'
           }}>
           <TouchableOpacity
             style={[styles.flipButton, styles.picButton, { flex: 0.3, alignSelf: 'flex-end' }]}
@@ -170,7 +153,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
-    height: '100%',
+    height: '80%',
     width: '100%',
   },
   navigation: {
