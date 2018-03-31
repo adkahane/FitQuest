@@ -21,12 +21,15 @@ class FitMap extends React.Component {
 		} 
 	};
 
+	/*Makes sure the component is mounted before the virtual DOM is rendered*/
 	componentWillMount() {
+		//Make sure Android is not a simulator (Won't work for Android Simulator)
 		if (Platform.OS === 'android' && !Constants.isDevice) {
 			this.setState({
 				errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
 			});
 		} else {
+			this._getLocationAsync();
 			this._updateLocationAsync();
 		}
 	}
@@ -41,8 +44,6 @@ class FitMap extends React.Component {
 	    }
 
 	    let location = await Location.getCurrentPositionAsync({});
-	    console.log(location.coords.latitude);
-	    console.log(location.coords.longitude);
 	    this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } });
   	};
 
@@ -56,7 +57,6 @@ class FitMap extends React.Component {
 				errorMessage: 'Permission to access location was denied',
 			});
 		}
-
 		let location = await Expo.Location.watchPositionAsync(
 			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
@@ -67,10 +67,9 @@ class FitMap extends React.Component {
 			}
 		);
 	};
-
+	
+	/*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 	render() {
-		this._getLocationAsync();
-
 		return (
 			<MapView
 				provider={ MapView.PROVIDER_GOOGLE }
