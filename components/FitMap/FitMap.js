@@ -27,11 +27,29 @@ class FitMap extends React.Component {
 				errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
 			});
 		} else {
-			this._getLocationAsync();
+			this._updateLocationAsync();
 		}
 	}
 
-	_getLocationAsync = async () => {
+	/*Gets the Initial Position of the user. Uses async to wait for permissions and to allow google to return position.*/
+	 _getLocationAsync = async () => {
+	    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+	    if (status !== 'granted') {
+	      this.setState({
+	        errorMessage: 'Permission to access location was denied',
+	      });
+	    }
+
+	    let location = await Location.getCurrentPositionAsync({});
+	    console.log(location.coords.latitude);
+	    console.log(location.coords.longitude);
+	    this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } });
+  	};
+
+
+	/*Updates the users positon every 5 meters. Uses async to wait for permissions and to allow google to return position.
+	Also Keeps track of the different lats and longs that the user is going on their quest, their speed and time.*/
+	_updateLocationAsync = async () => {
 		let { status } = await Permissions.askAsync(Permissions.LOCATION);
 		if (status !== 'granted') {
 			this.setState({
@@ -51,6 +69,8 @@ class FitMap extends React.Component {
 	};
 
 	render() {
+		this._getLocationAsync();
+
 		return (
 			<MapView
 				provider={ MapView.PROVIDER_GOOGLE }
