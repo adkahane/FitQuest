@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { port, db, secret }    = require('../config/env');
+const { port, db, secret }    = require('../../');
 mongoose.Promise = require('bluebird');
 mongoose.connect(db);
 
@@ -9,7 +9,7 @@ const Quest = require('../models/Quest');
 User.collection.drop();
 Quest.collection.drop();
 
-User.create([{
+User.save([{
     auth_id:'8ureuoe09',
     name:'Jim Bob',
     avatar_url:'url/to/placeholder.jpg',
@@ -41,27 +41,184 @@ User.create([{
 });
 
 
-Quest.create([{
-    name:
-    created_id:
-    challenged_id:
-      new_quest:
-      diff_level:
-      time:
-      distance:
-      elevation:
-      quest_score:
-      steps:
+Quest.save([{
+    name:'Quest 1',
+    created_id: '8ureuoe09',
+    challenged_id: '8urepoi098',
+      new_quest: true,
+      diff_level: '12',
+      time:'1:27:20',
+      distance: 1.27,
+      elevation:567,
+      quest_score: 15,
+      steps:1500, 
       route:[{
-          lat:17, 
-          lng:17
-          }]
+          lat:.1, 
+          lng:-.02
+          },
+          {
+          lat:.100, 
+          lng:-.1
+          },
+          {
+          lat:.7, 
+          lng:-2
+          },
+          {
+          lat:.01, 
+          lng:-1
+          }],
       waypoints:[{
-            url:String, 
-            lat:17, 
-            lng:17
-            }]    
+            url:'urlpath', 
+            lat:.02, 
+            lng:-2
+            },
+            {
+              url:'urlpath', 
+              lat:.01, 
+              lng:-1
+              },
+              {
+                url:'urlpath', 
+                lat:.03, 
+                lng:-3
+                }]    
+},
+{
+  name:'Quest 1',
+  created_id: '8ureuoe09',
+  challenged_id: '8urepoi098',
+    new_quest: true,
+    diff_level: '12',
+    time:'1:27:20',
+    distance: 1.27,
+    elevation:567,
+    quest_score: 15,
+    steps:1500, 
+    route:[{
+        lat:.1, 
+        lng:-.02
+        },
+        {
+        lat:.100, 
+        lng:-.1
+        },
+        {
+        lat:.7, 
+        lng:-2
+        },
+        {
+        lat:.01, 
+        lng:-1
+        }],
+    waypoints:[{
+          url:'urlpath', 
+          lat:.02, 
+          lng:-2
+          },
+          {
+            url:'urlpath', 
+            lat:.01, 
+            lng:-1
+            },
+            {
+              url:'urlpath', 
+              lat:.03, 
+              lng:-3
+              }]    
+},
+{
+  name:'Quest 1',
+  created_id: '8ureuoe09',
+  challenged_id: '8urepoi098',
+    new_quest: true,
+    diff_level: '12',
+    time:'1:27:20',
+    distance: 1.27,
+    elevation:567,
+    quest_score: 15,
+    steps:1500, 
+    route:[{
+        lat:.1, 
+        lng:-.02
+        },
+        {
+        lat:.100, 
+        lng:-.1
+        },
+        {
+        lat:.7, 
+        lng:-2
+        },
+        {
+        lat:.01, 
+        lng:-1
+        }],
+    waypoints:[{
+          url:'urlpath', 
+          lat:.02, 
+          lng:-2
+          },
+          {
+            url:'urlpath', 
+            lat:.01, 
+            lng:-1
+            },
+            {
+              url:'urlpath', 
+              lat:.03, 
+              lng:-3
+              }]    
+},
+{
+  name:'Quest 1',
+  created_id: '8ureuoe09',
+  challenged_id: '8urepoi098',
+    new_quest: true,
+    diff_level: '12',
+    time:'1:27:20',
+    distance: 1.27,
+    elevation:567,
+    quest_score: 15,
+    steps:1500, 
+    route:[{
+        lat:.1, 
+        lng:-.02
+        },
+        {
+        lat:.100, 
+        lng:-.1
+        },
+        {
+        lat:.7, 
+        lng:-2
+        },
+        {
+        lat:.01, 
+        lng:-1
+        }],
+    waypoints:[{
+          url:'urlpath', 
+          lat:.02, 
+          lng:-2
+          },
+          {
+            url:'urlpath', 
+            lat:.01, 
+            lng:-1
+            },
+            {
+              url:'urlpath', 
+              lat:.03, 
+              lng:-3
+              }]    
 }])
+.then(quest => {
+  console.log(`${quest.length} quests created`);
+})
+.catch((err) => {
+  console.log(err);
+})
 .finally(() => {
   mongoose.connection.close();
 });
