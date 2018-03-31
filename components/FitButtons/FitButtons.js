@@ -7,16 +7,19 @@ class FitButtons extends React.Component {
     this.state = {
       selectedIndex: 2
     }
-    this.updateIndex = this.updateIndex.bind(this)
+    this.updateIndex = this.updateIndex.bind(this);
   }
 
   updateIndex (selectedIndex) {
     this.setState({selectedIndex})
   }
-
+  
   render() {
     const buttons = ['Home', 'Past Quest', 'Next Quest', 'Stats']
     const { selectedIndex } = this.state
+
+    // console.log(selectedIndex);
+
 
     return (                
         <ButtonGroup

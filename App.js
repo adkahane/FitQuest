@@ -19,7 +19,24 @@ export default class App extends Component<Props> {
     super(props);
     this.state = {
       visible: false,
+      button: props.selectedIndex,
     }
+}
+
+_renderHome = () => {
+  return(<FitHome />);
+}
+
+_renderHistory = () => {
+  return(<FitHistory />);
+}
+
+_renderNewQuest = () => {
+  return(<NewQuest />);
+}
+
+_renderStats = () => {
+  return(<FitStats />);
 }
 
 _renderMyCamera = () => {
@@ -27,10 +44,14 @@ _renderMyCamera = () => {
 }
 
 _renderMyMap = () => {
-  return(<FitMap />)
+  return(<FitMap />);
 }
+
+// console.log(this.props.selectedIndex);
   
   render() {
+    console.log(this.state);
+
     return (
       <View style={styles.container}>
         <FitHeader />
