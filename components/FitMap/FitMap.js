@@ -2,11 +2,27 @@ import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, Dimensions} from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import styles from './MapStyles.js';
+import RetroMapStyles from "./RetroMapStyles.json";
+import { RunInfo } from "./run-info.js";
+import { RunInfoNumeric } from "./run-info-numeric.js";
+
 let { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00522;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
+const styles = StyleSheet.create({
+	  infoWrapper: {
+	    position: 'absolute',
+	    left: 0,
+	    bottom: 0,
+	    right: 0,
+	    flexDirection: 'row',
+	    flex: 1
+	  }
+	});
+
 
 class FitMap extends React.Component {
 
@@ -55,22 +71,31 @@ class FitMap extends React.Component {
 	render() {
 		 const stuff = this.state.quest.coordinates;
 		return (
-					<MapView
-						provider={ MapView.PROVIDER_GOOGLE }
-						style={ styles.container }
-						showsUserLocation={ true }
-						region={
-							{latitude: this.state.location.latitude, 
-							 longitude: this.state.location.longitude, 
-							 latitudeDelta: LATITUDE_DELTA, 
-							 longitudeDelta: LONGITUDE_DELTA }
-						}> 
-								<MapView.Polyline
-									coordinates={this.state.quest.polylines.map((polyline)=>polyline)}
-									strokeColor="#000"
-									strokeWidth={3}
-								/>
-						</MapView>
+			<MapView
+				provider={ MapView.PROVIDER_GOOGLE }
+				style={ styles.container }
+				customMapStyle={ RetroMapStyles }
+				showsUserLocation={ true }
+				region={
+					{latitude: this.state.location.latitude, 
+						longitude: this.state.location.longitude, 
+						latitudeDelta: LATITUDE_DELTA, 
+						longitudeDelta: LONGITUDE_DELTA }
+				}> 
+						<MapView.Polyline
+							coordinates={this.state.quest.polylines.map((polyline)=>polyline)}
+							strokeColor="#000"
+							strokeWidth={3}
+						/>
+				</MapView>
+
+						<View style={styles.infoWrapper}>
+							<RunInfoNumeric title="Distance" unit="mi"
+								ref={(info) => this.distanceInfo = info}
+							/>
+							<RunInfoNumeric title="Speed" unit="mi/h"
+								ref={(info) => this.distranceInfo = info}
+							/>
 		);
 	}
 }
