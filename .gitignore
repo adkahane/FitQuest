@@ -2,6 +2,7 @@
 
 # expo
 .expo/
+.DS_Store
 
 # dependencies
 /node_modules
@@ -15,3 +16,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Mac
+.DS_Store
+*/.DS_Store

@@ -2,12 +2,15 @@ import React, { Component, Wrapper } from 'react';
 import { StyleSheet, View, TouchableOpacity, Button, Text, Alert } from 'react-native';
 import FitHeader from './components/FitHeader';
 import FitButtons from './components/FitButtons';
+import FitFooter from './components/FitFooter';
+import FitNew from './components/FitNew';
+import CreateCard from './components/CreateCard';
 import Authentication from './components/Authentication';
 
 
 
 
-//type Props = {};
+type Props = {};
 export default class App extends Component<Props> {
 
   constructor(props){
