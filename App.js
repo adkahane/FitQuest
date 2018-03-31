@@ -14,7 +14,7 @@ import Authentication from './components/Authentication';
 
 
 
-//type Props = {};
+type Props = {};
 export default class App extends Component<Props> {
 
   constructor(props){
@@ -37,6 +37,7 @@ _renderMyMap = () => {
       <View style={styles.container}>
         <FitHeader />
         <FitButtons />
+<<<<<<< HEAD
 
         {this.state.visible ? this._renderMyCamera() : null}
         {!this.state.visible ? this._renderMyMap() : null}
@@ -44,6 +45,23 @@ _renderMyMap = () => {
           <Text style={styles.buttonText} >Open Camera</Text>
         </TouchableOpacity>
 
+=======
+        {this.state.visible ? this._renderMyCamera() : this._renderMyMap() }
+        {(() => {
+          switch (this.state.visible) {
+            case true:   return (
+              <TouchableOpacity  onPress={()=>{this.setState({visible: false})}} style={styles.button} >
+                <Text style={styles.buttonText} >Open Camera</Text>
+              </TouchableOpacity>
+            );
+            case false: return (
+              <TouchableOpacity  onPress={()=>{this.setState({visible: true})}} style={styles.button} >
+                <Text style={styles.buttonText} >Open Camera</Text>
+              </TouchableOpacity>
+            );
+          }
+        })()}
+>>>>>>> cda409d45e4273277d00c7f24d3d2a35d3d88a5c
       </View>
     );
   }
