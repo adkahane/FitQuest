@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Component, Text } from 'react-native';
+import { StyleSheet, View, Component, Text, ScrollView } from 'react-native';
 import PureChart from 'react-native-pure-chart';
 import styles from './FitStatsStyles.js';
 
@@ -90,14 +90,14 @@ class FitStats extends React.Component {
         return (
 
 
-            <View style={styles.container}>
+          <ScrollView contentContainerStyle={styles.contentContainer}>
               <Text style={styles.text}>Steps Taken</Text>
               <PureChart style={styles.chart} data={sampleData} type='bar' />
               <Text style={styles.text}>{`Distance(mi)`}</Text>
               <PureChart style={styles.chart} data={testData} type='bar' />
               <Text style={styles.text}>{`Speed(mph)`}</Text>
               <PureChart style={styles.chart} data={exampleData} type='bar' />
-            </View>
+            </ScrollView>
 
 
 

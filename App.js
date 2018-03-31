@@ -25,6 +25,7 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <FitHeader />
         <FitButtons />
+        <FitNew />
       </View>
     );
   }
