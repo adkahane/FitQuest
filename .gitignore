@@ -18,4 +18,4 @@ yarn-error.log*
 
 # Mac
 .DS_Store
-Components/.DS_Store
+*/.DS_Store
