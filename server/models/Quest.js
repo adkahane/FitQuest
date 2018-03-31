@@ -9,6 +9,10 @@ const QuestSchema = new Schema({
       type:String,
       required:true
     },
+    created_id:{
+        type:Number,
+        required:false 
+    },
     challenged_id:{
         type:Number,
         required:false 

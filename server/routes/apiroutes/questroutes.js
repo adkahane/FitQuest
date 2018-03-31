@@ -4,7 +4,9 @@ const router = new Router();
 
 router.route('/quest').get(Questcontroller.getQuests);
 
-router.route('quests/:id').get(Questcontroller.getHighestQuest);
+router.route('quest/high/:id').get(Questcontroller.getHighestQuest);
+
+router.route('quests/:id').get(Questcontroller.getUserQuests);
 
 router.route('/quest/:id').get(Questcontroller.getQuest);
 

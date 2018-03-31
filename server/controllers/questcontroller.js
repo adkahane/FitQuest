@@ -19,6 +19,16 @@ module.exports = {
                 res.json(dbObj);
             }
         }
+    },
+    getUserQuests: function(req,res){
+        Quest.findOne({created_id: req.params.id}).sort({-1}), function(err, dbObj){
+            if(err){
+                return err;
+            } else {
+                res.json({dbObj});
+            }
+        
+        }
     },    
     getQuest: function(req,res){
         Quest.findOne({_id: req.params._id}), function(err, dbObj){
