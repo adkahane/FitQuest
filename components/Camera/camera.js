@@ -153,8 +153,6 @@ export default class CameraScreen extends React.Component {
             <Text style={styles.flipText}> Gallery </Text>
           </TouchableOpacity>
         </View>
-        {this.renderFaces()}
-        {this.renderLandmarks()}
       </Camera>
     );
   }
