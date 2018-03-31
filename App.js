@@ -7,6 +7,8 @@ import Camera from './components/Camera/camera.js';
 import FitHome from './components/FitHome';
 import FitFooter from './components/FitFooter';
 import FitStats from './components/FitStats';
+import FitNew from './components/FitNew';
+import CreateCard from './components/CreateCard';
 import Authentication from './components/Authentication';
 
 
@@ -35,6 +37,7 @@ _renderMyMap = () => {
       <View style={styles.container}>
         <FitHeader />
         <FitButtons />
+        {this.state.visible ? this._renderMyCamera() : this._renderMyMap() }
         {(() => {
           switch (this.state.visible) {
             case true:   return (
@@ -49,9 +52,6 @@ _renderMyMap = () => {
             );
           }
         })()}
-        
-
-        {this.state.visible ? this._renderMyCamera() : this._renderMyMap() }
       </View>
     );
   }
