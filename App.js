@@ -12,7 +12,7 @@ import Authentication from './components/Authentication';
 
 
 
-//type Props = {};
+type Props = {};
 export default class App extends Component<Props> {
 
   constructor(props){
