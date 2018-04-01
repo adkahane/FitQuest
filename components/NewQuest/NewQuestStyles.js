@@ -1,12 +1,19 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
+    // container: {
+    //     height: '70%',
+    //     width: '100%',
+    //     backgroundColor: 'white',
+    //     alignItems: 'center',
+    //     justifyContent: "flex-start"
+    // },
+    contentContainer: {
         height: '70%',
-        width: '100%',
-        backgroundColor: 'white',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        justifyContent: "flex-start"
+        backgroundColor: 'white',
+        paddingVertical: 0
     },
   text: {
         fontWeight: 'bold',

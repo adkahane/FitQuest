@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Component, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Component, Text } from 'react-native';
 import EasyQuest from '../../components/EasyQuest';
 import MediumQuest from '../../components/MediumQuest';
 import HardQuest from '../../components/HardQuest';
@@ -15,12 +15,11 @@ class NewQuest extends React.Component {
         return (
 
 
-            <View style={styles.container}>
+            <ScrollView contentContainerStyle={styles.contentContainer}>
               <EasyQuest />
               <MediumQuest />
               <HardQuest />
-              <CreateQuest />
-           </View>
+           </ScrollView>
 
 
 
