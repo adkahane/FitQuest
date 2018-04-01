@@ -1,10 +1,9 @@
 import React, { Component, Wrapper } from 'react';
 import { StyleSheet, View, TouchableOpacity, Button, Text, Alert } from 'react-native';
-import FitHeader from './components/FitHeader';
-import FitButtons from './components/FitButtons';
-import FitFooter from './components/FitFooter';
-import FitNew from './components/FitNew';
-import CreateCard from './components/CreateCard';
+import Header from './components/Header';
+import NavButtons from './components/Navigation';
+import Footer from './components/Footer';
+import CreateQuest from './components/CreateQuest';
 import Authentication from './components/Authentication';
 
 
@@ -23,9 +22,8 @@ export default class App extends Component<Props> {
 
     return (
       <View style={styles.container}>
-        <FitHeader />
-        <FitButtons />
-        <FitNew />
+        <Header />
+        <NavButtons />
       </View>
     );
   }
