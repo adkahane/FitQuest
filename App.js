@@ -1,6 +1,6 @@
 import React, { Component, Wrapper } from 'react';
 import { StyleSheet, View, TouchableOpacity, Button, Text, Alert } from 'react-native';
-import Header from './components/Header';
+import Header from './components/MyHeader';
 import NavButtons from './components/Navigation';
 import Footer from './components/Footer';
 import CreateQuest from './components/CreateQuest';

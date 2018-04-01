@@ -6,7 +6,7 @@ import Camera from './../Camera/camera.js';
 import Home from './../Home';
 import Footer from './../Footer';
 import Stats from './../Stats';
-import NewQuest from './components/NewQuest';
+import NewQuest from './../NewQuest';
 
 
 class NavButtons extends React.Component {
