@@ -15,7 +15,8 @@ class CreateQuest extends Component {
 		quest: {
 			polylines: [],
 			speed: [],
-			timestamp: []
+			timestamp: [],
+			started: false 
 		},
 		location: {
 			latitude:  37.871732795815525,
@@ -62,7 +63,11 @@ class CreateQuest extends Component {
 		let location = await Expo.Location.watchPositionAsync(
 			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
-				this.state.quest.polylines.push({latitude: location.coords.latitude, longitude: location.coords.longitude})
+				console.log(this.state.quest.started); 
+				console.log(this.state.quest.polylines);
+				if(this.state.quest.started){
+					this.state.quest.polylines.push({latitude: location.coords.latitude, longitude: location.coords.longitude})
+				}
 				this.state.quest.speed.push(location.coords.speed);
 				this.state.quest.timestamp.push(location.timestamp);
 				this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
@@ -70,24 +75,36 @@ class CreateQuest extends Component {
 		);
 	};
 
+	// endQuest(){
+	// 	//Find out How to store polylines, speed, and time
+	// 	this.resetValues();
+	// }
+
+	// resetValues(){
+	// 	this.setState({ quest:{ polylines: [] }});
+	// 	this.setState({ quest:{ speed: [] }});
+	// 	this.setState({ quest:{ timestamp: [] }});
+	// 	this.setState({ quest:{ started: false } });
+	// }
+
     render() {
     	const { MapPageStyle, ButtonViewStyle } = styles; 
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (  
             <View style={ MapPageStyle }>
             	<Map 
-	            	region={
+	            	location={
 	            	 	{ latitude: this.state.location.latitude, 
 						  longitude: this.state.location.longitude, 
 						  latitudeDelta: LATITUDE_DELTA, 
 						  longitudeDelta: LONGITUDE_DELTA }
 					}
-	            	coordinates={this.state.quest.polylines.map((polyline)=>polyline)}
+	            	polylines={this.state.quest.polylines.map((polyline)=>polyline)}
             	/>
             	<View style={ ButtonViewStyle }>
-		    		<Button buttonText="Start" onPress={()=>console.log("Start Was Pressed")}/>
-		          	<Button buttonText="Stop" onPress={()=>console.log("Stop Was Pressed")}/>
-		          	<Button buttonText="Abort" onPress={()=>console.log("Abort Was Pressed")}/>
+		    		<Button buttonText="Start" onPress={()=>this.setState({ quest:{ started: true } })}/>
+		          	<Button buttonText="Stop" onPress={()=>console.log("Stop was pressed")}/>
+		          	<Button buttonText="Abort" onPress={()=>console.log("Abort was pressed")}/>
 		          	<Button buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
 		        </View>
             </View>

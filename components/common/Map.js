@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { MapView } from 'expo';
 // import styles from './MapStyles.js';
 
-const Map = ({ region, coordinates }) => {
+const Map = ({ location, polylines }) => {
 	/*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 		const { MapStyle } = styles; 
 		return (
@@ -11,9 +11,9 @@ const Map = ({ region, coordinates }) => {
 				provider={ MapView.PROVIDER_GOOGLE }
 				style={ MapStyle }
 				showsUserLocation={ true }
-				region={ region }> 
+				region={ location }> 
 					<MapView.Polyline
-						coordinates={ coordinates }
+						coordinates={ polylines }
 						strokeColor="#000"
 						strokeWidth={3}
 					/>
