@@ -6,10 +6,9 @@ import FitMap from './components/FitMap';
 import Camera from './components/Camera/camera.js';
 import FitHome from './components/FitHome';
 import FitFooter from './components/FitFooter';
+import MapFooter from './components/MapFooter';
 import FitStats from './components/FitStats';
 import Authentication from './components/Authentication';
-
-
 
 
 type Props = {};
@@ -44,9 +43,7 @@ _renderMyMap = () => {
               </TouchableOpacity>
             );
             case false: return (
-              <TouchableOpacity  onPress={()=>{this.setState({visible: true})}} style={styles.button} >
-                <Text style={styles.buttonText} >Open Camera</Text>
-              </TouchableOpacity>
+              <MapFooter />
             );
           }
         })()}
