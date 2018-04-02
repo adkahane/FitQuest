@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonGroup, Button } from 'react-native-elements';
 import {View} from 'react-native';
-import Map from './../Map';
 import Camera from './../Camera/camera.js';
 import Home from './../Home';
 import Footer from './../Footer';
