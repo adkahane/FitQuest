@@ -6,8 +6,8 @@ import { MapView } from 'expo';
 const Map = (props) => {
 	/*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 		const { MapStyle } = styles; 
-		console.log("The props being passed down are");
-		console.log(props);
+		// console.log("The props being passed down are");
+		// console.log(props);
 		if ('polylines' in props){
 			return (
 				<MapView
