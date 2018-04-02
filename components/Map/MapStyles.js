@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
     height: '70%',
     width: '100%'
   },
+  bContainer: {
+    marginTop: 5,
+    justifyContent: "center"
+  },
 });
 
 export default styles;
