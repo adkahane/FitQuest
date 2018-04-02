@@ -4,6 +4,7 @@ import { Constants, Location, Permissions, MapView} from 'expo';
 import styles from './MapStyles.js';
 import Footer from '../Footer';
 import Steps from '../FitSteps';
+import { ButtonGroup, Button } from 'react-native-elements';
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -72,6 +73,7 @@ class Map extends React.Component {
 	
 	/*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 	render() {
+		const buttons = ['Start', 'Stop']
 		return (
 			<View>
 				<MapView
@@ -90,8 +92,19 @@ class Map extends React.Component {
 							strokeWidth={3}
 						/>
 				</MapView>
-					
+				
 				<Steps />
+
+				<View>
+					<ButtonGroup
+						buttons={buttons}
+						buttonStyle={{justifyContent: 'center', width: '100%'}}
+						containerStyle={{height: '30%', width: '80%',
+						backgroundColor: 'rgba(49, 111,244, 1)',
+						justifyContent: 'flex-start', marginTop: '0%', marginBottom: '0%'}}
+						textStyle={{color: 'white', fontWeight: 'bold'}}
+					/>
+				</View>
 				
 			</View>	
 		);
