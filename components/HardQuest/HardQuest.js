@@ -8,10 +8,7 @@ class HardQuest extends React.Component {
 
 
     render() {
-
         return (
-
-          
             <Card containerStyle={{flexDirection: 'row', width: "100%",
                 height: '33%', backgroundColor: 'rgba(44, 244, 250, 1)',
                 borderColor: 'rgba(44, 244, 250, 1)', justifyContent: 'space-around',
