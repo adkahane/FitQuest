@@ -60,9 +60,9 @@ class Steps extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      
         <Text>Steps: {this.state.currentStepCount}</Text>
-      </View>
+      
     );
   }
 }
