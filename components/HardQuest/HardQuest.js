@@ -13,9 +13,9 @@ class HardQuest extends React.Component {
 
           
             <Card containerStyle={{flexDirection: 'row', width: "100%",
-                height: '33%', backgroundColor: 'rgba(44, 244, 250, 1)',
+                height: 150, backgroundColor: 'rgba(44, 244, 250, 1)',
                 borderColor: 'rgba(44, 244, 250, 1)', justifyContent: 'space-around',
-                alignItems: 'center', marginTop: '4%'
+                alignItems: 'center', marginTop: '5%'
                 }}> 
                 <Icon
                   name='landscape'

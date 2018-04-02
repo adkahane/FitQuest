@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     contentContainer: {
-        height: '65%',
+        flex:0,
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: 'white',

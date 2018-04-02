@@ -65,22 +65,22 @@ class NavButtons extends React.Component {
         {(() => {
           switch (this.state.selectedIndex) {
             case 0: return (
-              <View>
+              <View style={{flex: 1}}>
                 {this._renderHome()}
               </View>
             );
             case 1: return (
-              <View>
+              <View style={{flex: .9}}>
                 {this._renderMyMap()}
               </View>
             );
             case 2: return (
-              <View>
+              <View style={{flex: .9}}>
                 {this._renderNewQuest()}
               </View>
             );
             case 3: return (
-              <View>
+              <View style={{flex: .9}}>
                 {this._renderStats()}
               </View>
             );
