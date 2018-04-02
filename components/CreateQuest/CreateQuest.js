@@ -16,12 +16,12 @@ class CreateQuest extends Component {
 			polylines: [],
 			speed: [],
 			timestamp: [],
-			started: false 
 		},
 		location: {
 			latitude:  37.871732795815525,
 			longitude:  -122.27066792384305
-		} 
+		},
+		started: false 
 	};
 
 	/*Makes sure the component is mounted before the virtual DOM is rendered*/
@@ -51,6 +51,7 @@ class CreateQuest extends Component {
   	};
 
 
+
 	/*Updates the users positon every 5 meters. Uses async to wait for permissions and to allow google to return position.
 	Also Keeps track of the different lats and longs that the user is going on their quest, their speed and time.*/
 	_updateLocationAsync = async () => {
@@ -63,48 +64,72 @@ class CreateQuest extends Component {
 		let location = await Expo.Location.watchPositionAsync(
 			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
-				console.log(this.state.quest.started); 
-				console.log(this.state.quest.polylines);
-				if(this.state.quest.started){
-					this.state.quest.polylines.push({latitude: location.coords.latitude, longitude: location.coords.longitude})
+				if(this.state.started){
+					console.log("Now the polylines should pushed to be recorded");
+					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
 				}
-				this.state.quest.speed.push(location.coords.speed);
-				this.state.quest.timestamp.push(location.timestamp);
+				else{
+					this.setState({quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
+					//this.setState({quest: { speed: [...this.state.quest.speed, location.coords.speed] } });
+					//this.setState({quest: { speed: [...this.state.quest.timestamp, location.timestamp] } });
+				}
 				this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
 			}
 		);
 	};
 
-	// endQuest(){
-	// 	//Find out How to store polylines, speed, and time
-	// 	this.resetValues();
-	// }
+	endQuest(){
+		//Find out How to store polylines, speed, and time
+		this.resetValues();
+	}
 
-	// resetValues(){
-	// 	this.setState({ quest:{ polylines: [] }});
-	// 	this.setState({ quest:{ speed: [] }});
-	// 	this.setState({ quest:{ timestamp: [] }});
-	// 	this.setState({ quest:{ started: false } });
-	// }
+	resetValues(){
+		console.log("The last element in the array is: " + this.state.quest.polylines.pop());
+		//this.setState({ quest:{ polylines: [this.state.quest.polylines.pop()] }});
+		// this.setState({ quest:{ speed: [] }});
+		// this.setState({ quest:{ timestamp: [] }});
+		this.setState({ start: false } );
+	}
 
-    render() {
-    	const { MapPageStyle, ButtonViewStyle } = styles; 
-        /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
-        return (  
-            <View style={ MapPageStyle }>
-            	<Map 
+	renderMap(){
+		console.log(this.state.started);
+		if(this.state.quest.polylines.length > 1 && this.state.started){
+			return (	
+				<Map 
 	            	location={
 	            	 	{ latitude: this.state.location.latitude, 
 						  longitude: this.state.location.longitude, 
 						  latitudeDelta: LATITUDE_DELTA, 
 						  longitudeDelta: LONGITUDE_DELTA }
 					}
-	            	polylines={this.state.quest.polylines.map((polyline)=>polyline)}
+	            	polylines={[...this.state.quest.polylines]}
             	/>
+			)
+		}
+
+		return (
+			<Map 
+            	location={
+            	 	{ latitude: this.state.location.latitude, 
+					  longitude: this.state.location.longitude, 
+					  latitudeDelta: LATITUDE_DELTA, 
+					  longitudeDelta: LONGITUDE_DELTA }
+				}
+            />
+		)
+
+	}
+
+    render() {
+    	const { MapPageStyle, ButtonViewStyle } = styles; 
+        /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
+        return (  
+            <View style={ MapPageStyle }>
+            	{this.renderMap()}
             	<View style={ ButtonViewStyle }>
-		    		<Button buttonText="Start" onPress={()=>this.setState({ quest:{ started: true } })}/>
-		          	<Button buttonText="Stop" onPress={()=>console.log("Stop was pressed")}/>
-		          	<Button buttonText="Abort" onPress={()=>console.log("Abort was pressed")}/>
+		    		<Button buttonText="Start" onPress={()=>this.setState({ started: true })}/>
+		          	<Button buttonText="Stop" onPress={()=>this.endQuest}/>
+		          	<Button buttonText="Abort" onPress={()=>this.resetValues()}/>
 		          	<Button buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
 		        </View>
             </View>
