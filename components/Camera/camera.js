@@ -104,7 +104,7 @@ export default class CameraScreen extends React.Component {
           to: `${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
         }).then(() => {
           photos.push({
-            url:`Photo_${this.state.photoId}.jpg`,
+            url:`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
             lat:37.871732795815525,
             lng:-122.27066792384305
           });
