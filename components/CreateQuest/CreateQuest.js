@@ -22,7 +22,7 @@ class CreateQuest extends React.Component {
                 steps:0,
                 route:[{
                       latitude:0, 
-                      longitude:0,
+                      longitude:0
                       }],
                   waypoints:[{
                           url:'', 
@@ -30,7 +30,7 @@ class CreateQuest extends React.Component {
                           lng:0
                           }]
             },
-            route: {
+            mapData: {
                 polylines: [],
                 speed: [],
                 timestamp: [],
