@@ -1,13 +1,12 @@
 import React, { Component, Wrapper } from 'react';
 import { StyleSheet, View, TouchableOpacity, Button, Text, Alert } from 'react-native';
-import FitHeader from './components/FitHeader';
-import FitButtons from './components/FitButtons';
-import FitMap from './components/FitMap';
+
 import Camera from './components/Camera/camera.js';
-import FitHome from './components/FitHome';
-import FitFooter from './components/FitFooter';
 import MapFooter from './components/MapFooter';
-import FitStats from './components/FitStats';
+import Header from './components/MyHeader';
+import NavButtons from './components/Navigation';
+import Footer from './components/Footer';
+import CreateQuest from './components/CreateQuest';
 import Authentication from './components/Authentication';
 
 
@@ -20,33 +19,12 @@ export default class App extends Component<Props> {
       visible: false,
     }
 }
-
-_renderMyCamera = () => {
-  return (<Camera />);
-}
-
-_renderMyMap = () => {
-  return(<FitMap />)
-}
-  
   render() {
+
     return (
       <View style={styles.container}>
-        <FitHeader />
-        <FitButtons />
-        {this.state.visible ? this._renderMyCamera() : this._renderMyMap() }
-        {(() => {
-          switch (this.state.visible) {
-            case true:   return (
-              <TouchableOpacity  onPress={()=>{this.setState({visible: false})}} style={styles.button} >
-                <Text style={styles.buttonText} >Open Camera</Text>
-              </TouchableOpacity>
-            );
-            case false: return (
-              <MapFooter />
-            );
-          }
-        })()}
+        <Header />
+        <NavButtons />
       </View>
     );
   }

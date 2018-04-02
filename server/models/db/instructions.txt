@@ -1,0 +1,7 @@
+1. Make sure to have mongod running in the terminal
+2. In a new terminal run the following commands in the server/models/db folder
+3. Order of these seeds does not matter 
+
+mongoimport --db fitquestdb --collection users --drop --file ./userseeds.json
+
+mongoimport --db fitquestdb --collection quests --drop --file ./questseeds.json
