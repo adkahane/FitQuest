@@ -85,10 +85,10 @@ class CreateQuest extends Component {
 	            	coordinates={this.state.quest.polylines.map((polyline)=>polyline)}
             	/>
             	<View style={ ButtonViewStyle }>
-		    		<Button buttonText="Start" />
-		          	<Button buttonText="Stop" />
-		          	<Button buttonText="Abort" />
-		          	<Button buttonText="Open Camera" />
+		    		<Button buttonText="Start" onPress={()=>console.log("Start Was Pressed")}/>
+		          	<Button buttonText="Stop" onPress={()=>console.log("Stop Was Pressed")}/>
+		          	<Button buttonText="Abort" onPress={()=>console.log("Abort Was Pressed")}/>
+		          	<Button buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
 		        </View>
             </View>
         );

@@ -11,7 +11,7 @@ const Map = ({ region, coordinates }) => {
 				provider={ MapView.PROVIDER_GOOGLE }
 				style={ MapStyle }
 				showsUserLocation={ true }
-				region={region}> 
+				region={ region }> 
 					<MapView.Polyline
 						coordinates={ coordinates }
 						strokeColor="#000"
