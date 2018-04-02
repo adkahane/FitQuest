@@ -5,14 +5,14 @@ import GalleryScreen from './GalleryScreen';
 import Quest from '../../server/models/Quest';
 let photos = ["/path/to/file.jpg","/path/to/file.jpg","/path/to/file.jpg"];
 let photoUrl = "http://localhost:3333/userdata/photos/"
-
+"https://stackoverflow.com/questions/29489502/how-to-upload-file-to-server-using-react-native"
 export default class ImageSaver extends React.Component{
     
 _savePhotos(photos){
     let i = 0;
     photos.forEach(function()  {
         const photo ={
-            uri: photos[i],
+            uri: photos[i].uri,
             type: "image/jpeg",
             name: "photo"
         }
