@@ -95,16 +95,16 @@ class Map extends React.Component {
 				
 				<Steps />
 
-				<View>
+				
 					<ButtonGroup
 						buttons={buttons}
 						buttonStyle={{justifyContent: 'center', width: '100%'}}
-						containerStyle={{height: '30%', width: '80%',
-						backgroundColor: 'rgba(49, 111,244, 1)',
+						containerStyle={{height: '10%', width: '100%',
+						backgroundColor: 'rgba(91, 217, 28, 1)',
 						justifyContent: 'flex-start', marginTop: '0%', marginBottom: '0%'}}
 						textStyle={{color: 'white', fontWeight: 'bold'}}
 					/>
-				</View>
+				
 				
 			</View>	
 		);
