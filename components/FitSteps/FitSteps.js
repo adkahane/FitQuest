@@ -3,7 +3,7 @@ import React from "react";
 import { Pedometer } from "expo";
 import { StyleSheet, Text, View } from "react-native";
 
-export class PedometerSensor extends React.Component {
+class Steps extends React.Component {
   state = {
     isPedometerAvailable: "checking",
     pastStepCount: 0,
@@ -61,13 +61,7 @@ export class PedometerSensor extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
-        </Text>
-        <Text>
-          Steps taken in the last 24 hours: {this.state.pastStepCount}
-        </Text>
-        <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
+        <Text>Steps: {this.state.currentStepCount}</Text>
       </View>
     );
   }
@@ -75,11 +69,10 @@ export class PedometerSensor extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     marginTop: 15,
     alignItems: "center",
     justifyContent: "center"
   }
 });
 
-Expo.registerRootComponent(PedometerSensor);
+export default Steps;
