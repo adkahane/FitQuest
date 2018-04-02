@@ -1,12 +1,13 @@
 import React, { Component, Wrapper } from 'react';
 import { StyleSheet, View, TouchableOpacity, Button, Text, Alert } from 'react-native';
+
+import Camera from './components/Camera/camera.js';
+import MapFooter from './components/MapFooter';
 import Header from './components/MyHeader';
 import NavButtons from './components/Navigation';
 import Footer from './components/Footer';
 import CreateQuest from './components/CreateQuest';
 import Authentication from './components/Authentication';
-
-
 
 
 type Props = {};
