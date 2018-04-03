@@ -64,11 +64,13 @@ class CreateQuest extends Component {
 		let location = await Expo.Location.watchPositionAsync(
 			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
+
 				if(this.state.started){
-					console.log("Now the polylines should pushed to be recorded");
+					console.log("The Quest has Started");
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
 				}
 				else{
+					console.log("The Quest is not on");
 					this.setState({quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
 					//this.setState({quest: { speed: [...this.state.quest.speed, location.coords.speed] } });
 					//this.setState({quest: { speed: [...this.state.quest.timestamp, location.timestamp] } });
@@ -84,15 +86,14 @@ class CreateQuest extends Component {
 	}
 
 	resetValues(){
-		console.log("The last element in the array is: " + this.state.quest.polylines.pop());
-		//this.setState({ quest:{ polylines: [this.state.quest.polylines.pop()] }});
+		console.log("This state: " + this.state.started);
+		// this.setState({ quest:{ polylines: [this.state.quest.polylines.pop()] }});
 		// this.setState({ quest:{ speed: [] }});
 		// this.setState({ quest:{ timestamp: [] }});
-		this.setState({ start: false } );
+		this.setState({ started: false });
 	}
 
 	renderMap(){
-		console.log(this.state.started);
 		if(this.state.quest.polylines.length > 1 && this.state.started){
 			return (	
 				<Map 
@@ -128,7 +129,7 @@ class CreateQuest extends Component {
             	{this.renderMap()}
             	<View style={ ButtonViewStyle }>
 		    		<Button buttonText="Start" onPress={()=>this.setState({ started: true })}/>
-		          	<Button buttonText="Stop" onPress={()=>this.endQuest}/>
+		          	<Button buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<Button buttonText="Abort" onPress={()=>this.resetValues()}/>
 		          	<Button buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
 		        </View>
