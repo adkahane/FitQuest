@@ -88,9 +88,18 @@ export default class CameraScreen extends React.Component {
         body.append('file', photo);
         console.log(photos[i].url);
 
-        fetch(photoUrl, {
-            method: 'POST',
-            body
+        $.ajax({
+          method:'POST',
+          url: photoUrl,
+          data: body,
+          cache:false,
+          contentType:false,
+          success: function(response){
+            console.log(response);
+          },
+          error: function(err){
+            console.log(err);
+          }
         });
         i++;
     });
