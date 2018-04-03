@@ -21,7 +21,8 @@ class CreateQuest extends Component {
 			latitude:  37.871732795815525,
 			longitude:  -122.27066792384305
 		},
-		started: false 
+		started: false,
+		stopped: false 
 	};
 
 	/*Makes sure the component is mounted before the virtual DOM is rendered*/
@@ -64,37 +65,31 @@ class CreateQuest extends Component {
 		let location = await Expo.Location.watchPositionAsync(
 			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
-
 				if(this.state.started){
-					console.log("The Quest has Started");
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
 				}
-				else{
-					console.log("The Quest is not on");
-					this.setState({quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
+				else if(!this.state.stopped) {
+					this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
 					//this.setState({quest: { speed: [...this.state.quest.speed, location.coords.speed] } });
 					//this.setState({quest: { speed: [...this.state.quest.timestamp, location.timestamp] } });
 				}
-				this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
+				console.log("These are the polylines now: "); 
+				console.log(this.state.quest.polylines);
+				this.setState({ location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
 			}
 		);
 	};
 
 	endQuest(){
 		//Find out How to store polylines, speed, and time
-		this.resetValues();
+		console.log("QUEST STOPPED");
+		this.setState({ started: false });
+		this.setState({ stopped: true });
 	}
 
-	resetValues(){
-		console.log("This state: " + this.state.started);
-		// this.setState({ quest:{ polylines: [this.state.quest.polylines.pop()] }});
-		// this.setState({ quest:{ speed: [] }});
-		// this.setState({ quest:{ timestamp: [] }});
-		this.setState({ started: false });
-	}
 
 	renderMap(){
-		if(this.state.quest.polylines.length > 1 && this.state.started){
+		if(this.state.quest.polylines.length > 1){
 			return (	
 				<Map 
 	            	location={
