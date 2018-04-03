@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonGroup, Button } from 'react-native-elements';
 import {View} from 'react-native';
-import Camera from './../Camera/camera.js';
 import Home from './../Home';
 import Footer from './../Footer';
 import Stats from './../Stats';
@@ -22,11 +21,7 @@ class NavButtons extends React.Component {
     return(<Home />);
   }
   
-  // _renderHistory = () => {
-  //   return(<FitHistory />);
-  // }
-  
-  _renderNewQuest = () => {
+  _renderQuestList = () => {
     return(<NewQuest />);
   }
   
@@ -34,11 +29,7 @@ class NavButtons extends React.Component {
     return(<Stats />);
   }
   
-  _renderMyCamera = () => {
-    return (<Camera />);
-  }
-  
-  _renderMyMap = () => {
+  _createNewQuest = () => {
     return(<CreateQuest />);
   }
 
@@ -47,7 +38,7 @@ class NavButtons extends React.Component {
   }
   
   render() {
-    const buttons = ['Home', 'History', 'New Quest', 'Stats']
+    const buttons = ['Home', 'Create', 'New Quest', 'Stats']
     const { selectedIndex } = this.state
 
     return (    
@@ -71,12 +62,12 @@ class NavButtons extends React.Component {
             );
             case 1: return (
               <View style={{flex: .9}}>
-                {this._renderMyMap()}
+                {this._createNewQuest()}
               </View>
             );
             case 2: return (
               <View style={{flex: .9}}>
-                {this._renderNewQuest()}
+                {this._renderQuestList()}
               </View>
             );
             case 3: return (

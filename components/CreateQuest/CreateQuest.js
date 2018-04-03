@@ -163,7 +163,7 @@ class CreateQuest extends Component {
 const styles = StyleSheet.create({
     MapPageStyle: {
     	flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: 'white'
     },
     ButtonViewStyle: {
 		width: '100%',
