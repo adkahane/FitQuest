@@ -153,7 +153,8 @@ class CreateQuest extends Component {
 		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
 		          	<MapButton buttonText="Camera" onPress={()=>this.setModalVisible(true)}/>
-		        </View>
+						</View>
+					</View>
         );
     }
 }
