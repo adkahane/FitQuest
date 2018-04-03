@@ -2,7 +2,11 @@ import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Slider, Vibration } from 'react-native';
 import GalleryScreen from './GalleryScreen';
+
 // import isIPhoneX from 'react-native-is-iphonex';
+
+let photos = [];
+let photoUrl = "exp://localhost:19001/userdata/photos/";
 
 const landmarkSize = 2;
 
@@ -72,6 +76,35 @@ export default class CameraScreen extends React.Component {
     });
   }
 
+  _savePhotos = (photos) =>{
+    let i = 0;
+    photos.forEach(function()  {
+        const photo ={
+            uri: photos[i].url,
+            type: "image/jpeg",
+            name: "photo"
+        }
+        const body = new FormData();
+        body.append('file', photo);
+        console.log(photos[i].url);
+
+        $.ajax({
+          method:'POST',
+          url: photoUrl,
+          data: body,
+          cache:false,
+          contentType:false,
+          success: function(response){
+            console.log(response);
+          },
+          error: function(err){
+            console.log(err);
+          }
+        });
+        i++;
+    });
+  } 
+
   takePicture = async function() {
     if (this.camera) {
       this.camera.takePictureAsync().then(data => {
@@ -79,6 +112,13 @@ export default class CameraScreen extends React.Component {
           from: data.uri,
           to: `${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
         }).then(() => {
+          // photos.push({
+          //   url:`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
+          //   lat:37.871732795815525,
+          //   lng:-122.27066792384305
+          // });
+          console.log(photos[photos.length-1]);
+          this._savePhotos(photos);
           this.setState({
             photoId: this.state.photoId + 1,
           });
@@ -88,6 +128,7 @@ export default class CameraScreen extends React.Component {
     }
   };
 
+    
   renderGallery() {
     return <GalleryScreen onPress={this.toggleView.bind(this)} />;
   }
@@ -119,21 +160,17 @@ export default class CameraScreen extends React.Component {
        
         <View
           style={{
-            flex: .65,
+            flex: 1,
             // paddingBottom: isIPhoneX ? 20 : 0,
             backgroundColor: 'transparent',
             flexDirection: 'row',
-            alignSelf: 'center'
+            alignSelf: 'center',
+            justifyContent: 'flex-end'
           }}>
           <TouchableOpacity
-            style={[styles.flipButton, styles.picButton, { flex: 0.3, alignSelf: 'flex-end' }]}
+            style={[styles.flipButton, styles.picButton, { alignSelf: 'flex-end'}]}
             onPress={this.takePicture.bind(this)}>
-            <Text style={styles.flipText}> SNAP </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.flipButton, styles.galleryButton, { flex: 0.25, alignSelf: 'flex-end' }]}
-            onPress={this.toggleView.bind(this)}>
-            <Text style={styles.flipText}> Gallery </Text>
+            <Text style={styles.flipText}> Take Picture </Text>
           </TouchableOpacity>
         </View>
       </Camera>
@@ -165,13 +202,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   flipButton: {
-    flex: 0.3,
-    height: 40,
-    marginHorizontal: 2,
-    marginBottom: 10,
+    flex: 1,
+    height: 80,
+    marginHorizontal: 0,
+    marginBottom: 0,
     marginTop: 20,
     borderRadius: 8,
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
     padding: 5,
     alignItems: 'center',
