@@ -1,12 +1,12 @@
 import React from 'react';
 import { ButtonGroup, Button } from 'react-native-elements';
 import {View} from 'react-native';
-import Camera from './../Camera/camera.js';
-import Home from './../Home';
-import Footer from './../Footer';
-import Stats from './../Stats';
-import NewQuest from './../NewQuest';
-import CreateQuest from './../CreateQuest';
+import Camera from '../Camera/camera.js';
+import Home from '../Home';
+import Footer from '../Footer';
+import Stats from '../Stats';
+import NewQuest from '../NewQuest';
+import CreateQuest from '../CreateQuest';
 
 
 class NavButtons extends React.Component {
@@ -71,7 +71,7 @@ class NavButtons extends React.Component {
             );
             case 1: return (
               <View>
-                {this._renderMyCamera()}
+                {this._renderMyMap()}
               </View>
             );
             case 2: return (

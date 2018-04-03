@@ -2,13 +2,23 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
 import { Header, Button, Card, CardSection, Input, Spinner } from './common';
-
+// import User from '../server/models/User';
+let userId;
 class LoginForm extends Component {
     state = { email: '',
             password: '',
             error: '',
             loading: false
-            };
+            // user:{
+            //     auth_id:'',
+            //     name:'',
+            //     email:'',
+            //     avatar_url:'',
+            //     points:0
+            // },    
+
+               
+    };
 
     onButtonPress() {
         const { email, password } = this.state;
@@ -17,6 +27,7 @@ class LoginForm extends Component {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(this.onLoginSuccess.bind(this))
+                // userId = firebase.auth().currentUser.uid)
         .catch(() => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(this.onLoginSuccess.bind(this))

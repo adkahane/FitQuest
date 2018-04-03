@@ -93,7 +93,7 @@ class CreateQuest extends React.Component {
 					//this.state.quest.timestamp.push({time: location.timestamp});
 				}
 				else if(!this.state.stopped) {
-					this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
+					this.setState({ mapData: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
 				}
 
 				this.setState({ location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
@@ -110,7 +110,7 @@ class CreateQuest extends React.Component {
 
 
 	renderMap(){
-		if(this.state.quest.polylines.length > 1){
+		if(this.state.mapData.polylines.length > 1){
 			return (	
 				<Map 
 	            	location={
@@ -119,7 +119,7 @@ class CreateQuest extends React.Component {
 						  latitudeDelta: LATITUDE_DELTA, 
 						  longitudeDelta: LONGITUDE_DELTA }
 					}
-	            	polylines={[...this.state.quest.polylines]}
+	            	polylines={[...this.state.mapData.polylines]}
             	/>
 			)
 		}
