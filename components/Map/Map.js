@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, Dimensions} from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import styles from './MapStyles.js';
-let { width, height } = Dimensions.get('window');
+import Footer from '../Footer';
+import Steps from '../FitSteps';
+import { ButtonGroup, Button } from 'react-native-elements';
 
+let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00322;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
@@ -70,23 +73,40 @@ class Map extends React.Component {
 	
 	/*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 	render() {
+		const buttons = ['Start', 'Stop']
 		return (
-			<MapView
-				provider={ MapView.PROVIDER_GOOGLE }
-				style={ styles.container }
-				showsUserLocation={ true }
-				region={
-					{latitude: this.state.location.latitude, 
-					 longitude: this.state.location.longitude, 
-					 latitudeDelta: LATITUDE_DELTA, 
-					 longitudeDelta: LONGITUDE_DELTA }
-				}> 
-					<MapView.Polyline
-						coordinates={this.state.quest.polylines.map((polyline)=>polyline)}
-						strokeColor="#000"
-						strokeWidth={3}
+			<View>
+				<MapView
+					provider={ MapView.PROVIDER_GOOGLE }
+					style={ styles.container }
+					showsUserLocation={ true }
+					region={
+						{latitude: this.state.location.latitude, 
+						longitude: this.state.location.longitude, 
+						latitudeDelta: LATITUDE_DELTA, 
+						longitudeDelta: LONGITUDE_DELTA }
+					}> 
+						<MapView.Polyline
+							coordinates={this.state.quest.polylines.map((polyline)=>polyline)}
+							strokeColor="#000"
+							strokeWidth={3}
+						/>
+				</MapView>
+				
+				<Steps />
+
+				
+					<ButtonGroup
+						buttons={buttons}
+						buttonStyle={{justifyContent: 'center', width: '100%'}}
+						containerStyle={{height: '10%', width: '100%',
+						backgroundColor: 'rgba(91, 217, 28, 1)',
+						justifyContent: 'flex-start', marginTop: '0%', marginBottom: '0%'}}
+						textStyle={{color: 'white', fontWeight: 'bold'}}
 					/>
-			</MapView>
+				
+				
+			</View>	
 		);
 	}
 }
