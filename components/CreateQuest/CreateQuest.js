@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import Camera from '../../components/Camera/camera.js';
-import { Button, Map } from '../common'
+import { MapButton, Map } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -14,8 +14,8 @@ class CreateQuest extends Component {
 	state = {
 		quest: {
 			polylines: [],
-			speed: [],
-			timestamp: [],
+			speed: [0,0],
+			timestamp: [0,0],
 		},
 		location: {
 			latitude:  37.871732795815525,
@@ -67,14 +67,13 @@ class CreateQuest extends Component {
 			(location)=> {
 				if(this.state.started){
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
+					//this.state.quest.speed.push({speed: location.coords.speed});
+					//this.state.quest.timestamp.push({time: location.timestamp});
 				}
 				else if(!this.state.stopped) {
 					this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
-					//this.setState({quest: { speed: [...this.state.quest.speed, location.coords.speed] } });
-					//this.setState({quest: { speed: [...this.state.quest.timestamp, location.timestamp] } });
 				}
-				console.log("These are the polylines now: "); 
-				console.log(this.state.quest.polylines);
+
 				this.setState({ location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
 			}
 		);
@@ -123,10 +122,10 @@ class CreateQuest extends Component {
             <View style={ MapPageStyle }>
             	{this.renderMap()}
             	<View style={ ButtonViewStyle }>
-		    		<Button buttonText="Start" onPress={()=>this.setState({ started: true })}/>
-		          	<Button buttonText="Stop" onPress={()=>this.endQuest()}/>
-		          	<Button buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<Button buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
+		    		<MapButton buttonText="Start" onPress={()=>this.setState({ started: true })}/>
+		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
+		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
+		          	<MapButton buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
 		        </View>
             </View>
         );

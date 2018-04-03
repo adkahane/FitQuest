@@ -1,2 +1,2 @@
-export * from './Button'; 
+export * from './MapButton'; 
 export * from './Map'; 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'; 
 
-const Button = ({ onPress, buttonText}) => {
+const MapButton = ({ onPress, buttonText}) => {
 	return(
 		<TouchableOpacity 
 			onPress={ onPress }
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
 	}
 }); 
 
-export { Button } ; 
+export { MapButton } ; 
