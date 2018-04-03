@@ -14,8 +14,8 @@ class CreateQuest extends Component {
 	state = {
 		quest: {
 			polylines: [],
-			speed: [0,0],
-			timestamp: [0,0],
+			speed: [],
+			timestamp: [],
 		},
 		location: {
 			latitude:  37.871732795815525,
@@ -64,7 +64,7 @@ class CreateQuest extends Component {
 			});
 		}
 		let location = await Expo.Location.watchPositionAsync(
-			{enableHighAccuracy: true, distanceInterval: 5},
+			{enableHighAccuracy: true, distanceInterval: 20},
 			(location)=> {
 				if(this.state.started){
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
@@ -87,7 +87,8 @@ class CreateQuest extends Component {
 
 	endQuest(){
 		//Find out How to store polylines, speed, and time
-		console.log("QUEST STOPPED");
+		console.log("These are your polylines"); 
+		console.log(this.state.quest.polylines);
 		this.setState({ started: false });
 		this.setState({ stopped: true });
 	}
@@ -162,7 +163,7 @@ class CreateQuest extends Component {
 const styles = StyleSheet.create({
     MapPageStyle: {
     	flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: 'white'
     },
     ButtonViewStyle: {
 		width: '100%',

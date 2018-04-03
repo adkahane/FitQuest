@@ -38,7 +38,7 @@ class NavButtons extends React.Component {
   }
   
   render() {
-    const buttons = ['Home', 'History', 'New Quest', 'Stats']
+    const buttons = ['Home', 'Create', 'New Quest', 'Stats']
     const { selectedIndex } = this.state
 
     return (    
