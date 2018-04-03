@@ -7,9 +7,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'white',
     },
+
     text: {
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 24,
+        alignSelf: 'center',
         color: 'rgba(49, 111,244, 1)'
     }
 });

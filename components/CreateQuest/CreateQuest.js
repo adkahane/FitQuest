@@ -122,10 +122,10 @@ class CreateQuest extends Component {
             <View style={ MapPageStyle }>
             	{this.renderMap()}
             	<View style={ ButtonViewStyle }>
-		    		<MapButton buttonText="Start" onPress={()=>this.setState({ started: true })}/>
+		    		<MapButton  buttonText="Start" onPress={()=>this.setState({ started: true })}/>
 		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<MapButton buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
+		          	<MapButton buttonText="Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
 		        </View>
             </View>
         );
@@ -138,8 +138,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     ButtonViewStyle: {
-    	flex: 1, 
-    	flexDirection: 'row'
+		width: '100%',
+		height: '60%', 
+		flexDirection: 'row',
+		alignItems: 'flex-start'
     }
 });
 

@@ -49,11 +49,13 @@ class Home extends React.Component {
                     source={{ uri: "http://mrwgifs.com/wp-content/uploads/2013/08/Spongebob-Eagerly-Awaits-The-Start-Of-Boating-School_408x408.jpg" }}
                     onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
-                    containerStyle={{ justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: '5%', marginBottom: "20%", marginLeft: '5%' }}
+                    containerStyle={{ justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: '5%', marginBottom: "5%", marginLeft: '5%' }}
                 />
-                <View style={{justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'row', marginTop: 200, marginLeft: -150}}>
+                <View style={{justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'row', marginTop: 170, marginLeft: -150}}>
                 <Text style={styles.textHome}>
-                    {`Level:
+                    {`User:
+
+Level:
 
 Steps:
 
