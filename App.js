@@ -2,7 +2,7 @@ import React, { Component, Wrapper } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
 import firebase from 'firebase';
 import MyHeader from './components/MyHeader';
-import Navigation from './components/Navigation';
+import NavButtons from './components/Navigation';
 import Footer from './components/Footer';
 import NewQuest from './components/NewQuest';
 import CreateQuest from './components/CreateQuest';
@@ -63,7 +63,7 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         
         <MyHeader />
-        <Navigation />
+        <NavButtons />
         
        
 
