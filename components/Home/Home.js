@@ -46,22 +46,23 @@ class Home extends React.Component {
             }} scrollEnabled={this.state.enabled}>
                 <Avatar
                     xlarge
-                    source={{ uri: "http://mrwgifs.com/wp-content/uploads/2013/08/Spongebob-Eagerly-Awaits-The-Start-Of-Boating-School_408x408.jpg" }}
+                    source={{
+                        uri: "https://avatars2.githubusercontent.com/u/28679029?s=460&v=4" }}
                     onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
                     containerStyle={{ justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: '5%', marginBottom: "5%", marginLeft: '5%' }}
                 />
                 <View style={{justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'row', marginTop: 170, marginLeft: -150}}>
                 <Text style={styles.textHome}>
-                    {`User:
+                        {`User: adkahane
 
-Level:
+Level: 3
 
-Steps:
+Steps: 8,547
 
-Distance:
+Distance: 4.23 miles
 
-Time:`}
+Time: 1.5 hours`}
 
                 </Text>
                 </View>
