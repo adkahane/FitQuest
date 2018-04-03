@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import Camera from '../../components/Camera/camera.js';
-import { Button, Map } from '../common'
+import { MapButton, Map } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -14,14 +14,15 @@ class CreateQuest extends Component {
 	state = {
 		quest: {
 			polylines: [],
-			speed: [],
-			timestamp: [],
+			speed: [0,0],
+			timestamp: [0,0],
 		},
 		location: {
 			latitude:  37.871732795815525,
 			longitude:  -122.27066792384305
 		},
-		started: false 
+		started: false,
+		stopped: false 
 	};
 
 	/*Makes sure the component is mounted before the virtual DOM is rendered*/
@@ -64,37 +65,30 @@ class CreateQuest extends Component {
 		let location = await Expo.Location.watchPositionAsync(
 			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
-
 				if(this.state.started){
-					console.log("The Quest has Started");
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
+					//this.state.quest.speed.push({speed: location.coords.speed});
+					//this.state.quest.timestamp.push({time: location.timestamp});
 				}
-				else{
-					console.log("The Quest is not on");
-					this.setState({quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
-					//this.setState({quest: { speed: [...this.state.quest.speed, location.coords.speed] } });
-					//this.setState({quest: { speed: [...this.state.quest.timestamp, location.timestamp] } });
+				else if(!this.state.stopped) {
+					this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
 				}
-				this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
+
+				this.setState({ location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
 			}
 		);
 	};
 
 	endQuest(){
 		//Find out How to store polylines, speed, and time
-		this.resetValues();
+		console.log("QUEST STOPPED");
+		this.setState({ started: false });
+		this.setState({ stopped: true });
 	}
 
-	resetValues(){
-		console.log("This state: " + this.state.started);
-		// this.setState({ quest:{ polylines: [this.state.quest.polylines.pop()] }});
-		// this.setState({ quest:{ speed: [] }});
-		// this.setState({ quest:{ timestamp: [] }});
-		this.setState({ started: false });
-	}
 
 	renderMap(){
-		if(this.state.quest.polylines.length > 1 && this.state.started){
+		if(this.state.quest.polylines.length > 1){
 			return (	
 				<Map 
 	            	location={
@@ -128,10 +122,10 @@ class CreateQuest extends Component {
             <View style={ MapPageStyle }>
             	{this.renderMap()}
             	<View style={ ButtonViewStyle }>
-		    		<Button buttonText="Start" onPress={()=>this.setState({ started: true })}/>
-		          	<Button buttonText="Stop" onPress={()=>this.endQuest()}/>
-		          	<Button buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<Button buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
+		    		<MapButton buttonText="Start" onPress={()=>this.setState({ started: true })}/>
+		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
+		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
+		          	<MapButton buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
 		        </View>
             </View>
         );
