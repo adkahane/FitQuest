@@ -1,0 +1,1 @@
+export { default } from "./MyHeader.js";
