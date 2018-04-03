@@ -43,7 +43,7 @@ class CreateQuest extends React.Component {
                 longitude:  -122.27066792384305
             },
             started: false,
-            stoped: false 
+            stopped: false 
         }
     }
 

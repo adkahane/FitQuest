@@ -5,7 +5,9 @@ import { Header, Button, Card, CardSection, Input, Spinner } from './common';
 // import User from '../server/models/User';
 let userId;
 class LoginForm extends Component {
-    state = { email: '',
+    constructor(){
+        super();
+    this.state = { email: '',
             password: '',
             error: '',
             loading: false
@@ -16,9 +18,8 @@ class LoginForm extends Component {
             //     avatar_url:'',
             //     points:0
             // },    
-
-               
     };
+}    
 
     onButtonPress() {
         const { email, password } = this.state;
