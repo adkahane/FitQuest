@@ -9,21 +9,27 @@ import styles from './NewQuestStyles.js';
 
 class NewQuest extends React.Component {
 
-
+    constructor() {
+		super();
+		this.state = {
+			enabled:true
+		};
+	}
+  
     render() {
-
         return (
-
-
-            <ScrollView contentContainerStyle={styles.contentContainer}>
-              <EasyQuest />
-              <MediumQuest />
-              <HardQuest />
-           </ScrollView>
-
-
-
-
+    	    <ScrollView contentContainerStyle={{flex:0}} scrollEnabled={this.state.enabled}>
+                <View style={{height:200,backgroundColor:'white'}}>
+                    <EasyQuest />
+                </View>
+                <View style={{height:200,backgroundColor:'white'}}>
+                    <MediumQuest />
+                </View>
+                <View style={{height:200,backgroundColor:'white'}}>
+                    <HardQuest />
+                </View>
+                
+            </ScrollView>
         );
     }
 }
