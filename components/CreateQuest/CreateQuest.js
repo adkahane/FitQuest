@@ -81,7 +81,6 @@ class CreateQuest extends Component {
 
 	endQuest(){
 		//Find out How to store polylines, speed, and time
-		console.log("QUEST STOPPED");
 		this.setState({ started: false });
 		this.setState({ stopped: true });
 	}
