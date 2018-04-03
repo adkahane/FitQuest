@@ -34,7 +34,7 @@ const Map = (props) => {
 
 const styles = StyleSheet.create({
   MapStyle: {
-  	height: '57%',
+  	height: '60%',
     width: '100%',
     flexDirection: 'column',
     alignItems: "flex-start"

@@ -1,29 +1,72 @@
 import React, { Component, Wrapper } from 'react';
-import { StyleSheet, View, TouchableOpacity, Button, Text, Alert } from 'react-native';
-
-import Camera from './components/Camera/camera.js';
-import Header from './components/MyHeader';
+import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
+import firebase from 'firebase';
+import MyHeader from './components/MyHeader';
 import NavButtons from './components/Navigation';
 import Footer from './components/Footer';
+import NewQuest from './components/NewQuest';
 import CreateQuest from './components/CreateQuest';
 import Authentication from './components/Authentication';
+import { Button, Card, CardSection, Spinner} from './components/common';
+import LoginForm from './components/LoginForm';
 
 
 type Props = {};
 export default class App extends Component<Props> {
+  
 
   constructor(props){
     super(props);
     this.state = {
       visible: false,
+      loggedIn: false
     }
 }
+
+
+
+  componentWillMount() {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyDjmm9QC9AaA4wYVtYn9-WsBtW_2QRaCZ4',
+      authDomain: 'authentication-d36c6.firebaseapp.com',
+      databaseURL: 'https://authentication-d36c6.firebaseio.com',
+      projectId: 'authentication-d36c6',
+      storageBucket: 'authentication-d36c6.appspot.com',
+      messagingSenderId: '75288336879'
+    });
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ loggedIn: true});
+      } else {
+        this.setState({ loggedIn: null });
+      }
+    });
+  }
+
+  renderContent() {
+    switch (this.state.loggedIn) {
+      case true:
+        return <MyHeader />
+        
+      case false:
+        return <LoginForm />;
+      default:
+        return <LoginForm />;
+    }
+    
+  }
+  
+
   render() {
 
     return (
       <View style={styles.container}>
-        <Header />
+        
+        <MyHeader />
         <NavButtons />
+        
+       
+
       </View>
     );
   }
