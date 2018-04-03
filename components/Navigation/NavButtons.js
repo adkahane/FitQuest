@@ -1,12 +1,12 @@
 import React from 'react';
 import { ButtonGroup, Button } from 'react-native-elements';
 import {View} from 'react-native';
-import Map from './../Map';
 import Camera from './../Camera/camera.js';
 import Home from './../Home';
 import Footer from './../Footer';
 import Stats from './../Stats';
 import NewQuest from './../NewQuest';
+import CreateQuest from './../CreateQuest';
 
 
 class NavButtons extends React.Component {
@@ -39,7 +39,7 @@ class NavButtons extends React.Component {
   }
   
   _renderMyMap = () => {
-    return(<Map />);
+    return(<CreateQuest />);
   }
 
   updateIndex (selectedIndex) {
@@ -57,15 +57,15 @@ class NavButtons extends React.Component {
           selectedIndex={selectedIndex}
           buttons={buttons}
           buttonStyle={{justifyContent: 'center', width: '100%'}}
-          containerStyle={{height: '10%', width: '100%',
+          containerStyle={{height: '10%', width: '102%',
           backgroundColor: 'rgba(49, 111,244, 1)',
-          justifyContent: 'flex-start', marginTop: '0%', marginBottom: '0%'}}
+          justifyContent: 'flex-start', marginTop: '0%', marginBottom: '0%', marginLeft: -5}}
           textStyle={{color: 'white', fontWeight: 'bold'}}
         />
         {(() => {
           switch (this.state.selectedIndex) {
             case 0: return (
-              <View>
+              <View style={{flex: 1}}>
                 {this._renderHome()}
               </View>
             );
@@ -75,12 +75,12 @@ class NavButtons extends React.Component {
               </View>
             );
             case 2: return (
-              <View>
+              <View style={{flex: .9}}>
                 {this._renderNewQuest()}
               </View>
             );
             case 3: return (
-              <View>
+              <View style={{flex: .9}}>
                 {this._renderStats()}
               </View>
             );
