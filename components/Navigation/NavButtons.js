@@ -6,6 +6,7 @@ import Footer from './../Footer';
 import Stats from './../Stats';
 import NewQuest from './../NewQuest';
 import CreateQuest from './../CreateQuest';
+import ChallengeQuest from './../ChallengeQuest/ChallengeQuest';
 
 
 class NavButtons extends React.Component {
@@ -21,15 +22,15 @@ class NavButtons extends React.Component {
     return(<Home />);
   }
   
-  _renderQuestList = () => {
-    return(<NewQuest />);
+  _renderNewQuest = () => {
+    return(<ChallengeQuest />);
   }
   
   _renderStats = () => {
     return(<Stats />);
   }
   
-  _createNewQuest = () => {
+  _createQuest = () => {
     return(<CreateQuest />);
   }
 
@@ -62,12 +63,12 @@ class NavButtons extends React.Component {
             );
             case 1: return (
               <View style={{flex: .9}}>
-                {this._createNewQuest()}
+                {this._createQuest()}
               </View>
             );
             case 2: return (
               <View style={{flex: .9}}>
-                {this._renderQuestList()}
+                {this._renderNewQuest()}
               </View>
             );
             case 3: return (
