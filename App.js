@@ -9,7 +9,6 @@ import CreateQuest from './components/CreateQuest';
 import Authentication from './components/Authentication';
 import { Button, Card, CardSection, Spinner} from './components/common';
 import LoginForm from './components/LoginForm';
-import { Asset, AppLoading } from 'expo';
 
 
 type Props = {};
