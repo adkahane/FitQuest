@@ -46,8 +46,12 @@ export default class App extends Component<Props> {
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
-        return <MyHeader />
-        
+        return (
+        <View>
+        <MyHeader />
+        <NavButtons />
+        </View>
+        )
       case false:
         return <LoginForm />;
       default:
@@ -62,8 +66,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         
-        <MyHeader />
-        <NavButtons />
+        {this.renderContent()}
         
        
 

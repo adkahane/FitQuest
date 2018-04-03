@@ -27,17 +27,21 @@ const styles = {
         fontSize: 18,
         lineHeight: 23,
         flex: 2
+        
     },
     labelStyle: {
         fontSize: 18,
         paddingLeft: 20,
-        flex: 1
+        flex: 1,
+        color: 'white',
+        fontWeight: 'bold'
     },
     containerStyle: {
         height: 40,
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center'
+        
     }
 }
 

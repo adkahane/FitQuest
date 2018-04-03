@@ -54,7 +54,7 @@ class LoginForm extends Component {
         return (
             <Card>
                 <CardSection>
-                    <Header headerText="Authentication" style={{width: '100%'}}/>
+                    <Header headerText="Authentication" />
                 </CardSection>    
                 <CardSection>
                     <Input 
@@ -78,11 +78,12 @@ class LoginForm extends Component {
                     {this.state.error}
                 </Text>
 
-                <CardSection>
+                <CardSection style={{height: "60%"}}>
                     {this.renderButton()}
                 </CardSection>
 
             </Card>
+            
         );
     }
 }
