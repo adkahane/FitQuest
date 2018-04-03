@@ -29,7 +29,7 @@ class NavButtons extends React.Component {
     return(<Stats />);
   }
   
-  _createNewQuest = () => {
+  _createQuest = () => {
     return(<CreateQuest />);
   }
 
@@ -62,7 +62,7 @@ class NavButtons extends React.Component {
             );
             case 1: return (
               <View style={{flex: .9}}>
-                {this._createNewQuest()}
+                {this._createQuest()}
               </View>
             );
             case 2: return (
