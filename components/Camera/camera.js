@@ -2,7 +2,11 @@ import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Slider, Vibration } from 'react-native';
 import GalleryScreen from './GalleryScreen';
+
 // import isIPhoneX from 'react-native-is-iphonex';
+
+let photos = [];
+let photoUrl = "exp://localhost:19001/userdata/photos/";
 
 const landmarkSize = 2;
 
@@ -72,6 +76,35 @@ export default class CameraScreen extends React.Component {
     });
   }
 
+  _savePhotos = (photos) =>{
+    let i = 0;
+    photos.forEach(function()  {
+        const photo ={
+            uri: photos[i].url,
+            type: "image/jpeg",
+            name: "photo"
+        }
+        const body = new FormData();
+        body.append('file', photo);
+        console.log(photos[i].url);
+
+        $.ajax({
+          method:'POST',
+          url: photoUrl,
+          data: body,
+          cache:false,
+          contentType:false,
+          success: function(response){
+            console.log(response);
+          },
+          error: function(err){
+            console.log(err);
+          }
+        });
+        i++;
+    });
+  } 
+
   takePicture = async function() {
     if (this.camera) {
       this.camera.takePictureAsync().then(data => {
@@ -79,6 +112,13 @@ export default class CameraScreen extends React.Component {
           from: data.uri,
           to: `${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
         }).then(() => {
+          // photos.push({
+          //   url:`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
+          //   lat:37.871732795815525,
+          //   lng:-122.27066792384305
+          // });
+          console.log(photos[photos.length-1]);
+          this._savePhotos(photos);
           this.setState({
             photoId: this.state.photoId + 1,
           });
@@ -88,6 +128,7 @@ export default class CameraScreen extends React.Component {
     }
   };
 
+    
   renderGallery() {
     return <GalleryScreen onPress={this.toggleView.bind(this)} />;
   }
