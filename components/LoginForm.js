@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
-import { Header, Button, Card, CardSection, Input, Spinner } from './common';
+import { Header, Button, Card, CardSection, Input, TextInput, Spinner } from './common';
 // import User from '../server/models/User';
 let userId;
 class LoginForm extends Component {
@@ -66,10 +66,10 @@ class LoginForm extends Component {
         return (
             <Card>
                 <CardSection>
-                    <Header headerText="Authentication" />
+                    <Header style={styles.header} headerText="Authentication" />
                 </CardSection>    
                 <CardSection>
-                    <Input 
+                    <Input style={styles.Input}
                         placeholder="user@gmail.com"
                         label="Email"
                         value={this.state.email}                    
@@ -77,7 +77,7 @@ class LoginForm extends Component {
                          />
                 </CardSection>
                 <CardSection> 
-                    <Input 
+                    <Input style={styles.input}
                         secureTextEntry
                         placeholder="password"
                         label="Password"
@@ -105,6 +105,16 @@ const styles = {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
+    },
+    input:{
+        fontSize: 23,
+        fontWeight: 'bold',
+        color:'blue'
+    },
+    header:{
+        fontSize: 27,
+        fontWeight: 'bold',
+        color:'blue'
     }
 }
 
