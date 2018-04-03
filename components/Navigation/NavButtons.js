@@ -71,7 +71,7 @@ class NavButtons extends React.Component {
             );
             case 1: return (
               <View style={{flex: .9}}>
-                {this._renderMyMap()}
+                {this._renderMyCamera()}
               </View>
             );
             case 2: return (
