@@ -24,7 +24,7 @@ const styles = {
     width: '100%'
   },
   textStyle: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
     color: 'white'
   }
