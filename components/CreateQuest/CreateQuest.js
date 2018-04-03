@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map } from '../common'
+import { MapButton, Map, Button } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -92,9 +92,6 @@ class CreateQuest extends Component {
 		this.setState({ stopped: true });
 	}
 
-	_renderModalCamera = () => {
-    return (<Camera />);
-  }
 
 	renderMap(){
 		if(this.state.quest.polylines.length > 1){
@@ -139,24 +136,23 @@ class CreateQuest extends Component {
 								onRequestClose={() => {
 									alert('Modal has been closed.');
 								}}>
-								<View style={{marginTop: 22}}>
-									<View style={{flex:.9}}>
-										{this._renderModalCamera()}
-										<Image source={{uri: './../../assets/images/header.jpg'}} />
-									</View>
-									<TouchableHighlight
+								<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
+								
+									<Camera />
+								
+									<Button
 										onPress={() => {
 											this.setModalVisible(!this.state.modalVisible);
 										}}>
-										<Text>Hide Camera</Text>
-									</TouchableHighlight>
+										<Text>Close Camera</Text>
+									</Button>
 								</View>
 							</Modal>
 
 		    		<MapButton buttonText="Start" onPress={()=>this.setState({ started: true })}/>
 		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<MapButton buttonText="Open Camera" onPress={()=>this.setModalVisible(true)}/>
+		          	<MapButton buttonText="Camera" onPress={()=>this.setModalVisible(true)}/>
 		        </View>
             </View>
         );
