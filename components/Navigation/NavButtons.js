@@ -56,7 +56,7 @@ class NavButtons extends React.Component {
         {(() => {
           switch (this.state.selectedIndex) {
             case 0: return (
-              <View style={{flex: 1}}>
+              <View style={{flex: .9}}>
                 {this._renderHome()}
               </View>
             );
