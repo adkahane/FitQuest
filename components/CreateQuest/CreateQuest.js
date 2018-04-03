@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Dimensions } from 'react-native';
+import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import Camera from '../../components/Camera/camera.js';
 import { MapButton, Map } from '../common'
@@ -22,7 +22,8 @@ class CreateQuest extends Component {
 			longitude:  -122.27066792384305
 		},
 		started: false,
-		stopped: false 
+		stopped: false,
+		modalVisible: false, 
 	};
 
 	/*Makes sure the component is mounted before the virtual DOM is rendered*/
@@ -79,6 +80,11 @@ class CreateQuest extends Component {
 		);
 	};
 
+	/* Set the visibility state of the camera modal */
+	setModalVisible(visible) {
+		this.setState({modalVisible: visible});
+	}
+
 	endQuest(){
 		//Find out How to store polylines, speed, and time
 		console.log("QUEST STOPPED");
@@ -86,6 +92,9 @@ class CreateQuest extends Component {
 		this.setState({ stopped: true });
 	}
 
+	_renderModalCamera = () => {
+    return (<Camera />);
+  }
 
 	renderMap(){
 		if(this.state.quest.polylines.length > 1){
@@ -121,11 +130,33 @@ class CreateQuest extends Component {
         return (  
             <View style={ MapPageStyle }>
             	{this.renderMap()}
-            	<View style={ ButtonViewStyle }>
+							<View style={ ButtonViewStyle }>
+							
+							<Modal
+								animationType="slide"
+								transparent={false}
+								visible={this.state.modalVisible}
+								onRequestClose={() => {
+									alert('Modal has been closed.');
+								}}>
+								<View style={{marginTop: 22}}>
+									<View style={{flex:.9}}>
+										{this._renderModalCamera()}
+										<Image source={{uri: './../../assets/images/header.jpg'}} />
+									</View>
+									<TouchableHighlight
+										onPress={() => {
+											this.setModalVisible(!this.state.modalVisible);
+										}}>
+										<Text>Hide Camera</Text>
+									</TouchableHighlight>
+								</View>
+							</Modal>
+
 		    		<MapButton buttonText="Start" onPress={()=>this.setState({ started: true })}/>
 		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<MapButton buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
+		          	<MapButton buttonText="Open Camera" onPress={()=>this.setModalVisible(true)}/>
 		        </View>
             </View>
         );
