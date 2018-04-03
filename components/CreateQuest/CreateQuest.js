@@ -67,12 +67,12 @@ class CreateQuest extends Component {
 			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
 				if(this.state.started){
-					this.state.mapData.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
+					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
 					//this.state.quest.speed.push({speed: location.coords.speed});
 					//this.state.quest.timestamp.push({time: location.timestamp});
 				}
 				else if(!this.state.stopped) {
-					this.setState({ mapData: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
+					this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
 				}
 
 				this.setState({ location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
@@ -94,7 +94,7 @@ class CreateQuest extends Component {
 
 
 	renderMap(){
-		if(this.state.mapData.polylines.length > 1){
+		if(this.state.quest.polylines.length > 1){
 			return (	
 				<Map 
 	            	location={
@@ -103,7 +103,7 @@ class CreateQuest extends Component {
 						  latitudeDelta: LATITUDE_DELTA, 
 						  longitudeDelta: LONGITUDE_DELTA }
 					}
-	            	polylines={[...this.state.mapData.polylines]}
+	            	polylines={[...this.state.quest.polylines]}
             	/>
 			)
 		}
