@@ -6,6 +6,7 @@ import { Header, Button, Card, CardSection, Input, Spinner } from './common';
 class LoginForm extends Component {
     state = { email: '',
             password: '',
+            username: '',
             error: '',
             loading: false
             };
@@ -34,6 +35,7 @@ class LoginForm extends Component {
             email: '',
             password: '',
             loading: false,
+            username: '',
             error: ''
         });
     }
@@ -52,7 +54,7 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <Card>
+            <Card style={{height: '100%'}}>
                 <CardSection>
                     <Header headerText="Authentication" />
                 </CardSection>    
@@ -62,6 +64,14 @@ class LoginForm extends Component {
                         label="Email"
                         value={this.state.email}                    
                         onChangeText={email => this.setState({ email })}
+                         />
+                </CardSection>
+                <CardSection>
+                    <Input 
+                        placeholder="username"
+                        label="User"
+                        value={this.state.username}                    
+                        onChangeText={username => this.setState({ username })}
                          />
                 </CardSection>
                 <CardSection> 
@@ -78,7 +88,7 @@ class LoginForm extends Component {
                     {this.state.error}
                 </Text>
 
-                <CardSection style={{height: "60%"}}>
+                <CardSection>
                     {this.renderButton()}
                 </CardSection>
 
@@ -90,7 +100,8 @@ class LoginForm extends Component {
 
 const styles = {
     errorTextStyle: {
-        fontSize: 20,
+        fontSize: 22,
+        fontWeight: 'bold',
         alignSelf: 'center',
         color: 'red'
     }

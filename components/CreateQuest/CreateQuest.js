@@ -154,7 +154,6 @@ class CreateQuest extends Component {
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
 		          	<MapButton buttonText="Camera" onPress={()=>this.setModalVisible(true)}/>
 		        </View>
-            </View>
         );
     }
 }
@@ -165,8 +164,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     ButtonViewStyle: {
-    	flex: 1, 
-    	flexDirection: 'row'
+		width: '100%',
+		height: '60%', 
+		flexDirection: 'row',
+		alignItems: 'flex-start'
     }
 });
 

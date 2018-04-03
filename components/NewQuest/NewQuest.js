@@ -18,14 +18,14 @@ class NewQuest extends React.Component {
   
     render() {
         return (
-    	    <ScrollView contentContainerStyle={{flex:0}} scrollEnabled={this.state.enabled}>
-                <View style={{height:200,backgroundColor:'white'}}>
+    	    <ScrollView contentContainerStyle={{flex:0, justifyContent: 'flex-start', alignItems: 'center'}} scrollEnabled={this.state.enabled}>
+                <View style={{height:200, width: '100%', backgroundColor:'white'}}>
                     <EasyQuest />
                 </View>
-                <View style={{height:200,backgroundColor:'white'}}>
+                <View style={{ height: 200, width: '100%', backgroundColor:'white'}}>
                     <MediumQuest />
                 </View>
-                <View style={{height:200,backgroundColor:'white'}}>
+                <View style={{ height: 200, width: '100%', backgroundColor:'white'}}>
                     <HardQuest />
                 </View>
                 
