@@ -57,9 +57,9 @@ class NavButtons extends React.Component {
           selectedIndex={selectedIndex}
           buttons={buttons}
           buttonStyle={{justifyContent: 'center', width: '100%'}}
-          containerStyle={{height: '10%', width: '100%',
+          containerStyle={{height: '10%', width: '102%',
           backgroundColor: 'rgba(49, 111,244, 1)',
-          justifyContent: 'flex-start', marginTop: '0%', marginBottom: '0%'}}
+          justifyContent: 'flex-start', marginTop: '0%', marginBottom: '0%', marginLeft: -5}}
           textStyle={{color: 'white', fontWeight: 'bold'}}
         />
         {(() => {

@@ -40,7 +40,7 @@ class Home extends React.Component {
         return (
             <ScrollView contentContainerStyle={{
                 flexDirection: 'row', width: "100%",
-                flex:1, backgroundColor: 'rgba(44, 244, 250, 1)',
+                flex:1, backgroundColor: 'white',
                 borderColor: 'rgba(44, 244, 250, 1)', justifyContent: 'flex-start',
                 marginTop: '0%'
             }} scrollEnabled={this.state.enabled}>
@@ -49,19 +49,20 @@ class Home extends React.Component {
                     source={{ uri: "http://mrwgifs.com/wp-content/uploads/2013/08/Spongebob-Eagerly-Awaits-The-Start-Of-Boating-School_408x408.jpg" }}
                     onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
-                    containerStyle={{ justifyContent: 'flex-start', alignItems: 'flex-start', marginBottom: "20%", marginLeft: '5%' }}
+                    containerStyle={{ justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: '5%', marginBottom: "20%", marginLeft: '5%' }}
                 />
+                <View style={{justifyContent: 'center', alignItems: 'flex-start', flexDirection: 'row', marginTop: 200, marginLeft: -150}}>
                 <Text style={styles.textHome}>
-                    {`Steps:
+                    {`Level:
+
+Steps:
 
 Distance:
-
-Elevation:
 
 Time:`}
 
                 </Text>
-
+                </View>
 
             </ScrollView>
 
