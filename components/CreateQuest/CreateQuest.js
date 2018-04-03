@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Dimensions } from 'react-native';
+import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map } from '../common'
+import { MapButton, Map, Button } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00322;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-class CreateQuest extends React.Component {
-    constructor(){
-        super();
-        this.state ={
-            quest:{
-                name:'',
-                challenged_id:0,             
-                new_quest: true,
-                diff_level:0,
-                time:'',
-                distance:0,
-                elevation:0,
-                quest_score:0,
-                steps:0,
-                route:[{
-                      latitude:0, 
-                      longitude:0
-                      }],
-                  waypoints:[{
-                          url:'', 
-                          lat:0, 
-                          lng:0
-                          }]
-            },
-            mapData: {
-                polylines: [],
-                speed: [],
-                timestamp: [],
-            },
-            location: {
-                latitude:  37.871732795815525,
-                longitude:  -122.27066792384305
-            },
-            started: false,
-            stopped: false 
-        }
-    }
+class CreateQuest extends Component {
+
+	state = {
+		quest: {
+			polylines: [],
+			speed: [0,0],
+			timestamp: [0,0],
+		},
+		location: {
+			latitude:  37.871732795815525,
+			longitude:  -122.27066792384305
+		},
+		started: false,
+		stopped: false,
+		modalVisible: false, 
+	};
 
 	/*Makes sure the component is mounted before the virtual DOM is rendered*/
 	componentWillMount() {
@@ -101,6 +80,11 @@ class CreateQuest extends React.Component {
 		);
 	};
 
+	/* Set the visibility state of the camera modal */
+	setModalVisible(visible) {
+		this.setState({modalVisible: visible});
+	}
+
 	endQuest(){
 		//Find out How to store polylines, speed, and time
 		console.log("QUEST STOPPED");
@@ -143,11 +127,32 @@ class CreateQuest extends React.Component {
         return (  
             <View style={ MapPageStyle }>
             	{this.renderMap()}
-            	<View style={ ButtonViewStyle }>
+							<View style={ ButtonViewStyle }>
+							
+							<Modal
+								animationType="slide"
+								transparent={false}
+								visible={this.state.modalVisible}
+								onRequestClose={() => {
+									alert('Modal has been closed.');
+								}}>
+								<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
+								
+									<Camera />
+								
+									<Button
+										onPress={() => {
+											this.setModalVisible(!this.state.modalVisible);
+										}}>
+										<Text>Close Camera</Text>
+									</Button>
+								</View>
+							</Modal>
+
 		    		<MapButton buttonText="Start" onPress={()=>this.setState({ started: true })}/>
 		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<MapButton buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
+		          	<MapButton buttonText="Camera" onPress={()=>this.setModalVisible(true)}/>
 		        </View>
             </View>
         );

@@ -112,11 +112,11 @@ export default class CameraScreen extends React.Component {
           from: data.uri,
           to: `${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
         }).then(() => {
-          photos.push({
-            url:`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
-            lat:37.871732795815525,
-            lng:-122.27066792384305
-          });
+          // photos.push({
+          //   url:`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
+          //   lat:37.871732795815525,
+          //   lng:-122.27066792384305
+          // });
           console.log(photos[photos.length-1]);
           this._savePhotos(photos);
           this.setState({
@@ -160,21 +160,17 @@ export default class CameraScreen extends React.Component {
        
         <View
           style={{
-            flex: .65,
+            flex: 1,
             // paddingBottom: isIPhoneX ? 20 : 0,
             backgroundColor: 'transparent',
             flexDirection: 'row',
-            alignSelf: 'center'
+            alignSelf: 'center',
+            justifyContent: 'flex-end'
           }}>
           <TouchableOpacity
-            style={[styles.flipButton, styles.picButton, { flex: 0.3, alignSelf: 'flex-end' }]}
+            style={[styles.flipButton, styles.picButton, { alignSelf: 'flex-end'}]}
             onPress={this.takePicture.bind(this)}>
-            <Text style={styles.flipText}> SNAP </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.flipButton, styles.galleryButton, { flex: 0.25, alignSelf: 'flex-end' }]}
-            onPress={this.toggleView.bind(this)}>
-            <Text style={styles.flipText}> Gallery </Text>
+            <Text style={styles.flipText}> Take Picture </Text>
           </TouchableOpacity>
         </View>
       </Camera>
@@ -206,13 +202,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   flipButton: {
-    flex: 0.3,
-    height: 40,
-    marginHorizontal: 2,
-    marginBottom: 10,
+    flex: 1,
+    height: 80,
+    marginHorizontal: 0,
+    marginBottom: 0,
     marginTop: 20,
     borderRadius: 8,
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
     padding: 5,
     alignItems: 'center',
