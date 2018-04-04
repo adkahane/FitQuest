@@ -11,7 +11,7 @@ class MyHeader extends React.Component {
           statusBarProps={{ barStyle: 'light-content' }}
           leftComponent={<Image
             style={{height:60, width:60, alignSelf: 'flex-start', marginTop: 20, marginLeft: 20}}
-            source={require('../../assets/images/art.png')}
+            source={require('../../assets/images/art2.png')}
           />}
           rightComponent={<Button onPress={() => firebase.auth().signOut()}
           title='Log Out'
