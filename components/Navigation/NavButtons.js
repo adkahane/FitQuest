@@ -2,7 +2,6 @@ import React from 'react';
 import { ButtonGroup, Button } from 'react-native-elements';
 import {View} from 'react-native';
 import Home from './../Home';
-import Footer from './../Footer';
 import Stats from './../Stats';
 import NewQuest from './../NewQuest';
 import CreateQuest from './../CreateQuest';
