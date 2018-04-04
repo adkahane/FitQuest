@@ -5,7 +5,7 @@
     "icon": "./assets/images/art.png",
     "sdkVersion": "25.0.0",
     "splash": {
-      "image": "./assets/images/header3.jpg",
+      "image": "./assets/images/splashScreen.png",
       "resizeMode": "cover"
     } 
   }
