@@ -23,7 +23,7 @@ const styles = {
     marginLeft: 5,
     marginRight: 5,
     marginTop: 10,
-    paddingTop: 30,
+    paddingTop: 200,
     height: '100%',
     width: '100%',
     backgroundColor: 'white'
