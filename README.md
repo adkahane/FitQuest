@@ -41,14 +41,14 @@ We used FireBase Authentication to Log our users into our App.
 
 A user will be registered to our app if they enter a password that is more than 7 characters long and enter a valid email and username.
 
-![login gif](/README_IMAGES/login.gif)
+![login gif](./README_IMAGES/login.gif)
 
 A User can also log out if they click the small logout button located in the header of our app.
 
 ## CreatingQuests
 A user can tap __Create__ in our NavBar to create a quest for our App. It will prompt the user for their location.
 
-![Create Quest gif](/README_IMAGES/CreateQuest.gif)
+![Create Quest gif](./README_IMAGES/CreateQuest.gif)
 
    When the user presses start a map will start tracing the quest that the user is going on.
 When a user presses Camera they can take pictures of waypoints. Waypoints are points of interest on a quest.
@@ -59,7 +59,7 @@ If they press stop the quest has finished.
    A user can tap __New Quest__ if they want to challenge a quest that has already been made. It will draw them a map of the
 route they are they are challenging.
 
-![Challenge Quest gif](/README_IMAGES/ChallengeQuest.gif)
+![Challenge Quest gif](./README_IMAGES/ChallengeQuest.gif)
 
   A user will be able to start the quest. Stop the Quest and Abandon the Quest if they do not want to complete it.
   (Not Yet Completed: They will also be reminded of the waypoints that the creator of the quest charted. )
@@ -67,7 +67,7 @@ route they are they are challenging.
   ## Stats
    A user can click on __Stats__ to see how they are performing on their quests.
    
-   ![Stats pic](/README_IMAGES/Stats.gif)
+   ![Stats pic](./README_IMAGES/Stats.gif)
    
    It will show them their Steps Taken. Distance they covered and their average speed for their quest. We plan on also making it
 so that the quest will score users based on waypoints and accomplishments like fastest time, but it is in the works at the moment.
