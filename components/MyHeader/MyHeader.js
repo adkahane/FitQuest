@@ -1,13 +1,18 @@
 import React from 'react';
+import { Image } from 'react-native';
 import { Header, Card, Button } from 'react-native-elements';
 import firebase from 'firebase';
 
 class MyHeader extends React.Component {
   render() {
     return (
-                
+
           <Header 
           statusBarProps={{ barStyle: 'light-content' }}
+          leftComponent={<Image
+            style={{height:60, width:60, alignSelf: 'flex-start', marginTop: 20, marginLeft: 20}}
+            source={require('../../assets/images/art.png')}
+          />}
           rightComponent={<Button onPress={() => firebase.auth().signOut()}
           title='Log Out'
           titleStyle={{ fontWeight: "700",
