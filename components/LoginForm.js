@@ -114,7 +114,7 @@ const styles = {
     errorTextStyle: {
         fontSize: 22,
         fontWeight: 'bold',
-        alignSelf: 'center',
+        alignSelf: 'flex-start',
         color: 'red'
     }
 }
