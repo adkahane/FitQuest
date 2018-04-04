@@ -3,10 +3,8 @@ import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
 import firebase from 'firebase';
 import MyHeader from './components/MyHeader';
 import NavButtons from './components/Navigation';
-import Footer from './components/Footer';
 import NewQuest from './components/NewQuest';
 import CreateQuest from './components/CreateQuest';
-import Authentication from './components/Authentication';
 import { Button, Card, CardSection, Spinner} from './components/common';
 import LoginForm from './components/LoginForm';
 
@@ -15,7 +13,7 @@ type Props = {};
 export default class App extends Component<Props> {
   
 
-  constructor(props){
+  constructor(props){ 
     super(props);
     this.state = {
       visible: false,
