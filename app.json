@@ -1,5 +1,8 @@
 {
   "expo": {
+    "name" : "FitQuest",
+    "privacy": "public",
+    "icon": "./assets/images/art.png",
     "sdkVersion": "25.0.0",
     "splash": {
       "image": "./assets/images/header3.jpg",
