@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "description": "Walk your own path! Create a quest! share it with your friends! Get Fit!",
     "privacy": "public",
-    "githubUrl": "https://github.com/adkahane/FitQuest",
+    // "githubUrl": "https://github.com/adkahane/FitQuest",
     "icon": "./assets/images/art.png",
     "sdkVersion": "25.0.0",
     "splash": {
