@@ -2,14 +2,14 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'rgba(44, 244, 250, 1)',
+        backgroundColor: 'rgba(135, 141, 161, 0.62)',
 
     },
     headerContainer: {
         justifyContent: 'center',
         alignItems: 'center',
         padding: 40,
-        backgroundColor: 'rgba(44, 244, 250, 1)'
+        backgroundColor: 'rgba(135, 141, 161, 0.62)'
     },
     heading: {
         color: 'white',

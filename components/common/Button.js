@@ -16,11 +16,11 @@ const Button = ({ onPress, children }) => {
 const styles = {
   textStyle: {
     alignSelf: 'center',
-    color: 'rgba(44, 244, 250, 1)',
+    color: 'black',
     fontSize: 22,
     fontWeight: 'bold',
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 5,
+    paddingBottom: 5
   },
   buttonStyle: {
     width: '97%',
@@ -28,7 +28,7 @@ const styles = {
     backgroundColor: '#fff',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: 'rgba(44, 244, 250, 1)',
+    borderColor: 'rgba(118, 141, 234, 0.58)',
     marginLeft: 5,
     marginRight: 5
   }

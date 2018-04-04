@@ -24,16 +24,18 @@ const styles = {
         color: '#000',
         paddingRight: 5,
         paddingLeft: 15,
+        paddingBottom: 5,
         fontSize: 22,
-        lineHeight: 23,
-        flex: 2
+        lineHeight: 15,
+        flex: 2,
+        backgroundColor: 'white'
         
     },
     labelStyle: {
         fontSize: 22,
         paddingLeft: 20,
         flex: 1,
-        color: 'white',
+        color: 'black',
         fontWeight: 'bold'
     },
     containerStyle: {
