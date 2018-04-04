@@ -18,7 +18,7 @@ class ChallengeQuest extends Component {
                 "latitude": 37.8718325,
                 "longitude": -122.2713344,
                 },
-                 {
+                {
                 "latitude": 37.8717973,
                 "longitude": -122.2712849,
               },
@@ -699,8 +699,8 @@ class ChallengeQuest extends Component {
                 errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
             });
         } else {
-            this._getLocationAsync();
-            this._updateLocationAsync();
+            //this._getLocationAsync();
+            //this._updateLocationAsync();
         }
     }
 
@@ -733,8 +733,6 @@ class ChallengeQuest extends Component {
             (location) => {
                 if (this.state.started) {
                     this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
-                    //this.state.quest.speed.push({speed: location.coords.speed});
-                    //this.state.quest.timestamp.push({time: location.timestamp});
                 }
                 else if (!this.state.stopped) {
                     this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
@@ -752,7 +750,6 @@ class ChallengeQuest extends Component {
 
     endQuest() {
         //Find out How to store polylines, speed, and time
-        console.log("QUEST STOPPED");
         this.setState({ started: false });
         this.setState({ stopped: true });
     }
