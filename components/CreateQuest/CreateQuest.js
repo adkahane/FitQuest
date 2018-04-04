@@ -68,8 +68,6 @@ class CreateQuest extends Component {
 			(location)=> {
 				if(this.state.started){
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
-					//this.state.quest.speed.push({speed: location.coords.speed});
-					//this.state.quest.timestamp.push({time: location.timestamp});
 				}
 				else if(!this.state.stopped) {
 					this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
