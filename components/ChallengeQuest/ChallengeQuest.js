@@ -18,7 +18,7 @@ class ChallengeQuest extends Component {
                 "latitude": 37.8718325,
                 "longitude": -122.2713344,
                 },
-                 {
+                {
                 "latitude": 37.8717973,
                 "longitude": -122.2712849,
               },
