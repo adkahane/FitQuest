@@ -25,7 +25,7 @@ class Authentication extends React.Component {
 
 
                 <View style={styles.contentView}>
-                    <View style={{ backgroundColor: "rgba(49, 111,244, 1)", width: SCREEN_WIDTH, alignItems: "center" }}>
+                    <View style={{ backgroundColor: 'rgba(135, 141, 161, 0.62)', width: SCREEN_WIDTH, alignItems: "center" }}>
                         <Text
                             style={{
                                 fontSize: 30,
@@ -61,7 +61,7 @@ class Authentication extends React.Component {
                             <View style={styles.triangleRight} />
                         </View>
                     </View>
-                    <View style={{ backgroundColor: "rgba(44, 244, 250, 1)", width: SCREEN_WIDTH, alignItems: "center" }}>
+                    <View style={{ backgroundColor: 'rgba(135, 141, 161, 0.62)', width: SCREEN_WIDTH, alignItems: "center" }}>
                         <Text
                             style={{
                                 color: "white",
