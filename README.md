@@ -17,7 +17,7 @@ calls them **_Quests_**.
    Are App is located in Expo's Published Projects Area on __https://expo.io/@adkahane/fitquest__. You can connect to to it by
 downloading Expo Client on your Android or iOS device. Then Scan Our QR Code which will looks like this below.
 
-![QR Code ](/README_IMAGES/QR_code.gif)
+![QR Code ](/README_IMAGES/QR_Code.png)
 
 
 ## Technologies Used
