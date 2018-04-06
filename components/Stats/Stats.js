@@ -6,6 +6,12 @@ import styles from './StatsStyles.js';
 
 class Stats extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      enabled: true
+    };
+  }
 
     render() {
         let sampleData = [
@@ -90,13 +96,15 @@ class Stats extends React.Component {
         return (
 
 
-          <ScrollView contentContainerStyle={styles.contentContainer}>
-              <Text style={styles.text}>Steps Taken</Text>
-              <PureChart style={styles.chart} data={sampleData} type='bar' />
-              <Text style={styles.text}>{`Distance(mi)`}</Text>
-              <PureChart style={styles.chart} data={testData} type='bar' />
-              <Text style={styles.text}>{`Speed(mph)`}</Text>
-              <PureChart style={styles.chart} data={exampleData} type='bar' />
+          <ScrollView contentContainerStyle={styles.contentContainer} scrollEnabled={this.state.enabled}>
+              <View>
+                <Text style={styles.text}>Steps Taken</Text>
+                <PureChart style={styles.chart} data={sampleData} type='bar' />
+                <Text style={styles.text}>{`Distance(mi)`}</Text>
+                <PureChart style={styles.chart} data={testData} type='bar' />
+                <Text style={styles.text}>{`Speed(mph)`}</Text>
+                <PureChart style={styles.chart} data={exampleData} type='bar' />
+              </View>
             </ScrollView>
 
 

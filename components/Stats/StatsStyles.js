@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: 'white',
-        paddingVertical: 0
+        paddingVertical: 20
     },
     chart: {
         width: '85%',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, ScrollView } from 'react-native';
-import { Header, ButtonGroup, Button, Avatar, List, ListItem, Card, rightTitle } from 'react-native-elements';
+import { Header, ButtonGroup, Button, Avatar, List, ListItem, Card } from 'react-native-elements';
 import { CardSection, Input } from '../common';
 import styles from './HomeStyles.js';
 
@@ -41,7 +41,7 @@ class Home extends React.Component {
         return (
             <ScrollView contentContainerStyle={{
                 flexDirection: 'column', width: "100%",
-                flex:1, backgroundColor: 'white',
+                flex: 0, backgroundColor: 'white',
                 borderColor: 'rgba(44, 244, 250, 1)', justifyContent: 'flex-start',
                 marginTop: '0%'
             }} scrollEnabled={this.state.enabled}>
@@ -51,9 +51,9 @@ class Home extends React.Component {
                         uri: "https://avatars2.githubusercontent.com/u/28679029?s=460&v=4" }}
                     onPress={() => console.log("Works!")}
                     activeOpacity={0.7}
-                    containerStyle={{ justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: '1%', marginBottom: "5%", marginLeft: '5%' }}
+                    containerStyle={{ flex: 5, justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: '1%', marginBottom: "3%", marginLeft: '5%' }}
                 />
-                <View style={{justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: 'column', marginTop: -15, marginLeft: 0}}>
+                <View style={{justifyContent: 'flex-start', alignItems: 'stretch', flexDirection: 'column', marginTop: -5, marginLeft: 10}}>
                     
                     
                         {
@@ -64,10 +64,10 @@ class Home extends React.Component {
                                     key={i}
                                     title={l.title}
                                     subtitle={l.subtitle}
-                                titleStyle={{ fontSize: 22, fontWeight: 'bold', color: 'rgba(49, 111,244, 1)', width: 300}}
-                                subtitleStyle={{ fontSize: 22, fontWeight: 'bold', color: 'rgba(244, 49, 229, 1)', width: 300}}
+                                titleStyle={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(49, 111,244, 1)', width: 300}}
+                                subtitleStyle={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(244, 49, 229, 1)', width: 300}}
                                 hideChevron={true}
-                                bottomDivider={false}
+                                
                                 />
                             ))
                         }
