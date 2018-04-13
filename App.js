@@ -1,12 +1,20 @@
-import React, { Component, Wrapper } from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Alert } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
 import firebase from 'firebase';
+
+//*** Redux ***//
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers'
+//*** End of Redux **///
+
 import MyHeader from './components/MyHeader';
 import NavButtons from './components/Navigation';
-import NewQuest from './components/NewQuest';
-import CreateQuest from './components/CreateQuest';
-import { Button, Card, CardSection, Spinner} from './components/common';
+//import NewQuest from './components/NewQuest';
+//import CreateQuest from './components/CreateQuest';
+//import { Button, Card, CardSection, Spinner} from './components/common';
 import LoginForm from './components/LoginForm';
+
 
 
 type Props = {};
@@ -45,10 +53,12 @@ export default class App extends Component<Props> {
     switch (this.state.loggedIn) {
       case true:
         return (
+        <Provider store={createStore(reducers)}>
         <View>
-        <MyHeader />
-        <NavButtons />
+          <MyHeader />
+          <NavButtons />
         </View>
+        </Provider>
         )
       case false:
         return <LoginForm />;
@@ -63,11 +73,7 @@ export default class App extends Component<Props> {
 
     return (
       <View style={styles.container}>
-        
         {this.renderContent()}
-        
-       
-
       </View>
     );
   }
