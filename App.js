@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import firebase from 'firebase';
-
-//*** Redux ***//
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers'
-//*** End of Redux **///
-
 import MyHeader from './components/MyHeader';
 import NavButtons from './components/Navigation';
-//import NewQuest from './components/NewQuest';
-//import CreateQuest from './components/CreateQuest';
-//import { Button, Card, CardSection, Spinner} from './components/common';
 import LoginForm from './components/LoginForm';
 
 
 
 type Props = {};
 export default class App extends Component<Props> {
-  
 
   constructor(props){ 
     super(props);
@@ -27,9 +19,7 @@ export default class App extends Component<Props> {
       visible: false,
       loggedIn: false
     }
-}
-
-
+  }
 
   componentWillMount() {
     firebase.initializeApp({

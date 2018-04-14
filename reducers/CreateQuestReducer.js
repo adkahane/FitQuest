@@ -1,4 +1,4 @@
-import { START_QUEST, STOP_QUEST, SHOW_MODAL } from '../actions/types';
+import { START_QUEST, STOP_QUEST, SHOW_MODAL, SET_LOCATION, PUSH_MARKERS } from '../actions/types';
 
 const INITIAL_STATE = {
 	polylines: [], 
@@ -21,6 +21,16 @@ export default(state = INITIAL_STATE, action) =>{
 			return {...state, "stopped": stopped, "started":  started }
 		case SHOW_MODAL: 
 			return {...state, "modalVisible": action.payload}
+		case SET_LOCATION: 
+			const { lat, long } = action.payload;
+			return {...state, "latitude": lat, "longitude": long}
+		case PUSH_MARKERS: 
+			const { latitude, longitude, speed, timestamp } = action.payload;
+			return {...state, 
+					"polylines": [...state.polylines, {"latitude": latitude, "longitude": longitude}], 
+					"speed": [...state.speed, speed], 
+					"timestamp": [...state.timestamp, timestamp]
+				   } 
 		default: 
 			return state; 
 	}

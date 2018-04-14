@@ -1,4 +1,4 @@
-import { START_QUEST, STOP_QUEST, SHOW_MODAL } from './types.js';
+import { START_QUEST, STOP_QUEST, SHOW_MODAL, SET_LOCATION, PUSH_MARKERS } from './types.js';
 
 export const startQuest = (started) => {
 	return {
@@ -10,7 +10,7 @@ export const startQuest = (started) => {
 export const stopQuest = ({started, stopped}) => {
 	return {
 		type: STOP_QUEST, 
-		payload: {started, stopped}
+		payload: { started, stopped }
 	}
 }
 
@@ -18,5 +18,19 @@ export const showModal = (visible) => {
 	return {
 		type: SHOW_MODAL, 
 		payload: visible
+	}
+}
+
+export const setLocation = ({lat, long}) =>{
+	return{
+		type: SET_LOCATION, 
+		payload: { lat, long }
+	}
+}
+
+export const pushMarkers = ({latitude, longitude, speed, timestamp}) =>{
+	return{
+		type: PUSH_MARKERS, 
+		payload: { latitude, longitude, speed, timestamp }
 	}
 }
