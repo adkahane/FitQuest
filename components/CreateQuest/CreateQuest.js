@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
+
+import { connect } from 'react-redux';
+import { startQuest } from '../../actions';
+
 import Camera from '../../components/Camera/camera.js';
 import { MapButton, Map, Button } from '../common'
 
@@ -66,7 +70,10 @@ class CreateQuest extends Component {
 		let location = await Expo.Location.watchPositionAsync(
 			{enableHighAccuracy: true, distanceInterval: 20},
 			(location)=> {
-				if(this.state.started){
+				console.log("The value of started is"); 
+				console.log(this.props.started);
+				//if(this.state.started){
+				if(this.props.started){
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
 				}
 				else if(!this.state.stopped) {
@@ -89,6 +96,12 @@ class CreateQuest extends Component {
 		console.log(this.state.quest.polylines);
 		this.setState({ started: false });
 		this.setState({ stopped: true });
+	}
+
+	startQuest(){
+		this.props.startQuest(true);
+		console.log(this.props);
+		this.setState({ started: true });
 	}
 
 
@@ -126,36 +139,44 @@ class CreateQuest extends Component {
         return (  
             <View style={ MapPageStyle }>
             	{this.renderMap()}
-							<View style={ ButtonViewStyle }>
+				<View style={ ButtonViewStyle }>
 							
-							<Modal
-								animationType="slide"
-								transparent={false}
-								visible={this.state.modalVisible}
-								onRequestClose={() => {
-									alert('Modal has been closed.');
+					<Modal
+						animationType="slide"
+						transparent={false}
+						visible={this.state.modalVisible}
+						onRequestClose={() => {
+							alert('Modal has been closed.');
+						}}>
+						<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
+						
+							<Camera />
+						
+							<Button
+								onPress={() => {
+									this.setModalVisible(!this.state.modalVisible);
 								}}>
-								<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
-								
-									<Camera />
-								
-									<Button
-										onPress={() => {
-											this.setModalVisible(!this.state.modalVisible);
-										}}>
-										<Text>Close Camera</Text>
-									</Button>
-								</View>
-							</Modal>
+								<Text>Close Camera</Text>
+							</Button>
+						</View>
+					</Modal>
 
-		    		<MapButton buttonText="Start" onPress={()=>this.setState({ started: true })}/>
+		    		{/*<MapButton buttonText="Start" onPress={()=>this.startQuest()}/>*/}
+		    		<MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
 		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
 		          	<MapButton buttonText="Camera" onPress={()=>this.setModalVisible(true)}/>
-						</View>
-					</View>
+				</View>
+			</View>
         );
     }
+}
+
+///Maps the props from the reducers to get the appropriate piece of state in the component. 
+const mapStateToProps = (state) => {
+	const { polylines, speed, timestamp, latitude, longitude, started, stopped, modalVisible } = state.createQuest; 
+
+	return { polylines, speed, timestamp, latitude, longitude, started, stopped, modalVisible }; 
 }
 
 const styles = StyleSheet.create({
@@ -171,4 +192,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CreateQuest;
+export default connect(mapStateToProps, { startQuest })(CreateQuest);

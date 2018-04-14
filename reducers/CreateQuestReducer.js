@@ -1,3 +1,5 @@
+import { START_QUEST } from '../actions/types';
+
 const INITIAL_STATE = {
 	polylines: [], 
 	speed: [], 
@@ -10,7 +12,10 @@ const INITIAL_STATE = {
 };
 
 export default(state = INITIAL_STATE, action) =>{
+	console.log(action.type);
 	switch(action.type){
+		case START_QUEST:
+			return {...state, "started": action.payload }; 
 		default: 
 			return state; 
 	}
