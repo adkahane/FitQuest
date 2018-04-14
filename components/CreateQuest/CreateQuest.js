@@ -3,7 +3,7 @@ import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight
 import { Constants, Location, Permissions, MapView} from 'expo';
 
 import { connect } from 'react-redux';
-import { startQuest } from '../../actions';
+import { startQuest, stopQuest, showModal } from '../../actions';
 
 import Camera from '../../components/Camera/camera.js';
 import { MapButton, Map, Button } from '../common'
@@ -71,12 +71,12 @@ class CreateQuest extends Component {
 			{enableHighAccuracy: true, distanceInterval: 20},
 			(location)=> {
 				console.log("The value of started is"); 
-				console.log(this.props.started);
+				console.log(this.props);
 				//if(this.state.started){
 				if(this.props.started){
 					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
 				}
-				else if(!this.state.stopped) {
+				else if(!this.props.stopped) {
 					this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
 				}
 
@@ -94,16 +94,8 @@ class CreateQuest extends Component {
 		//Find out How to store polylines, speed, and time
 		console.log("These are your polylines"); 
 		console.log(this.state.quest.polylines);
-		this.setState({ started: false });
-		this.setState({ stopped: true });
+		this.props.stopQuest({ started: false, stopped: true})
 	}
-
-	startQuest(){
-		this.props.startQuest(true);
-		console.log(this.props);
-		this.setState({ started: true });
-	}
-
 
 	renderMap(){
 		if(this.state.quest.polylines.length > 1){
@@ -144,7 +136,7 @@ class CreateQuest extends Component {
 					<Modal
 						animationType="slide"
 						transparent={false}
-						visible={this.state.modalVisible}
+						visible={this.props.modalVisible}
 						onRequestClose={() => {
 							alert('Modal has been closed.');
 						}}>
@@ -153,9 +145,7 @@ class CreateQuest extends Component {
 							<Camera />
 						
 							<Button
-								onPress={() => {
-									this.setModalVisible(!this.state.modalVisible);
-								}}>
+								onPress={() => this.props.showModal(false)}>
 								<Text>Close Camera</Text>
 							</Button>
 						</View>
@@ -165,7 +155,8 @@ class CreateQuest extends Component {
 		    		<MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
 		          	<MapButton buttonText="Stop" onPress={()=>this.endQuest()}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<MapButton buttonText="Camera" onPress={()=>this.setModalVisible(true)}/>
+		          	{/*<MapButton buttonText="Camera" onPress={()=>this.setModalVisible(true)}/>*/}
+		          	<MapButton buttonText="Camera" onPress={()=>this.props.showModal(true)}/>
 				</View>
 			</View>
         );
@@ -192,4 +183,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, { startQuest })(CreateQuest);
+export default connect(mapStateToProps, { startQuest, stopQuest, showModal })(CreateQuest);
+

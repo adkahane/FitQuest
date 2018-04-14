@@ -1,4 +1,4 @@
-import { START_QUEST } from '../actions/types';
+import { START_QUEST, STOP_QUEST, SHOW_MODAL } from '../actions/types';
 
 const INITIAL_STATE = {
 	polylines: [], 
@@ -16,6 +16,11 @@ export default(state = INITIAL_STATE, action) =>{
 	switch(action.type){
 		case START_QUEST:
 			return {...state, "started": action.payload }; 
+		case STOP_QUEST: 
+			const { stopped, started } = action.payload;
+			return {...state, "stopped": stopped, "started":  started }
+		case SHOW_MODAL: 
+			return {...state, "modalVisible": action.payload}
 		default: 
 			return state; 
 	}
