@@ -1,4 +1,4 @@
-import { START_QUEST, STOP_QUEST, SHOW_MODAL, SET_LOCATION, PUSH_MARKERS } from './types.js';
+import { START_QUEST, SHOW_MODAL, SET_LOCATION, PUSH_MARKERS } from './types.js';
 
 export const startQuest = (started) => {
 	return {

@@ -1,4 +1,4 @@
-import { START_QUEST, STOP_QUEST, SHOW_MODAL, SET_LOCATION, PUSH_MARKERS } from '../actions/types';
+import { START_QUEST, SHOW_MODAL, SET_LOCATION, PUSH_MARKERS } from '../actions/types';
 
 const INITIAL_STATE = {
 	polylines: [], 
