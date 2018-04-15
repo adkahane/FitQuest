@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
+import { Platform, StyleSheet, View, Text, Dimensions, Modal } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 
 import { connect } from 'react-redux';
@@ -66,13 +66,6 @@ class CreateQuest extends Component {
 		);
 	};
 
-	// endQuest(){
-	// 	//Find out How to store polylines, speed, and time
-	// 	console.log("These are your props"); 
-	// 	console.log(this.props);
-	// 	this.props.stopQuest({ started: false, stopped: true})
-	// }
-
 	renderMap(){
 		if(this.props.polylines.length > 1){
 			return (	
@@ -128,7 +121,7 @@ class CreateQuest extends Component {
 					</Modal>
 
 		    		<MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
-		          	<MapButton buttonText="Stop" onPress={()=>this.startQuest(false)}/>
+		          	<MapButton buttonText="Stop" onPress={()=>this.props.startQuest(false)}/>
 		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
 		          	<MapButton buttonText="Camera" onPress={()=>this.props.showModal(true)}/>
 				</View>
@@ -157,5 +150,5 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, { startQuest, stopQuest, showModal, setLocation, pushMarkers })(CreateQuest);
+export default connect(mapStateToProps, { startQuest, showModal, setLocation, pushMarkers })(CreateQuest);
 
