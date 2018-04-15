@@ -15,9 +15,6 @@ export default(state = INITIAL_STATE, action) =>{
 	switch(action.type){
 		case START_QUEST:
 			return {...state, "started": action.payload }; 
-		case STOP_QUEST: 
-			const { stopped, started } = action.payload;
-			return {...state, "stopped": stopped, "started":  started }
 		case SHOW_MODAL: 
 			return {...state, "modalVisible": action.payload}
 		case SET_LOCATION: 

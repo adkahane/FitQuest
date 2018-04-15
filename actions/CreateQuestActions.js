@@ -7,13 +7,6 @@ export const startQuest = (started) => {
 	}
 }
 
-export const stopQuest = ({started, stopped}) => {
-	return {
-		type: STOP_QUEST, 
-		payload: { started, stopped }
-	}
-}
-
 export const showModal = (visible) => {
 	return {
 		type: SHOW_MODAL, 
