@@ -12,7 +12,7 @@ import LoginForm from './components/LoginForm';
 type Props = {};
 export default class App extends Component<Props> {
 
-  constructor(props){ 
+  constructor(props){
     super(props);
     this.state = {
       visible: false,
@@ -20,7 +20,7 @@ export default class App extends Component<Props> {
     }
   }
 
-  componentWillMount() {
+   async componentWillMount() {
     firebase.initializeApp({
       apiKey: 'AIzaSyDjmm9QC9AaA4wYVtYn9-WsBtW_2QRaCZ4',
       authDomain: 'authentication-d36c6.firebaseapp.com',
@@ -36,29 +36,34 @@ export default class App extends Component<Props> {
         this.setState({ loggedIn: null });
       }
     });
+
+    await Expo.Font.loadAsync({
+      'Roboto': require('native-base/Fonts/Roboto.ttf'),
+      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+    });
   }
 
-  renderContent() {
-    switch (this.state.loggedIn) {
-      case true:
-        return (
-            <DrawerStack />
-        )
-      case false:
-        return <LoginForm />;
-      default:
-        return <LoginForm />;
-    }
-  }
+  // renderContent() {
+  //   switch (this.state.loggedIn) {
+  //     case true:
+  //       return (
+  //           <DrawerStack />
+  //       )
+  //     case false:
+  //       return <LoginForm />;
+  //     default:
+  //       return <LoginForm />;
+  //   }
+  // }
 
-  render() {
-    return (
-       <Provider store={createStore(reducers)}>
-          <View style={styles.container}>
-            { this.renderContent() }
-          </View>
-        </Provider>
-    );
+  render() { 
+      return (
+         <Provider store={ createStore(reducers) }>
+            <View style={ styles.container }>
+              <DrawerStack />
+            </View>
+         </Provider>
+      );
   }
 }
 
