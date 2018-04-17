@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Dimensions, Modal } from 'react-native';
-import { Constants, Location, Permissions, MapView} from 'expo';
+import { Platform, StyleSheet, View, Text, Dimensions, Modal, Image } from 'react-native';
+import { Constants, Location, Permissions, MapView } from 'expo';
 
 import { connect } from 'react-redux';
+import { Icon, Container, Header, Content, Left, Body, Title, Right } from 'native-base'; 
 import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
 
 import Camera from '../../components/Camera/camera.js';
 import { MapButton, Map, Button } from '../common'
+
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -14,6 +16,13 @@ const LATITUDE_DELTA = 0.00322;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class CreateQuest extends Component {
+
+	static navigationOptions = {
+		drawerIcon: (
+			<Image source={ require('../../assets/icons/createQuest.png') }
+				   style={{ height: 24, width: 24 }} />
+		)
+	}
 
 	/*Makes sure the component is mounted before the virtual DOM is rendered*/
 	componentWillMount() {
@@ -98,34 +107,45 @@ class CreateQuest extends Component {
     	const { MapPageStyle, ButtonViewStyle } = styles; 
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (  
-            <View style={ MapPageStyle }>
-            	{this.renderMap()}
-				<View style={ ButtonViewStyle }>
+        	<Container> 
+        		<Header> 
+        			<Left> 
+        				<Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+        			</Left>
+        			<Body>
+        				<Title>FitQuest</Title>
+        			</Body>
+        			<Right />
+        		</Header>
+	            <Content contentContainerStyle={ MapPageStyle }>
+	            	{this.renderMap()}
+					<View style={ ButtonViewStyle }>
+								
+						<Modal
+							animationType="slide"
+							transparent={false}
+							visible={this.props.modalVisible}
+							onRequestClose={() => {
+								alert('Modal has been closed.');
+							}}>
+							<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
 							
-					<Modal
-						animationType="slide"
-						transparent={false}
-						visible={this.props.modalVisible}
-						onRequestClose={() => {
-							alert('Modal has been closed.');
-						}}>
-						<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
-						
-							<Camera />
-						
-							<Button
-								onPress={() => this.props.showModal(false)}>
-								<Text>Close Camera</Text>
-							</Button>
-						</View>
-					</Modal>
+								<Camera />
+							
+								<Button
+									onPress={() => this.props.showModal(false)}>
+									<Text>Close Camera</Text>
+								</Button>
+							</View>
+						</Modal>
 
-		    		<MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
-		          	<MapButton buttonText="Stop" onPress={()=>this.props.startQuest(false)}/>
-		          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<MapButton buttonText="Camera" onPress={()=>this.props.showModal(true)}/>
-				</View>
-			</View>
+			    		<MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
+			          	<MapButton buttonText="Stop" onPress={()=>this.props.startQuest(false)}/>
+			          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
+			          	<MapButton buttonText="Camera" onPress={()=>this.props.showModal(true)}/>
+					</View>
+				</Content>
+			</Container>
         );
     }
 }
