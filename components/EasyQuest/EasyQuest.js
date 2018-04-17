@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, Text } from 'react-native';
+import { MapView } from 'expo';
 // import { StyleSheet, Text, View, ScrollView, TouchableHighlight } from 'react-native';
 // import { Header, ButtonGroup, Button, Avatar, List, ListItem, Card, Input, Icon } from 'react-native-elements';
 // import styles from './EasyQuestStyles.js';
