@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map, Button } from '../common'
+import { MapButton, Map, Button } from '../common';
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;

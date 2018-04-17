@@ -22,7 +22,7 @@ class NavButtons extends React.Component {
   }
   
   _renderNewQuest = () => {
-    return(<ChallengeQuest />);
+    return(<NewQuest />);
   }
   
   _renderStats = () => {
