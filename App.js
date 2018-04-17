@@ -21,26 +21,6 @@ export default class App extends Component<Props> {
     }
 }
 
-
-
-  componentWillMount() {
-    firebase.initializeApp({
-      apiKey: 'AIzaSyDjmm9QC9AaA4wYVtYn9-WsBtW_2QRaCZ4',
-      authDomain: 'authentication-d36c6.firebaseapp.com',
-      databaseURL: 'https://authentication-d36c6.firebaseio.com',
-      projectId: 'authentication-d36c6',
-      storageBucket: 'authentication-d36c6.appspot.com',
-      messagingSenderId: '75288336879'
-    });
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ loggedIn: true});
-      } else {
-        this.setState({ loggedIn: null });
-      }
-    });
-  }
-
   renderContent() {
     switch (this.state.loggedIn) {
       case true:
@@ -51,9 +31,9 @@ export default class App extends Component<Props> {
         </View>
         )
       case false:
-        return <LoginForm />;
+        return <GoogleLogin />;
       default:
-        return <LoginForm />;
+        return <GoogleLogin />;
     }
     
   }
