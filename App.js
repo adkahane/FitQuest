@@ -6,22 +6,8 @@ import { createStore } from 'redux';
 import { DrawerNavigator } from 'react-navigation';
 import reducers from './reducers'
 import MyHeader from './components/MyHeader';
-import { NavButtons, DrawerNavigation } from './components/Navigation';
+import { NavButtons, DrawerStack} from './components/Navigation';
 import LoginForm from './components/LoginForm';
-
-//Screens for the Navigation
-import Home from './components/Home';
-import Stats from './components/Stats';
-import CreateQuest from './components/CreateQuest';
-import ChallengeQuest from './components/ChallengeQuest/ChallengeQuest';
-
-  // drawer stack
-  const DrawerStack = DrawerNavigator({
-    Home: { screen: Home },
-    Stats: { screen: Stats },
-    CreateQuest: { screen: CreateQuest },
-    ChallengeQuest: { screen: ChallengeQuest }
-  })
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -64,10 +50,6 @@ export default class App extends Component<Props> {
         return <LoginForm />;
     }
   }
-
-  //<View>
-  //  { this.renderContent() }
-  //</View>
 
   render() {
     return (
