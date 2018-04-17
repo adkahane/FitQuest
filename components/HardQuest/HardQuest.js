@@ -23,9 +23,9 @@ export default class HardQuest extends React.Component {
               <Left>
                 <Button transparent>
                   <Icon active name="walk" />
-                  <Text>12,000 Steps &nbsp;</Text>
+                  <Text>&nbsp;12,000 Steps &nbsp;&nbsp;&nbsp;&nbsp;</Text>
                   <Icon active name="stopwatch" />
-                  <Text>Average Time: 60:00</Text>
+                  <Text>&nbsp;Average Time: 60:00</Text>
                 </Button>
               </Left>
            {/*   <Body>
