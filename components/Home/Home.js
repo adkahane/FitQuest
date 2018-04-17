@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
 import { Avatar, List, ListItem } from 'react-native-elements';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { CardSection, Input } from '../common';
@@ -48,7 +48,7 @@ class Home extends React.Component {
         ]
         return (
         <Container> 
-            <Header> 
+            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
                 <Left> 
                     <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
                 </Left>
