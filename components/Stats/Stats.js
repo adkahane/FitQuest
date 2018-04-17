@@ -25,7 +25,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 2500},
                 {x: '2018-04-05', y: 10000}
               ],
-                  color: 'rgba(244, 49,229, 1)'
+            color: 'rgba(127, 42, 104, 1)'
               
                 },
             {
@@ -37,7 +37,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5500},
                 {x: '2018-04-05', y: 400}
               ],
-              color: 'rgba(44, 244, 250, 1)'
+              color: 'rgba(74, 145, 48, 1)'
             }
               ];
 
@@ -52,7 +52,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 25},
                 {x: '2018-04-05', y: 10}
               ],
-                  color: 'rgba(244, 49,229, 1)'
+            color: 'rgba(127, 42, 104, 1)'
               
                 },
             {
@@ -64,7 +64,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5},
                 {x: '2018-04-05', y: 4}
               ],
-              color: 'rgba(44, 244, 250, 1)'
+              color: 'rgba(74, 145, 48, 1)'
             }
             ];
 
@@ -78,7 +78,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5},
                 {x: '2018-04-05', y: 10}
               ],
-              color: 'rgba(49, 111,244, 1)'
+            color: 'rgba(170, 100, 57, 1)'
             },
             {
               seriesName: 'series2',
@@ -89,7 +89,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5},
                 {x: '2018-04-05', y: 4}
               ],
-              color: 'rgba(182, 44, 250, 1)'
+              color: 'rgba(74, 145, 48, 1)'
             }
           ];
 

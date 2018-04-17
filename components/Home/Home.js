@@ -64,9 +64,9 @@ class Home extends React.Component {
                                     key={i}
                                     title={l.title}
                                     subtitle={l.subtitle}
-                                titleStyle={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(49, 111,244, 1)', width: 300}}
-                                subtitleStyle={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(244, 49, 229, 1)', width: 300}}
-                                hideChevron={true}
+                                    titleStyle={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(74, 145, 48, 1)', width: 300}}
+                                    subtitleStyle={{ fontSize: 20, fontWeight: 'bold', color: 'rgba(127, 42, 104, 1)', width: 300}}
+                                    hideChevron={true}
                                 
                                 />
                             ))
