@@ -9,29 +9,24 @@ export default class EasyQuest extends React.Component {
   render() {
     return (
       <Container>
-        {/* <Header /> */}
         <Content>
-          <Card style={{flex: 0}}>
-           {/* <CardItem>
-              <Left>
-                <Thumbnail source={{uri: 'Image URL'}} />
+          <Card style={{width: 450, height: 300}}>
+            <CardItem>
                 <Body>
-                  <Text>NativeBase</Text>
-                  <Text note>GeekyAnts</Text>
+                  <Text>Easy Quest</Text>
                 </Body>
-              </Left>
-            </CardItem> */}
+            </CardItem> 
             <CardItem cardBody>
-              <Image source={{uri: 'https://camo.githubusercontent.com/689a96e5a1b1522bf9da9001ac66b00dad621ac5/687474703a2f2f656d63636f6e76696c6c652e636f6d2f506f6c796c696e652f647573747967726f6f76652e706e67'}} style={{height: 150, width: 150, flex: 1}}/>
+              <Image source={{uri: 'https://camo.githubusercontent.com/689a96e5a1b1522bf9da9001ac66b00dad621ac5/687474703a2f2f656d63636f6e76696c6c652e636f6d2f506f6c796c696e652f647573747967726f6f76652e706e67'}} style={{height: 200, width: 100, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Left>
                 <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
+                  <Icon active name="walk" />
+                  <Text>12,000 Steps</Text>
                 </Button>
               </Left>
-              <Body>
+           {/*   <Body>
                 <Button transparent>
                   <Icon active name="chatbubbles" />
                   <Text>4 Comments</Text>
@@ -39,7 +34,7 @@ export default class EasyQuest extends React.Component {
               </Body>
               <Right>
                 <Text>11h ago</Text>
-              </Right>
+           </Right> */}
             </CardItem>
           </Card>
         </Content>
