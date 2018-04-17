@@ -12,13 +12,13 @@ class LoginForm extends Component {
             username: '',
             error: '',
             loading: false
-            // user:{
-            //     auth_id:'',
-            //     name:'',
-            //     email:'',
-            //     avatar_url:'',
-            //     points:0
-            // },    
+            user:{
+                auth_id:'',
+                name:'',
+                email:'',
+                avatar_url:'',
+                points:0
+            },    
     };
 }    
 
