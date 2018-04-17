@@ -3,12 +3,25 @@ import { StyleSheet, View } from 'react-native';
 import firebase from 'firebase';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { DrawerNavigator } from 'react-navigation';
 import reducers from './reducers'
 import MyHeader from './components/MyHeader';
-import NavButtons from './components/Navigation';
+import { NavButtons, DrawerNavigation } from './components/Navigation';
 import LoginForm from './components/LoginForm';
 
+//Screens for the Navigation
+import Home from './components/Home';
+import Stats from './components/Stats';
+import CreateQuest from './components/CreateQuest';
+import ChallengeQuest from './components/ChallengeQuest/ChallengeQuest';
 
+  // drawer stack
+  const DrawerStack = DrawerNavigator({
+    Home: { screen: Home },
+    Stats: { screen: Stats },
+    CreateQuest: { screen: CreateQuest },
+    ChallengeQuest: { screen: ChallengeQuest }
+  })
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -43,28 +56,26 @@ export default class App extends Component<Props> {
     switch (this.state.loggedIn) {
       case true:
         return (
-        <Provider store={createStore(reducers)}>
-        <View>
-          <MyHeader />
-          <NavButtons />
-        </View>
-        </Provider>
+            <DrawerStack />
         )
       case false:
         return <LoginForm />;
       default:
         return <LoginForm />;
     }
-    
   }
-  
+
+  //<View>
+  //  { this.renderContent() }
+  //</View>
 
   render() {
-
     return (
-      <View style={styles.container}>
-        {this.renderContent()}
-      </View>
+       <Provider store={createStore(reducers)}>
+          <View style={styles.container}>
+            { this.renderContent() }
+          </View>
+        </Provider>
     );
   }
 }
@@ -73,20 +84,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: "flex-start"
-  },
-  button: {
-    marginTop: '2%',
-    width: '75%',
-    height: '8%',
-    alignItems: 'center',
-    backgroundColor: 'rgba(49, 111,244, 1)'
-  },
-  buttonText: {
-    padding: 20,
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 19
   }
 });
