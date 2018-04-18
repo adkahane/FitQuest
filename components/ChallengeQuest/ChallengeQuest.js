@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Card } from 'react-native-elements';
+import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { Constants, Location, Permissions, MapView } from 'expo';
 import { MapButton, Map, Button } from '../common'
 
@@ -10,6 +11,15 @@ const LATITUDE_DELTA = 0.00322;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class ChallengeQuest extends Component {
+
+
+  static navigationOptions = {
+    drawerIcon: (
+      <Image source={ require('../../assets/icons/challengeQuest.png') }
+           style={{ height: 24, width: 24 }} />
+    )
+  }
+
 
     state = {
         quest: {
@@ -791,10 +801,19 @@ class ChallengeQuest extends Component {
         const { MapPageStyle, ButtonViewStyle } = styles;
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (
-            <View style={MapPageStyle}>
+          <Container> 
+            <Header> 
+              <Left> 
+                <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+              </Left>
+                <Body>
+                  <Title>FitQuest</Title>
+                </Body>
+              <Right />
+            </Header>
+            <Content contentContainerStyle={ MapPageStyle }>
                 {this.renderMap()}
                 <View style={ButtonViewStyle}>
-
                     <MapButton buttonText="Start" onPress={() => this.setState({ started: true })} />
                     <MapButton buttonText="Finish" onPress={() => this.endQuest()} />
                     <MapButton buttonText="Abort" onPress={() => this.resetValues()} />
@@ -804,7 +823,8 @@ class ChallengeQuest extends Component {
                         <Image />
                     </Card>
                 </View>
-            </View>
+            </Content>
+          </Container>
         );
     }
 }
