@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
-import { Header, Button, Card, CardSection, Input, TextInput, Spinner } from './common';
-// import User from '../server/models/User';
-let userId;
+import { Header, Button, Card, CardSection, Input, Spinner } from './common';
+
 class LoginForm extends Component {
     constructor(){
         super();
@@ -12,13 +11,7 @@ class LoginForm extends Component {
             username: '',
             error: '',
             loading: false
-            user:{
-                auth_id:'',
-                name:'',
-                email:'',
-                avatar_url:'',
-                points:0
-            },    
+               
     };
 }    
 
@@ -29,7 +22,6 @@ class LoginForm extends Component {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(this.onLoginSuccess.bind(this))
-                // userId = firebase.auth().currentUser.uid)
         .catch(() => {
             firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(this.onLoginSuccess.bind(this))

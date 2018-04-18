@@ -23,8 +23,10 @@ const styles = {
     marginLeft: 5,
     marginRight: 5,
     marginTop: 10,
+    paddingTop: 30,
     height: '100%',
-    backgroundColor: 'rgba(44, 244, 250, 1)'
+    width: '100%',
+    backgroundColor: 'white'
   }
 };
 

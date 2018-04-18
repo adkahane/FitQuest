@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Card } from 'react-native-elements';
+import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { Constants, Location, Permissions, MapView } from 'expo';
 import { MapButton, Map, Button } from '../common'
 
@@ -11,6 +12,15 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class ChallengeQuest extends Component {
 
+
+  static navigationOptions = {
+    drawerIcon: (
+      <Image source={ require('../../assets/icons/challengeQuest.png') }
+           style={{ height: 24, width: 24 }} />
+    )
+  }
+
+
     state = {
         quest: {
             polylines: [
@@ -18,7 +28,7 @@ class ChallengeQuest extends Component {
                 "latitude": 37.8718325,
                 "longitude": -122.2713344,
                 },
-                 {
+                {
                 "latitude": 37.8717973,
                 "longitude": -122.2712849,
               },
@@ -699,8 +709,8 @@ class ChallengeQuest extends Component {
                 errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
             });
         } else {
-            this._getLocationAsync();
-            this._updateLocationAsync();
+            //this._getLocationAsync();
+            //this._updateLocationAsync();
         }
     }
 
@@ -733,8 +743,6 @@ class ChallengeQuest extends Component {
             (location) => {
                 if (this.state.started) {
                     this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
-                    //this.state.quest.speed.push({speed: location.coords.speed});
-                    //this.state.quest.timestamp.push({time: location.timestamp});
                 }
                 else if (!this.state.stopped) {
                     this.setState({ quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
@@ -752,7 +760,6 @@ class ChallengeQuest extends Component {
 
     endQuest() {
         //Find out How to store polylines, speed, and time
-        console.log("QUEST STOPPED");
         this.setState({ started: false });
         this.setState({ stopped: true });
     }
@@ -794,10 +801,19 @@ class ChallengeQuest extends Component {
         const { MapPageStyle, ButtonViewStyle } = styles;
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (
-            <View style={MapPageStyle}>
+          <Container> 
+            <Header> 
+              <Left> 
+                <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+              </Left>
+                <Body>
+                  <Title>FitQuest</Title>
+                </Body>
+              <Right />
+            </Header>
+            <Content contentContainerStyle={ MapPageStyle }>
                 {this.renderMap()}
                 <View style={ButtonViewStyle}>
-
                     <MapButton buttonText="Start" onPress={() => this.setState({ started: true })} />
                     <MapButton buttonText="Finish" onPress={() => this.endQuest()} />
                     <MapButton buttonText="Abort" onPress={() => this.resetValues()} />
@@ -807,7 +823,8 @@ class ChallengeQuest extends Component {
                         <Image />
                     </Card>
                 </View>
-            </View>
+            </Content>
+          </Container>
         );
     }
 }

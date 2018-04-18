@@ -22,9 +22,6 @@ class HardQuest extends React.Component {
                 <Text style={styles.text}>{`Difficult`}</Text>
 
             </Card>
-
-
-
         );
     }
 }
