@@ -1,12 +1,12 @@
 import React from 'react';
+import { Icon } from 'native-base';
 import { StyleSheet } from 'react-native';
 import { MapView } from 'expo';
-// import styles from './MapStyles.js';
 
 const Map = (props) => {
 	/*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 		const { MapStyle } = styles; 
-		
+
 		if ('polylines' in props){
 			return (
 				<MapView
@@ -16,9 +16,20 @@ const Map = (props) => {
 					region={ props.location }> 
 						<MapView.Polyline
 							coordinates={ props.polylines.map(polyline=>polyline) }
-							strokeColor="#000"
+							strokeColor="#66CD00"
 							strokeWidth={3}
 						/>
+						<MapView.Marker
+							coordinate={ props.polylines[0] }
+							image={ require('../../assets/icons/startButton.png')}
+						/>
+						{	!props.started ? (
+								<MapView.Marker
+									coordinate={ props.polylines[props.polylines.length-1] }
+									image={ require('../../assets/icons/finish.png')}
+								/>
+							): null
+						}
 				</MapView>
 			);
 		}

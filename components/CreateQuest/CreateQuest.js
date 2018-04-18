@@ -86,6 +86,7 @@ class CreateQuest extends Component {
 						  longitudeDelta: LONGITUDE_DELTA }
 					}
 					polylines={[...this.props.polylines]}
+					started={ this.props.started }
             	/>
 			)
 		}
@@ -119,8 +120,7 @@ class CreateQuest extends Component {
         		</Header>
 	            <Content contentContainerStyle={ MapPageStyle }>
 	            	{this.renderMap()}
-					<View style={ ButtonViewStyle }>
-								
+					<View style={ ButtonViewStyle }>				
 						<Modal
 							animationType="slide"
 							transparent={false}

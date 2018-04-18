@@ -21,7 +21,7 @@ const CustomDrawerContentComponent = (props) =>(
 	<Container> 
 		<Header style={{ height: 150 }}> 
 			<Body> 
-				<Image style={ styles.drawerImage } source={require('../../assets/images/art2.png')}/>
+				<Image style={ styles.drawerImage } source={ require('../../assets/images/art2.png') }/>
 			</Body> 
 		</Header> 
 		<Content>
