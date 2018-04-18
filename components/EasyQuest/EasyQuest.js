@@ -13,14 +13,15 @@ class EasyQuest extends React.Component {
 
 
          
-            <Card containerStyle={{flexDirection: 'row', width: "100%",
-                height: 150, backgroundColor: 'rgba(44, 244, 250, 1)',
-                borderColor: 'rgba(44, 244, 250, 1)', justifyContent: 'space-around',
-                alignItems: 'center', marginTop: '5%'
+            <Card image={require('./easy-quest.png')} containerStyle={{flexDirection: 'row', width: "100%",
+                height: 155, backgroundColor: 'rgba(88, 95, 99, 0.16)',
+                borderColor: 'rgba(88, 95, 99, 0.16)', justifyContent: 'center', alignItems: 'center',
+                alignSelf: 'center', marginTop: '5%', marginBottom: '0%', borderRadius: '5'
                 }}> 
                 <Icon
                   name='directions-walk'
                   color='rgba(49, 111,244, 1)'
+                  size={30}
                   />
                 <Text style={styles.text}>{`Easy`}</Text>
 

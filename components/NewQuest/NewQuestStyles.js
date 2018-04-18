@@ -10,10 +10,11 @@ const styles = StyleSheet.create({
     // },
     contentContainer: {
         height: '70%',
-        justifyContent: 'space-around',
+        width: '100%',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        paddingVertical: 0
+        paddingVertical: 20
     },
   text: {
         fontWeight: 'bold',

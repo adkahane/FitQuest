@@ -4,11 +4,16 @@ import firebase from 'firebase';
 import { Header, Button, Card, CardSection, Input, Spinner } from './common';
 
 class LoginForm extends Component {
-    state = { email: '',
+    constructor(){
+        super();
+    this.state = { email: '',
             password: '',
+            username: '',
             error: '',
             loading: false
-            };
+               
+    };
+}    
 
     onButtonPress() {
         const { email, password } = this.state;
@@ -34,6 +39,7 @@ class LoginForm extends Component {
             email: '',
             password: '',
             loading: false,
+            username: '',
             error: ''
         });
     }
@@ -52,9 +58,9 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <Card>
+            <Card style={{height: '100%'}}>
                 <CardSection>
-                    <Header headerText="Authentication" style={{width: '100%'}}/>
+                    <Header headerText="Authentication" />
                 </CardSection>    
                 <CardSection>
                     <Input 
@@ -62,6 +68,14 @@ class LoginForm extends Component {
                         label="Email"
                         value={this.state.email}                    
                         onChangeText={email => this.setState({ email })}
+                         />
+                </CardSection>
+                <CardSection>
+                    <Input 
+                        placeholder="username"
+                        label="User"
+                        value={this.state.username}                    
+                        onChangeText={username => this.setState({ username })}
                          />
                 </CardSection>
                 <CardSection> 
@@ -83,13 +97,15 @@ class LoginForm extends Component {
                 </CardSection>
 
             </Card>
+            
         );
     }
 }
 
 const styles = {
     errorTextStyle: {
-        fontSize: 20,
+        fontSize: 22,
+        fontWeight: 'bold',
         alignSelf: 'center',
         color: 'red'
     }

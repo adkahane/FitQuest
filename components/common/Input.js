@@ -23,21 +23,27 @@ const styles = {
     inputStyle: {
         color: '#000',
         paddingRight: 5,
-        paddingLeft: 5,
-        fontSize: 18,
-        lineHeight: 23,
-        flex: 2
+        paddingLeft: 15,
+        paddingBottom: 5,
+        fontSize: 22,
+        lineHeight: 15,
+        flex: 2,
+        backgroundColor: 'white'
+        
     },
     labelStyle: {
-        fontSize: 18,
+        fontSize: 22,
         paddingLeft: 20,
-        flex: 1
+        flex: 1,
+        color: 'black',
+        fontWeight: 'bold'
     },
     containerStyle: {
         height: 40,
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center'
+        
     }
 }
 

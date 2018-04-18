@@ -42,8 +42,8 @@ const QuestSchema = new Schema({
         required:false
     },
     route:[{
-        lat:Number, 
-        lng:Number
+        latitude:Number, 
+        longitude:Number
         }],
     waypoints:[{
             url:String, 

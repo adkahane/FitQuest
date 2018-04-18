@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Dimensions } from 'react-native';
-import { Constants, Location, Permissions, MapView} from 'expo';
+import { Platform, StyleSheet, View, Text, Dimensions, Modal, Image } from 'react-native';
+import { Constants, Location, Permissions, MapView } from 'expo';
+
+import { connect } from 'react-redux';
+import { Icon, Container, Header, Content, Left, Body, Title, Right } from 'native-base'; 
+import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
+
 import Camera from '../../components/Camera/camera.js';
-import { Button, Map } from '../common'
+import { MapButton, Map, Button } from '../common'
+
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -11,18 +17,12 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class CreateQuest extends Component {
 
-	state = {
-		quest: {
-			polylines: [],
-			speed: [],
-			timestamp: [],
-		},
-		location: {
-			latitude:  37.871732795815525,
-			longitude:  -122.27066792384305
-		},
-		started: false 
-	};
+	static navigationOptions = {
+		drawerIcon: (
+			<Image source={ require('../../assets/icons/createQuest.png') }
+				   style={{ height: 24, width: 24 }} />
+		)
+	}
 
 	/*Makes sure the component is mounted before the virtual DOM is rendered*/
 	componentWillMount() {
@@ -47,10 +47,9 @@ class CreateQuest extends Component {
 	    }
 
 	    let location = await Location.getCurrentPositionAsync({});
-	    this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } });
+	    const { latitude , longitude } = location.coords; 
+	    this.props.setLocation({lat: latitude, long: longitude});
   	};
-
-
 
 	/*Updates the users positon every 5 meters. Uses async to wait for permissions and to allow google to return position.
 	Also Keeps track of the different lats and longs that the user is going on their quest, their speed and time.*/
@@ -62,48 +61,31 @@ class CreateQuest extends Component {
 			});
 		}
 		let location = await Expo.Location.watchPositionAsync(
-			{enableHighAccuracy: true, distanceInterval: 5},
+			{enableHighAccuracy: true, distanceInterval: 20},
 			(location)=> {
 
-				if(this.state.started){
-					console.log("The Quest has Started");
-					this.state.quest.polylines.push({ latitude: location.coords.latitude, longitude: location.coords.longitude });
+				const { latitude, longitude, speed } = location.coords; 
+
+				if(this.props.started){
+					this.props.pushMarkers({latitude: latitude, longitude: longitude, speed: speed, timestamp: location.timestamp});
 				}
-				else{
-					console.log("The Quest is not on");
-					this.setState({quest: { polylines: [{ latitude: location.coords.latitude, longitude: location.coords.longitude }] } })
-					//this.setState({quest: { speed: [...this.state.quest.speed, location.coords.speed] } });
-					//this.setState({quest: { speed: [...this.state.quest.timestamp, location.timestamp] } });
-				}
-				this.setState({location: { latitude: location.coords.latitude, longitude: location.coords.longitude } })
+
+				this.props.setLocation({lat: latitude, long: longitude});
 			}
 		);
 	};
 
-	endQuest(){
-		//Find out How to store polylines, speed, and time
-		this.resetValues();
-	}
-
-	resetValues(){
-		console.log("This state: " + this.state.started);
-		// this.setState({ quest:{ polylines: [this.state.quest.polylines.pop()] }});
-		// this.setState({ quest:{ speed: [] }});
-		// this.setState({ quest:{ timestamp: [] }});
-		this.setState({ started: false });
-	}
-
 	renderMap(){
-		if(this.state.quest.polylines.length > 1 && this.state.started){
+		if(this.props.polylines.length > 1){
 			return (	
 				<Map 
 	            	location={
-	            	 	{ latitude: this.state.location.latitude, 
-						  longitude: this.state.location.longitude, 
+	            	 	{ latitude: this.props.latitude, 
+						  longitude: this.props.longitude, 
 						  latitudeDelta: LATITUDE_DELTA, 
 						  longitudeDelta: LONGITUDE_DELTA }
 					}
-	            	polylines={[...this.state.quest.polylines]}
+					polylines={[...this.props.polylines]}
             	/>
 			)
 		}
@@ -111,8 +93,8 @@ class CreateQuest extends Component {
 		return (
 			<Map 
             	location={
-            	 	{ latitude: this.state.location.latitude, 
-					  longitude: this.state.location.longitude, 
+            	 	{ latitude: this.props.latitude, 
+					  longitude: this.props.longitude, 
 					  latitudeDelta: LATITUDE_DELTA, 
 					  longitudeDelta: LONGITUDE_DELTA }
 				}
@@ -125,28 +107,68 @@ class CreateQuest extends Component {
     	const { MapPageStyle, ButtonViewStyle } = styles; 
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (  
-            <View style={ MapPageStyle }>
-            	{this.renderMap()}
-            	<View style={ ButtonViewStyle }>
-		    		<Button buttonText="Start" onPress={()=>this.setState({ started: true })}/>
-		          	<Button buttonText="Stop" onPress={()=>this.endQuest()}/>
-		          	<Button buttonText="Abort" onPress={()=>this.resetValues()}/>
-		          	<Button buttonText="Open Camera" onPress={()=>console.log("Open Camera Was Pressed")}/>
-		        </View>
-            </View>
+        	<Container> 
+        		<Header> 
+        			<Left> 
+        				<Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+        			</Left>
+        			<Body>
+	                    <Title>FitQuest</Title>
+        			</Body>
+        			<Right />
+        		</Header>
+	            <Content contentContainerStyle={ MapPageStyle }>
+	            	{this.renderMap()}
+					<View style={ ButtonViewStyle }>
+								
+						<Modal
+							animationType="slide"
+							transparent={false}
+							visible={this.props.modalVisible}
+							onRequestClose={() => {
+								alert('Modal has been closed.');
+							}}>
+							<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
+							
+								<Camera />
+							
+								<Button
+									onPress={() => this.props.showModal(false)}>
+									<Text>Close Camera</Text>
+								</Button>
+							</View>
+						</Modal>
+
+			    		<MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
+			          	<MapButton buttonText="Stop" onPress={()=>this.props.startQuest(false)}/>
+			          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
+			          	<MapButton buttonText="Camera" onPress={()=>this.props.showModal(true)}/>
+					</View>
+				</Content>
+			</Container>
         );
     }
+}
+
+///Maps the props from the reducers to get the appropriate piece of state in the component. 
+const mapStateToProps = (state) => {
+	const { polylines, speed, timestamp, latitude, longitude, started, modalVisible } = state.createQuest; 
+
+	return { polylines, speed, timestamp, latitude, longitude, started, modalVisible }; 
 }
 
 const styles = StyleSheet.create({
     MapPageStyle: {
     	flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: 'white'
     },
     ButtonViewStyle: {
-    	flex: 1, 
-    	flexDirection: 'row'
+		width: '100%',
+		height: '60%', 
+		flexDirection: 'row',
+		alignItems: 'flex-start'
     }
 });
 
-export default CreateQuest;
+export default connect(mapStateToProps, { startQuest, showModal, setLocation, pushMarkers })(CreateQuest);
+

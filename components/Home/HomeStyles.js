@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1, 
         height: '100%',
         width: '100%',
         backgroundColor: 'white',
         alignItems: 'center',
-        justifyContent: "flex-start"
+        justifyContent: 'center'
 
     },
     textHome: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         marginTop: 20,
         alignItems: 'flex-start',
-        alignSelf: 'center',
+        alignSelf: 'flex-start',
         justifyContent: "space-around",
         flexDirection: 'column'
     }

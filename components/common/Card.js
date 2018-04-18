@@ -22,7 +22,11 @@ const styles = {
     elevation: 1,
     marginLeft: 5,
     marginRight: 5,
-    marginTop: 10
+    marginTop: 10,
+    paddingTop: 30,
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'white'
   }
 };
 
