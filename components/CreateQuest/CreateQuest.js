@@ -113,7 +113,7 @@ class CreateQuest extends Component {
         				<Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
         			</Left>
         			<Body>
-        				<Title>FitQuest</Title>
+	                    <Title>FitQuest</Title>
         			</Body>
         			<Right />
         		</Header>

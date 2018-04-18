@@ -806,15 +806,14 @@ class ChallengeQuest extends Component {
               <Left> 
                 <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
               </Left>
-              <Body>
-                <Title>FitQuest</Title>
-              </Body>
+                <Body>
+                  <Title>FitQuest</Title>
+                </Body>
               <Right />
             </Header>
             <Content contentContainerStyle={ MapPageStyle }>
                 {this.renderMap()}
                 <View style={ButtonViewStyle}>
-
                     <MapButton buttonText="Start" onPress={() => this.setState({ started: true })} />
                     <MapButton buttonText="Finish" onPress={() => this.endQuest()} />
                     <MapButton buttonText="Abort" onPress={() => this.resetValues()} />
