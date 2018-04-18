@@ -1,10 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Component, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Component, Text, ScrollView, Image } from 'react-native';
+import { Icon, Container, Header, Content, Left, Body, Title, Right } from 'native-base';
 import PureChart from 'react-native-pure-chart';
 import styles from './StatsStyles.js';
 
 
 class Stats extends React.Component {
+    
+    static navigationOptions = {
+      drawerIcon: (
+        <Image source={ require('../../assets/icons/stats.png') }
+             style={{ height: 24, width: 24 }} />
+      )
+    }
 
 
     render() {
@@ -88,20 +96,27 @@ class Stats extends React.Component {
           ];
 
         return (
-
-
-          <ScrollView contentContainerStyle={styles.contentContainer}>
-              <Text style={styles.text}>Steps Taken</Text>
-              <PureChart style={styles.chart} data={sampleData} type='bar' />
-              <Text style={styles.text}>{`Distance(mi)`}</Text>
-              <PureChart style={styles.chart} data={testData} type='bar' />
-              <Text style={styles.text}>{`Speed(mph)`}</Text>
-              <PureChart style={styles.chart} data={exampleData} type='bar' />
-            </ScrollView>
-
-
-
-
+          <Container> 
+            <Header> 
+              <Left> 
+                <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+              </Left>
+              <Body>
+                <Title>FitQuest</Title>
+              </Body>
+              <Right />
+            </Header>
+            <Content>
+              <ScrollView contentContainerStyle={styles.contentContainer}>
+                <Text style={styles.text}>Steps Taken</Text>
+                <PureChart style={styles.chart} data={sampleData} type='bar' />
+                <Text style={styles.text}>{`Distance(mi)`}</Text>
+                <PureChart style={styles.chart} data={testData} type='bar' />
+                <Text style={styles.text}>{`Speed(mph)`}</Text>
+                <PureChart style={styles.chart} data={exampleData} type='bar' />
+              </ScrollView>
+            </Content>
+          </Container>
         );
     }
 }

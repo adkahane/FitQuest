@@ -48,6 +48,7 @@ export default class HardQuest extends React.Component {
 
 
 
+<<<<<<< HEAD
 
 // import React from 'react';
 // import { StyleSheet, Text, View, ScrollView, TouchableHighlight } from 'react-native';
@@ -79,5 +80,11 @@ export default class HardQuest extends React.Component {
 //         );
 //     }
 // }
+=======
+            </Card>
+        );
+    }
+}
+>>>>>>> e088c2c292740a51db133bc2f1be481f0219701d
 
 // export default HardQuest;
