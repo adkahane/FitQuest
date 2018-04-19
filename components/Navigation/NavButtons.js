@@ -21,7 +21,7 @@ class NavButtons extends React.Component {
     return(<Home />);
   }
   
-  _renderNewQuest = () => {
+  _renderChallengeQuest = () => {
     return(<ChallengeQuest />);
   }
   
@@ -31,6 +31,10 @@ class NavButtons extends React.Component {
   
   _createQuest = () => {
     return(<CreateQuest />);
+	}
+	
+	_renderNewQuest = () => {
+    return(<NewQuest />);
   }
 
 	updateIndex (selectedIndex) {
@@ -67,12 +71,17 @@ class NavButtons extends React.Component {
 						);
 						case 2: return (
 							<View style={{flex: .9}}>
-								{this._renderNewQuest()}
+								{this._renderChallengeQuest()}
 							</View>
 						);
 						case 3: return (
 							<View style={{flex: .9}}>
 								{this._renderStats()}
+							</View>
+						);
+						case 4: return (
+							<View style={{flex: .9}}>
+								{this._renderNewQuest()}
 							</View>
 						);
 					}
