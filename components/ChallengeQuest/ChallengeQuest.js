@@ -3,7 +3,7 @@ import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight
 import { Card } from 'react-native-elements';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { Constants, Location, Permissions, MapView } from 'expo';
-import { MapButton, Map, Button } from '../common'
+import { MapButton, Map } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
