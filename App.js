@@ -8,7 +8,7 @@ import { DrawerNavigator } from 'react-navigation';
 import reducers from './reducers'
 import MyHeader from './components/MyHeader';
 import { NavButtons, DrawerStack} from './components/Navigation';
-import LoginForm from './components/LoginForm';
+import GoogleLogin from './components/Login/GoogleLogin';
 import { Spinner } from './components/common'
 
 type Props = {};
@@ -68,7 +68,7 @@ export default class App extends Component<Props> {
       return (
          <Provider store={ createStore(reducers) }>
             <View style={ styles.container }>
-              <DrawerStack />
+              <GoogleLogin />
             </View>
          </Provider>
       );

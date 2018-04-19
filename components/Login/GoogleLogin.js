@@ -1,10 +1,13 @@
 import React from 'react';
-import { Alert, ScrollView, View, Button } from 'react-native';
+import { AsyncStorage, Alert, ScrollView, View, Button } from 'react-native';
 import { Google } from 'expo';
+// import User from '../../server/models/User';
 export default class GoogleLogin extends React.Component {
   static navigationOptions = {
     title: 'Google',
   };
+
+  
   
   render() {
     return (
@@ -28,10 +31,13 @@ export default class GoogleLogin extends React.Component {
       if (type === 'success') {
         // Avoid race condition with the WebView hiding when using web-based sign in
         setTimeout(() => {
+          // const currUser = result.user;
+          AsyncStorage.setItem('currentUser', result.user);
           Alert.alert('Logged in!', JSON.stringify(result), [
             {
               text: 'OK!',
               onPress: () => {
+                console.log(currUser.user.id);
                 console.log({ result });
               },
             },

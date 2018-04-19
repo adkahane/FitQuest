@@ -20,9 +20,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
+    "assert": "^1.4.1",
+    "crypto": "^1.0.1",
+    "events": "^2.0.0",
     "exp": "^51.4.0",
     "expo": "^25.0.0",
     "firebase": "^4.12.1",
+    "mongoose": "^5.0.15",
     "native-base": "^2.4.2",
     "path": "^0.12.7",
     "react": "16.2.0",

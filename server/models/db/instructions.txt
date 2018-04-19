@@ -5,3 +5,15 @@
 mongoimport --db fitquestdb --collection users --drop --file ./userseeds.json
 
 mongoimport --db fitquestdb --collection quests --drop --file ./questseeds.json
+
+
+heroku mLab Seeding
+
+mongoimport -h ds133659.mlab.com:33659 -d heroku_5fms6vx2 -c users -u heroku_5fms6vx2 -p fa0sp77822ck1ka87a27og2c7u --file userseeds.json
+
+mongoimport -h ds133659.mlab.com:33659 -d heroku_5fms6vx2 -c quests -u heroku_5fms6vx2 -p fa0sp77822ck1ka87a27og2c7u --file questseeds.json
+
+heroku mLab cli
+
+mongo mongodb://ds133659.mlab.com:33659/heroku_5fms6vx2 -u heroku_5fms6vx2 -p fa0sp77822ck1ka87a27og2c7u    
+
