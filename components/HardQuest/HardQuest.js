@@ -1,8 +1,5 @@
 import React from 'react';
 import { Image, Text } from 'react-native';
-// import { StyleSheet, Text, View, ScrollView, TouchableHighlight } from 'react-native';
-// import { Header, ButtonGroup, Button, Avatar, List, ListItem, Card, Input, Icon } from 'react-native-elements';
-// import styles from './EasyQuestStyles.js';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
 
 export default class HardQuest extends React.Component {
