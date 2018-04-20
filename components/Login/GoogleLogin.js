@@ -45,9 +45,9 @@ export default class GoogleLogin extends Component {
         //   return { cancelled: true };
         // }
 
+        console.log(result);
         // DEVELOPMENT ONLY: NAVIGATE DIRECTLY TO HOME PAGE
         this.props.navigation.navigate('Home');
-        console.log(result);
       }
       return { cancelled: true }
     } catch (e) {
