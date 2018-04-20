@@ -35,7 +35,6 @@ class Home extends React.Component {
           'Roboto': require('native-base/Fonts/Roboto.ttf'),
           'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
         });
-    
         this.setState({ fontLoaded: true });
       }
 

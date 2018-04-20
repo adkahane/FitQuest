@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { Font } from 'expo';
-// import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { DrawerNavigator, SwitchNavigator } from 'react-navigation';
-// import reducers from './reducers';
+import reducers from './reducers';
 import MyHeader from './components/MyHeader';
 import { NavButtons, DrawerStack} from './components/Navigation';
 // import { Spinner } from './components/common';
@@ -27,7 +27,11 @@ export default class App extends Component<Props> {
 
   render() {
     return (
-      <AppSwitchNavigator />
+      <Provider store={ createStore(reducers) }>
+        <View style={ styles.container }>
+        <AppSwitchNavigator />
+        </View>
+      </Provider>
     );
   }
 }
@@ -38,7 +42,7 @@ const AppSwitchNavigator = SwitchNavigator({
     screen: GoogleLogin
   },
   Home: {
-    screen: Home
+    screen: DrawerStack
   }
 })
 
