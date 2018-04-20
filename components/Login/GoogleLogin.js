@@ -23,6 +23,8 @@ export default class GoogleLogin extends Component {
 
 
       if (result.type === 'success') {
+         
+        AsyncStorage.setItem('currentUser', result.user);
         // If the user logs in successfully, make a server request with their email
         //   var serverRequest = { email: result.user.email };
 
@@ -45,7 +47,7 @@ export default class GoogleLogin extends Component {
         //   return { cancelled: true };
         // }
 
-        console.log(result);
+        console.log('result: ' + result.user.id);
         // DEVELOPMENT ONLY: NAVIGATE DIRECTLY TO HOME PAGE
         this.props.navigation.navigate('Home');
       }

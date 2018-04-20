@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../../reducers';
-import { StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
 import { Avatar, List, ListItem } from 'react-native-elements';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { CardSection, Input } from '../common';
@@ -11,8 +11,8 @@ import { NavButtons, DrawerStack} from '../Navigation';
 import { DrawerNavigator } from 'react-navigation';
 import { Spinner } from '../common';
 import { Font } from 'expo';
-
-
+import { User } from '../../server/models/User';
+ 
 class Home extends React.Component {
 
     static navigationOptions = {
@@ -36,8 +36,18 @@ class Home extends React.Component {
               }
         };
     }
+    async componentWillMount(){
+        // this.getUser();
+    }
 
+    getUser(){
+        AsyncStorage.getItem('currentUser').then(currentUser => {
+            console.log('currentUserID: ' + currentUser.id);
+            // db.User.find({'auth_id': currentUser.id});
+        });
+    }
     async componentDidMount() {
+        this.getUser();
         await Font.loadAsync({
           'Roboto': require('native-base/Fonts/Roboto.ttf'),
           'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
