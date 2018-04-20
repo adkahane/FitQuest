@@ -16,13 +16,14 @@ const styles = StyleSheet.create({
     buttonStyle: {
         flex: 1,
         height: '22%',
-        backgroundColor: "rgba(44, 244, 250, 1)",
+        backgroundColor: "#52c234",
         marginLeft: 0.5, 
         marginRight: 0.5, 
+        marginBottom: 0,
         justifyContent: 'center'
     },
     textStyle: {
-        color: 'rgba(49, 111,244, 1)', 
+        color: '#fff', 
         alignSelf: 'center',
         fontWeight: 'bold',
         fontSize: 18
