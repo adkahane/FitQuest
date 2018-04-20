@@ -2,24 +2,35 @@
 
     {
       "auth_id":"8ureuoe09",
+      "email":"jb@gmail.com",
       "name":"Jim Bob",
       "avatar_url":"url/to/placeholder.jpg",
       "points": "27"
       }{
       "auth_id":"8ureuoe09",
       "name":"Joe Bob",
+      "email":"job@gmail.com",
       "avatar_url":"url/to/placeholder.jpg",
       "points": "33"
       }{
       "auth_id":"8ureuoe09",
       "name":"Cray Cray Ray",
+      "email":"ccray@gmail.com",
       "avatar_url":"url/to/placeholder.jpg",
       "points": "89"
       }{
       "auth_id":"8ureuoe09",
       "name":"Billie Joe Jim Bob",
+      "email":"bjjb@gmail.com",
       "avatar_url":"url/to/placeholder.jpg",
       "points": "36"
+      }{
+        "auth_id": "106439431954835815191",
+        "email":"thricethree@gmail.com",
+        "name": "Mark",
+        "avatar_url":"https://lh5.googleusercontent.com/-dFLWoGccsPY/AAAAAAAAAAI/AAAAAAAAGzk/T-EnjExwPJE/photo.jpg",
+        "points": 3330
       }
 
 
+    
