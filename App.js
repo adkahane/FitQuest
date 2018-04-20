@@ -33,11 +33,11 @@ export default class App extends Component<Props> {
   }
 
   render() {
-    if (this.state.fontLoaded){
+    // if (this.state.fontLoaded){
         return (
           <AppSwitchNavigator />
         );
-    }
+    // }
   }
 }
 
