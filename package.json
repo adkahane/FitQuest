@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "jest-expo": "25.0.0",
-    "react-native-scripts": "1.12.1",
+    "react-native-scripts": "^1.13.1",
     "react-test-renderer": "16.2.0"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -23,13 +23,14 @@
     "exp": "^51.4.0",
     "expo": "^25.0.0",
     "firebase": "^4.12.1",
-    "native-base": "^2.4.2",
+    "native-base": "^2.3.10",
     "path": "^0.12.7",
-    "react": "16.2.0",
-    "react-native": "0.52.0",
+    "npm": "^5.8.0",
+    "react": "^16.2.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-elements": "^1.0.0-beta3",
     "react-native-pure-chart": "^0.0.19",
-    "react-navigation": "^1.5.11",
+    "react-navigation": "^1.5.8",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2"
   }

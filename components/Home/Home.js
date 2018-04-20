@@ -1,9 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from '../../reducers';
 import { StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
 import { Avatar, List, ListItem } from 'react-native-elements';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { CardSection, Input } from '../common';
 import styles from './HomeStyles.js';
+import { NavButtons, DrawerStack} from '../Navigation';
+import { DrawerNavigator } from 'react-navigation';
+import { Spinner } from '../common';
+import { Font } from 'expo';
 
 
 class Home extends React.Component {
@@ -18,9 +25,18 @@ class Home extends React.Component {
     constructor() {
         super();
         this.state = {
-            enabled:true
+            enabled:true,
+            fontLoaded:false
         };
     }
+
+    async componentDidMount() {
+        await Font.loadAsync({
+          'Roboto': require('native-base/Fonts/Roboto.ttf'),
+          'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+        });
+        this.setState({ fontLoaded: true });
+      }
 
     render() {
         const list = [
@@ -46,8 +62,9 @@ class Home extends React.Component {
             }
 
         ]
+        if (this.state.fontLoaded){
         return (
-        <Container> 
+        <Container>
             <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
                 <Left> 
                     <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
@@ -95,6 +112,10 @@ class Home extends React.Component {
 
 
         );
+    }
+    else {
+        return <Spinner />;
+    }
     }
 }
 
