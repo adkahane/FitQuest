@@ -802,7 +802,7 @@ class ChallengeQuest extends Component {
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (
           <Container> 
-            <Header> 
+            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
               <Left> 
                 <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
               </Left>

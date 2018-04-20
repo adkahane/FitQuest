@@ -7,7 +7,6 @@ import { Icon, Container, Header, Content, Left, Body, Title, Right, Button, Tex
 import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
 
 import Camera from '../../components/Camera/camera.js';
-
 import { MapButton, Map, button } from '../common'
 
 let { width, height } = Dimensions.get('window');
@@ -109,7 +108,7 @@ class CreateQuest extends Component {
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (
         	<Container>
-        		<Header>
+        		<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>
         			<Left>
         				<Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
         			</Left>
@@ -136,10 +135,11 @@ class CreateQuest extends Component {
 										</button>
 									</View>
 								</Modal>
-							<Button success><Text> Start </Text></Button>
-							<Button danger><Text>	Stop </Text></Button>
-							<Button warning><Text> Abort </Text></Button>
-							<Button icon dark style={{ paddingLeft: 11, paddingRight: 10 }}><Icon name='camera' /></Button>
+							<Button success onPress={ ()=>this.props.startQuest(true) }><Text> Start </Text></Button>
+							<Button danger onPress={ ()=>this.props.startQuest(false) }><Text>	Stop </Text></Button>
+							<Button warning onPress={ ()=>this.resetValues() }><Text> Abort </Text></Button>
+							<Button icon dark style={{ paddingLeft: 11, paddingRight: 10 }}
+											onPress={ ()=>this.props.showModal(true) }><Icon name='camera' /></Button>
 					    		{/* <MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
 					        <MapButton buttonText="Stop" onPress={()=>this.props.startQuest(false)}/>
 					        <MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Component, Text, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, Component, Text, Image, Platform } from 'react-native';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import EasyQuest from '../../components/EasyQuest';
 import MediumQuest from '../../components/MediumQuest';
@@ -27,7 +27,7 @@ class NewQuest extends React.Component {
     render() {
         return (
             <Container> 
-        		<Header> 
+        		<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
         			<Left> 
         				<Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
         			</Left>

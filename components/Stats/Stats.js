@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Component, Text, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, Component, Text, ScrollView, Image, Platform } from 'react-native';
 import { Icon, Container, Header, Content, Left, Body, Title, Right } from 'native-base';
 import PureChart from 'react-native-pure-chart';
 import styles from './StatsStyles.js';
@@ -97,7 +97,7 @@ class Stats extends React.Component {
 
         return (
           <Container> 
-            <Header> 
+            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
               <Left> 
                 <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
               </Left>
