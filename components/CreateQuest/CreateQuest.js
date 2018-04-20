@@ -108,12 +108,12 @@ class CreateQuest extends Component {
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (  
         	<Container> 
-        		<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
+				<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}> 
         			<Left> 
-        				<Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+						<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
         			</Left>
         			<Body>
-	                    <Title>FitQuest</Title>
+						<Title style={{ color: '#fff' }}>FitQuest</Title>
         			</Body>
         			<Right />
         		</Header>
@@ -166,7 +166,9 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '60%', 
 		flexDirection: 'row',
-		alignItems: 'flex-start'
+		alignItems: 'flex-start',
+		justifyContent: 'flex-end'
+
     }
 });
 
