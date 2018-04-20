@@ -4,6 +4,7 @@ import { Avatar, List, ListItem } from 'react-native-elements';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { CardSection, Input } from '../common';
 import styles from './HomeStyles.js';
+// import { StackNavigator } from 'react-navigation';
 
 
 class Home extends React.Component {
