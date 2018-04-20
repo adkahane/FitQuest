@@ -27,7 +27,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 2500},
                 {x: '2018-04-05', y: 10000}
               ],
-                  color: 'rgba(244, 49,229, 1)'
+            color: '#52c234'
               
                 },
             {
@@ -39,7 +39,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5500},
                 {x: '2018-04-05', y: 400}
               ],
-              color: 'rgba(44, 244, 250, 1)'
+              color: '#aa076b'
             }
               ];
 
@@ -54,7 +54,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 25},
                 {x: '2018-04-05', y: 10}
               ],
-                  color: 'rgba(244, 49,229, 1)'
+            color: '#52c234'
               
                 },
             {
@@ -66,7 +66,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5},
                 {x: '2018-04-05', y: 4}
               ],
-              color: 'rgba(44, 244, 250, 1)'
+              color: '#aa076b'
             }
             ];
 
@@ -80,7 +80,7 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5},
                 {x: '2018-04-05', y: 10}
               ],
-              color: 'rgba(49, 111,244, 1)'
+            color: '#16a085'
             },
             {
               seriesName: 'series2',
@@ -91,18 +91,18 @@ class Stats extends React.Component {
                 {x: '2018-04-04', y: 5},
                 {x: '2018-04-05', y: 4}
               ],
-              color: 'rgba(182, 44, 250, 1)'
+              color: '#52c234'
             }
           ];
 
         return (
           <Container> 
-            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
+            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}> 
               <Left> 
-                <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+                <Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
               </Left>
               <Body>
-                <Title>FitQuest</Title>
+                <Title style={{ color: '#fff' }}>FitQuest</Title>
               </Body>
               <Right />
             </Header>
