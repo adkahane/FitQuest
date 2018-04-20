@@ -17,21 +17,25 @@ class NavButtons extends React.Component {
 		this.updateIndex = this.updateIndex.bind(this);
 	}
 
-	_renderHome = () => {
-		return(<Home />);
+  _renderHome = () => {
+    return(<Home />);
+  }
+  
+  _renderChallengeQuest = () => {
+    return(<ChallengeQuest />);
+  }
+  
+  _renderStats = () => {
+    return(<Stats />);
+  }
+  
+  _createQuest = () => {
+    return(<CreateQuest />);
 	}
 	
 	_renderNewQuest = () => {
-		return(<ChallengeQuest />);
-	}
-	
-	_renderStats = () => {
-		return(<Stats />);
-	}
-	
-	_createQuest = () => {
-		return(<CreateQuest />);
-	}
+    return(<NewQuest />);
+  }
 
 	updateIndex (selectedIndex) {
 		this.setState({selectedIndex})
@@ -67,12 +71,17 @@ class NavButtons extends React.Component {
 						);
 						case 2: return (
 							<View style={{flex: .9}}>
-								{this._renderNewQuest()}
+								{this._renderChallengeQuest()}
 							</View>
 						);
 						case 3: return (
 							<View style={{flex: .9}}>
 								{this._renderStats()}
+							</View>
+						);
+						case 4: return (
+							<View style={{flex: .9}}>
+								{this._renderNewQuest()}
 							</View>
 						);
 					}

@@ -7,8 +7,8 @@ import { Icon, Container, Header, Content, Left, Body, Title, Right, Button, Tex
 import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
 
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map, button } from '../common'
 
+import { MapButton, Map, button } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
