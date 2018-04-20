@@ -7,7 +7,7 @@ import { Icon, Container, Header, Content, Left, Body, Title, Right } from 'nati
 import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
 
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map, Button } from '../common'
+import { MapButton, Map, Button } from '../common';
 
 
 let { width, height } = Dimensions.get('window');

@@ -8,6 +8,7 @@ import Home from './../Home';
 import Stats from './../Stats';
 import CreateQuest from './../CreateQuest';
 import ChallengeQuest from './../ChallengeQuest/ChallengeQuest';
+import NewQuest from './../NewQuest';
 
 const styles = StyleSheet.create({
 	drawerImage: {
@@ -35,7 +36,8 @@ export const DrawerStack = DrawerNavigator({
     Home: { screen: Home },
     Stats: { screen: Stats },
     CreateQuest: { screen: CreateQuest },
-    ChallengeQuest: { screen: ChallengeQuest }
+	ChallengeQuest: { screen: ChallengeQuest },
+	NewQuest: { screen: NewQuest }
 },{
 	initialRouteName: 'Home', 
 	contentComponent: CustomDrawerContentComponent,
