@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../../reducers';
-import { StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
 import { Avatar, List, ListItem } from 'react-native-elements';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
 import { CardSection, Input } from '../common';
@@ -11,6 +11,7 @@ import { NavButtons, DrawerStack} from '../Navigation';
 import { DrawerNavigator } from 'react-navigation';
 import { Spinner } from '../common';
 import { Font } from 'expo';
+import { User } from '../../server/models/User';
 
 
 class Home extends React.Component {
@@ -26,10 +27,30 @@ class Home extends React.Component {
         super();
         this.state = {
             enabled:true,
-            fontLoaded:false
+            fontLoaded:false,
+            user:{
+                auth_id: '106439431954835815191',
+                name:'Mark',
+                email:'email@email.com',
+                avatar_url:'https://lh5.googleusercontent.com/-dFLWoGccsPY/AAAAAAAAAAI/AAAAAAAAGzk/T-EnjExwPJE/photo.jpg',
+                points:3333
+              }
         };
     }
 
+    getUser = () => {
+        console.log("in getUser()");
+        AsyncStorage.getItem('auth_id').then(auth_id => {
+            console.log('auth_id: ' + auth_id);
+            const currUser = db.User.find({'auth_id': auth_id});
+            if(currUser){
+                console.log(currUser);
+            }
+        });
+    }
+    async componentWillMount() {
+        this.getUser();
+      }
     async componentDidMount() {
         await Font.loadAsync({
           'Roboto': require('native-base/Fonts/Roboto.ttf'),
