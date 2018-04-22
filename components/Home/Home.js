@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import reducers from '../../reducers';
 import { StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
 import { Avatar, List, ListItem } from 'react-native-elements';
-import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
+import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base';
 import { CardSection, Input } from '../common';
 import styles from './HomeStyles.js';
 import { NavButtons, DrawerStack} from '../Navigation';
@@ -65,8 +65,8 @@ class Home extends React.Component {
         if (this.state.fontLoaded){
         return (
         <Container>
-                <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}> 
-                <Left> 
+                <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
+                <Left>
                         <Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
                 </Left>
                 <Body>

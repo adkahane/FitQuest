@@ -17,7 +17,7 @@ export default class GoogleLogin extends Component {
       const result = await Expo.Google.logInAsync({
         behavior: 'web',
         androidClientId: '1037327035065-ajdv9id43hfneomj9vn06m95nbv31399.apps.googleusercontent.com',
-        iosClientId: '1007400859501-lo894svtlk3hst4nc2am8imc5u32hs23.apps.googleusercontent.com',
+        iosClientId: '1037327035065-valj41h4a4qal4qn8ki45lqnthlqa23v.apps.googleusercontent.com',
         scopes: ['profile', 'email'],
       });
 

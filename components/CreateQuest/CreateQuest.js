@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { Icon, Container, Header, Content,
 				 Left, Body, Title, Right, Button, Text,
 				 FooterTab, Footer } from 'native-base';
-import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
+import { createStartQuest, showModal, createSetLocation, pushMarkers } from '../../actions';
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map } from '../common';
+import { MapButton, CreateMap } from '../common';
 let { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
@@ -46,8 +46,8 @@ class CreateQuest extends Component {
 	    }
 
 	    let location = await Location.getCurrentPositionAsync({});
-	    const { latitude , longitude } = location.coords;
-	    this.props.setLocation({lat: latitude, long: longitude});
+	    const { latitude, longitude } = location.coords;
+	    this.props.createSetLocation({lat: latitude, long: longitude});
   	};
 
 	/*Updates the users positon every 5 meters. Uses async to wait for permissions and to allow google to return position.
@@ -68,8 +68,8 @@ class CreateQuest extends Component {
 				if(this.props.started){
 					this.props.pushMarkers({latitude: latitude, longitude: longitude, speed: speed, timestamp: location.timestamp});
 				}
-
-				this.props.setLocation({lat: latitude, long: longitude});
+				
+				this.props.createSetLocation({lat: latitude, long: longitude});
 			}
 		);
 	};
@@ -77,7 +77,7 @@ class CreateQuest extends Component {
 	renderMap(){
 		if(this.props.polylines.length > 1){
 			return (
-				<Map
+				<CreateMap
 					location={
 						{ latitude: this.props.latitude,
 						longitude: this.props.longitude,
@@ -86,19 +86,19 @@ class CreateQuest extends Component {
 					}
 					polylines={[...this.props.polylines]}
 					started={ this.props.started }
-        />
+        		/>
 			)
 		}
 
 		return (
-			<Map
+			<CreateMap
 				location={
 					{ latitude: this.props.latitude,
 					longitude: this.props.longitude,
 					latitudeDelta: LATITUDE_DELTA,
 					longitudeDelta: LONGITUDE_DELTA }
 				}
-      />
+      		/>
 		)
 
 	}
@@ -109,57 +109,57 @@ class CreateQuest extends Component {
 
         return (
         	<Container>
-						<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
+				<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
         			<Left>
-								<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+						<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
         			</Left>
         			<Body>
-								<Title style={{ color: '#fff' }}>FitQuest</Title>
+						<Title style={{ color: '#fff' }}>FitQuest</Title>
         			</Body>
         			<Right />
         		</Header>
 
-	          <Content contentContainerStyle={ MapPageStyle }>
+	          	<Content contentContainerStyle={ MapPageStyle }>
 	            	{this.renderMap()}
-							<View style={ ButtonViewStyle }>
-								<Modal
-									animationType="slide"
-									transparent={false}
-									visible={this.props.modalVisible}
-									onRequestClose={() => {
-										alert('Modal has been closed.');
-									}}>
-									<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
-										<Camera />
-										<Button block success
-											onPress={() => this.props.showModal(false)}>
-											<Text>Close Camera</Text>
-										</Button>
-									</View>
-								</Modal>
+					<View style={ ButtonViewStyle }>
+						<Modal
+							animationType="slide"
+							transparent={false}
+							visible={this.props.modalVisible}
+							onRequestClose={() => {
+								alert('Modal has been closed.');
+							}}>
+							<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
+								<Camera />
+								<Button block success
+									onPress={() => this.props.showModal(false)}>
+									<Text>Close Camera</Text>
+								</Button>
 							</View>
-					</Content>
+						</Modal>
+					</View>
+				</Content>
 
-					<Footer>
-						<FooterTab style={{ backgroundColor: "#52c234" }}>
-							<Button vertical onPress={ ()=>this.props.startQuest(true) }>
-								<Icon name='controller-play' type='Entypo' />
-								<Text>Start</Text>
-							</Button>
-							<Button vertical onPress={ ()=>this.props.startQuest(false) }>
-								<Icon name='controller-stop' type='Entypo' />
-								<Text>Stop</Text>
-							</Button>
-							<Button vertical onPress={ ()=>this.resetValues() }>
-								<Icon name='cancel' type='MaterialIcons' />
-								<Text> Abort </Text>
-							</Button>
-							<Button onPress={ ()=>this.props.showModal(true) }>
-								<Icon name='camera' type='Entypo' />
-							</Button>
-						</FooterTab>
-					</Footer>
-				</Container>
+				<Footer>
+					<FooterTab style={{ backgroundColor: "#52c234" }}>
+						<Button vertical onPress={ ()=>this.props.createStartQuest(true) }>
+							<Icon name='controller-play' type='Entypo' />
+							<Text>Start</Text>
+						</Button>
+						<Button vertical onPress={ ()=>this.props.createStartQuest(false) }>
+							<Icon name='controller-stop' type='Entypo' />
+							<Text>Stop</Text>
+						</Button>
+						<Button vertical onPress={ ()=>this.resetValues() }>
+							<Icon name='cancel' type='MaterialIcons' />
+							<Text> Abort </Text>
+						</Button>
+						<Button onPress={ ()=>this.props.showModal(true) }>
+							<Icon name='camera' type='Entypo' />
+						</Button>
+					</FooterTab>
+				</Footer>
+			</Container>
       );
     }
 }
@@ -185,4 +185,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, { startQuest, showModal, setLocation, pushMarkers })(CreateQuest);
+export default connect(mapStateToProps, { createStartQuest, showModal, createSetLocation, pushMarkers })(CreateQuest);
