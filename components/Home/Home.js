@@ -93,6 +93,7 @@ class Home extends React.Component {
                             {
                                 list.map((l, i) => (
                                     <ListItem
+                                        style={{width: 300}}
                                         key={i}
                                         title={l.title}
                                         subtitle={l.subtitle}
