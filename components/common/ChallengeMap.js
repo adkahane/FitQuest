@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { MapView } from 'expo';
 
-const Map = (props) => {
+const ChallengeMap = (props) => {
 	/*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 		const { MapStyle } = styles;
 
@@ -32,6 +32,7 @@ const Map = (props) => {
 				</MapView>
 			);
 		}
+		console.log("The map NOT WITH polyines is rendering");
 		return (
 				<MapView
 					provider={ MapView.PROVIDER_GOOGLE }
@@ -49,5 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
-export { Map };
+export { ChallengeMap };

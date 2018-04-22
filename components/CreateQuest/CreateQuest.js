@@ -7,7 +7,7 @@ import { Icon, Container, Header, Content,
 				 FooterTab, Footer } from 'native-base';
 import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map } from '../common';
+import { MapButton, CreateMap } from '../common';
 let { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
@@ -77,7 +77,7 @@ class CreateQuest extends Component {
 	renderMap(){
 		if(this.props.polylines.length > 1){
 			return (
-				<Map
+				<CreateMap
 					location={
 						{ latitude: this.props.latitude,
 						longitude: this.props.longitude,
@@ -91,7 +91,7 @@ class CreateQuest extends Component {
 		}
 
 		return (
-			<Map
+			<CreateMap
 				location={
 					{ latitude: this.props.latitude,
 					longitude: this.props.longitude,
