@@ -2,12 +2,10 @@
 import React, { Component } from 'react';
 import { AsyncStorage, View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import Expo from 'expo';
-import { SwitchNavigator } from 'react-navigation';
-import { DrawerStack } from '../Navigation';
-
+// import { StackNavigator } from 'react-navigation';
 
 // create a component
-class GoogleLogin extends Component {
+export default class GoogleLogin extends Component {
   static navigationOptions = {
     header: null
   }
@@ -35,7 +33,7 @@ class GoogleLogin extends Component {
         //     headers: {
         //       'Content-Type': 'application/json',
         //     },
-        //   }).then(response => {
+        //   }).then(response => {          
         //     // Store login to global async storage
         //     AsyncStorage.setItem('userEmail', serverRequest.email);
 
@@ -56,7 +54,7 @@ class GoogleLogin extends Component {
       console.log(e);
       return { error: e }
     }
-  }
+  } 
 
   // Render the background image and login button at start
   render() {
@@ -81,16 +79,6 @@ class GoogleLogin extends Component {
     );
   }
 }
-
-// Defines the stack navigator that renders the login and home pages
-export const AppSwitchNavigator = SwitchNavigator({
-  Login: {
-    screen: GoogleLogin
-  },
-  Home: {
-    screen: DrawerStack
-  }
-});
 
 // Creates the StyleSheet
 const styles = StyleSheet.create({
