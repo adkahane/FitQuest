@@ -9,7 +9,7 @@ import { MapButton, Map } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.00322;
+const LATITUDE_DELTA = 0.00420;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class ChallengeQuest extends Component {
@@ -695,8 +695,8 @@ class ChallengeQuest extends Component {
             timestamp: [],
         },
         location: {
-            latitude: 37.871732795815525,
-            longitude: -122.27066792384305
+            latitude: 37.8703826,
+            longitude: -122.271772
         },
         started: false,
         stopped: false,
