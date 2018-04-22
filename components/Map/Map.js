@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, Dimensions} from 'react-native';
 import { Constants, Location, Permissions, MapView} from 'expo';
 import styles from './MapStyles.js';
+import RetroMapStyles from '../FitMap/RetroMapStyles.json';
 import Steps from '../FitSteps';
 import { ButtonGroup, Button } from 'react-native-elements';
 
@@ -78,6 +79,7 @@ class Map extends React.Component {
 				<MapView
 					provider={ MapView.PROVIDER_GOOGLE }
 					style={ styles.container }
+					customMapStyle={ RetroMapStyles }
 					showsUserLocation={ true }
 					region={
 						{latitude: this.state.location.latitude, 

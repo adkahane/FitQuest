@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
+import { Platform, StyleSheet, View, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Card } from 'react-native-elements';
 import { Icon, Container, Header, Content,
 				 Left, Body, Title, Right, Button, Text,
 				 FooterTab, Footer } from 'native-base';
 import { Constants, Location, Permissions, MapView } from 'expo';
-import { MapButton, Map, Button } from '../common'
+import { MapButton, Map } from '../common'
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
