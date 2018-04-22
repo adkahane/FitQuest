@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, Dimensions, Modal, TouchableHighlight, Image } from 'react-native';
 import { Card } from 'react-native-elements';
-import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base'; 
+import { Icon, Container, Header, Content,
+				 Left, Body, Title, Right, Button, Text,
+				 FooterTab, Footer } from 'native-base';
 import { Constants, Location, Permissions, MapView } from 'expo';
 import { MapButton, Map, Button } from '../common'
 
@@ -801,13 +803,13 @@ class ChallengeQuest extends Component {
         const { MapPageStyle, ButtonViewStyle } = styles;
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
         return (
-          <Container> 
-            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
-              <Left> 
-                <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+          <Container>
+            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
+              <Left>
+                <Icon name="ios-menu" style={{ color: '#fff'}} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
               </Left>
                 <Body>
-                  <Title>FitQuest</Title>
+                  <Title style={{ color: '#fff'}}>FitQuest</Title>
                 </Body>
               <Right />
             </Header>

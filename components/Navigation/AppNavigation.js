@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
 const CustomDrawerContentComponent = (props) =>(
 	<Container> 
-		<Header style={{ height: 150 }}> 
+		<Header style={{ height: 150, backgroundColor: '#52c234' }}> 
 			<Body> 
 				<Image style={ styles.drawerImage } source={require('../../assets/images/art2.png')}/>
 			</Body> 

@@ -6,10 +6,8 @@ import { createStore } from 'redux';
 import { DrawerNavigator, SwitchNavigator } from 'react-navigation';
 import reducers from './reducers';
 import MyHeader from './components/MyHeader';
-import { NavButtons, DrawerStack } from './components/Navigation';
 import { Spinner } from './components/common';
 import { AppSwitchNavigator } from './components/Login/GoogleLogin';
-import Home from './components/Home/Home';
 
 type Props = {};
 export default class App extends Component<Props> {

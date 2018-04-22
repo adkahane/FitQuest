@@ -65,12 +65,12 @@ class Home extends React.Component {
         if (this.state.fontLoaded){
         return (
         <Container>
-            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}> 
+                <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}> 
                 <Left> 
-                    <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+                        <Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
                 </Left>
                 <Body>
-                    <Title>FitQuest</Title>
+                        <Title style={{ color: '#fff' }}>FitQuest</Title>
                 </Body>
                 <Right />
             </Header>
@@ -96,8 +96,8 @@ class Home extends React.Component {
                                         key={i}
                                         title={l.title}
                                         subtitle={l.subtitle}
-                                    titleStyle={{ fontSize: 22, fontWeight: 'bold', color: 'rgba(49, 111,244, 1)', width: 300}}
-                                    subtitleStyle={{ fontSize: 22, fontWeight: 'bold', color: 'rgba(244, 49, 229, 1)', width: 300}}
+                                        titleStyle={{ fontSize: 22, fontWeight: 'bold', color: '#aa076b', width: 300}}
+                                        subtitleStyle={{ fontSize: 22, fontWeight: 'bold', color: '#52c234', width: 300}}
                                     hideChevron={true}
                                     bottomDivider={false}
                                     />

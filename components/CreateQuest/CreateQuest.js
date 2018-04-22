@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Dimensions, Modal, Image } from 'react-native';
 import { Constants, Location, Permissions, MapView } from 'expo';
-
 import { connect } from 'react-redux';
-import { Icon, Container, Header, Content, Left, Body, Title, Right, Button, Text, FooterTab, Footer } from 'native-base';
+import { Icon, Container, Header, Content,
+				 Left, Body, Title, Right, Button, Text,
+				 FooterTab, Footer } from 'native-base';
 import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
-
 import Camera from '../../components/Camera/camera.js';
 import { MapButton, Map } from '../common';
-
-
 let { width, height } = Dimensions.get('window');
+
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00322;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
@@ -86,6 +85,7 @@ class CreateQuest extends Component {
 						longitudeDelta: LONGITUDE_DELTA }
 					}
 					polylines={[...this.props.polylines]}
+					started={ this.props.started }
         />
 			)
 		}
@@ -106,14 +106,15 @@ class CreateQuest extends Component {
     render() {
     	const { MapPageStyle, ButtonViewStyle } = styles;
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
+
         return (
         	<Container>
-						<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight}}>
+						<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
         			<Left>
-        				<Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+								<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
         			</Left>
         			<Body>
-	             <Title>FitQuest</Title>
+								<Title style={{ color: '#fff' }}>FitQuest</Title>
         			</Body>
         			<Right />
         		</Header>
@@ -140,7 +141,7 @@ class CreateQuest extends Component {
 					</Content>
 
 					<Footer>
-						<FooterTab>
+						<FooterTab style={{ backgroundColor: "#52c234" }}>
 							<Button vertical onPress={ ()=>this.props.startQuest(true) }>
 								<Icon name='controller-play' type='Entypo' />
 								<Text>Start</Text>
@@ -173,13 +174,14 @@ const mapStateToProps = (state) => {
 const styles = StyleSheet.create({
     MapPageStyle: {
     	flex: 1,
-        backgroundColor: 'white'
+      backgroundColor: 'white'
     },
     ButtonViewStyle: {
-		width: '100%',
-		height: '60%',
-		flexDirection: 'row',
-		alignItems: 'flex-start'
+			width: '100%',
+			height: '60%',
+			flexDirection: 'row',
+			alignItems: 'flex-start',
+			justifyContent: 'flex-end'
     }
 });
 
