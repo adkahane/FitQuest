@@ -7,11 +7,11 @@ import { Icon, Container, Header, Content,
 				 FooterTab, Footer } from 'native-base';
 import { Constants, Location, Permissions, MapView } from 'expo';
 import { MapButton, ChallengeMap } from '../common'
-import { startQuest, setLocation, pushSpeedTime } from '../../actions';
+import { challengeStartQuest, challengeSetLocation, pushSpeedTime } from '../../actions';
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.00322;
+const LATITUDE_DELTA = 0.00420;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
  const tempPolylines = [
@@ -715,7 +715,7 @@ class ChallengeQuest extends Component {
 
 				let location = await Location.getCurrentPositionAsync({});
 				const { latitude , longitude } = location.coords;
-				this.props.setLocation({lat: latitude, long: longitude});
+				this.props.challengeSetLocation({lat: latitude, long: longitude});
 			};
 
 
@@ -738,7 +738,7 @@ class ChallengeQuest extends Component {
 					this.props.pushSpeedTime({ speed: speed, timestamp: location.timestamp });
 				}
 
-				this.props.setLocation({lat: latitude, long: longitude});
+				this.props.challengeSetLocation({lat: latitude, long: longitude});
 			}
 		);
 	};
@@ -780,11 +780,11 @@ class ChallengeQuest extends Component {
 
 				<Footer>
 					<FooterTab style={{ backgroundColor: "#52c234" }}>
-						<Button vertical onPress={ ()=>this.props.startQuest(true) }>
+						<Button vertical onPress={ ()=>this.props.challengeStartQuest(true) }>
 							<Icon name='controller-play' type='Entypo' />
 							<Text>Start</Text>
 						</Button>
-						<Button vertical onPress={ ()=>this.props.startQuest(false) }>
+						<Button vertical onPress={ ()=>this.props.challengeStartQuest(false) }>
 							<Icon name='controller-stop' type='Entypo' />
 							<Text>Stop</Text>
 						</Button>
@@ -819,4 +819,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, { startQuest, setLocation, pushSpeedTime })(ChallengeQuest);
+export default connect(mapStateToProps, { challengeStartQuest, challengeSetLocation, pushSpeedTime })(ChallengeQuest);

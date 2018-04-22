@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image, Text, Dimensions } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
-import { Map } from '../common'
+// import { Easy } from './easy-quest.json';
+import { Map } from '../common';
 
 let { width, height } = Dimensions.get('window');
 let latitude = 37.8703552;
@@ -13,6 +14,7 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 export default class EasyQuest extends React.Component {
 
   _renderMap() {
+    // const easy = Easy;
    const route = 
    [
     {

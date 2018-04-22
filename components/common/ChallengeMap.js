@@ -32,7 +32,6 @@ const ChallengeMap = (props) => {
 				</MapView>
 			);
 		}
-		console.log("The map NOT WITH polyines is rendering");
 		return (
 				<MapView
 					provider={ MapView.PROVIDER_GOOGLE }
