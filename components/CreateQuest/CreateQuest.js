@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Text, Dimensions, Modal, Image } from 'react-native';
+import { Platform, StyleSheet, View, Dimensions, Modal, Image } from 'react-native';
 import { Constants, Location, Permissions, MapView } from 'expo';
-
 import { connect } from 'react-redux';
-import { Icon, Container, Header, Content, Left, Body, Title, Right } from 'native-base'; 
+import { Icon, Container, Header, Content,
+				 Left, Body, Title, Right, Button, Text,
+				 FooterTab, Footer } from 'native-base';
 import { startQuest, showModal, setLocation, pushMarkers } from '../../actions';
-
 import Camera from '../../components/Camera/camera.js';
-import { MapButton, Map, Button } from '../common';
-
-
+import { MapButton, Map } from '../common';
 let { width, height } = Dimensions.get('window');
+
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00322;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
@@ -47,7 +46,7 @@ class CreateQuest extends Component {
 	    }
 
 	    let location = await Location.getCurrentPositionAsync({});
-	    const { latitude , longitude } = location.coords; 
+	    const { latitude , longitude } = location.coords;
 	    this.props.setLocation({lat: latitude, long: longitude});
   	};
 
@@ -64,7 +63,7 @@ class CreateQuest extends Component {
 			{enableHighAccuracy: true, distanceInterval: 20},
 			(location)=> {
 
-				const { latitude, longitude, speed } = location.coords; 
+				const { latitude, longitude, speed } = location.coords;
 
 				if(this.props.started){
 					this.props.pushMarkers({latitude: latitude, longitude: longitude, speed: speed, timestamp: location.timestamp});
@@ -77,100 +76,113 @@ class CreateQuest extends Component {
 
 	renderMap(){
 		if(this.props.polylines.length > 1){
-			return (	
-				<Map 
-	            	location={
-	            	 	{ latitude: this.props.latitude, 
-						  longitude: this.props.longitude, 
-						  latitudeDelta: LATITUDE_DELTA, 
-						  longitudeDelta: LONGITUDE_DELTA }
+			return (
+				<Map
+					location={
+						{ latitude: this.props.latitude,
+						longitude: this.props.longitude,
+						latitudeDelta: LATITUDE_DELTA,
+						longitudeDelta: LONGITUDE_DELTA }
 					}
 					polylines={[...this.props.polylines]}
-            	/>
+					started={ this.props.started }
+        />
 			)
 		}
 
 		return (
-			<Map 
-            	location={
-            	 	{ latitude: this.props.latitude, 
-					  longitude: this.props.longitude, 
-					  latitudeDelta: LATITUDE_DELTA, 
-					  longitudeDelta: LONGITUDE_DELTA }
+			<Map
+				location={
+					{ latitude: this.props.latitude,
+					longitude: this.props.longitude,
+					latitudeDelta: LATITUDE_DELTA,
+					longitudeDelta: LONGITUDE_DELTA }
 				}
-            />
+      />
 		)
 
 	}
 
     render() {
-    	const { MapPageStyle, ButtonViewStyle } = styles; 
+    	const { MapPageStyle, ButtonViewStyle } = styles;
         /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
-        return (  
-        	<Container> 
-				<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}> 
-        			<Left> 
-						<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+
+        return (
+        	<Container>
+						<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
+        			<Left>
+								<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
         			</Left>
         			<Body>
-						<Title style={{ color: '#fff' }}>FitQuest</Title>
+								<Title style={{ color: '#fff' }}>FitQuest</Title>
         			</Body>
         			<Right />
         		</Header>
-	            <Content contentContainerStyle={ MapPageStyle }>
-	            	{this.renderMap()}
-					<View style={ ButtonViewStyle }>
-								
-						<Modal
-							animationType="slide"
-							transparent={false}
-							visible={this.props.modalVisible}
-							onRequestClose={() => {
-								alert('Modal has been closed.');
-							}}>
-							<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
-							
-								<Camera />
-							
-								<Button
-									onPress={() => this.props.showModal(false)}>
-									<Text>Close Camera</Text>
-								</Button>
-							</View>
-						</Modal>
 
-			    		<MapButton buttonText="Start" onPress={()=>this.props.startQuest(true)}/>
-			          	<MapButton buttonText="Stop" onPress={()=>this.props.startQuest(false)}/>
-			          	<MapButton buttonText="Abort" onPress={()=>this.resetValues()}/>
-			          	<MapButton buttonText="Camera" onPress={()=>this.props.showModal(true)}/>
-					</View>
-				</Content>
-			</Container>
-        );
+	          <Content contentContainerStyle={ MapPageStyle }>
+	            	{this.renderMap()}
+							<View style={ ButtonViewStyle }>
+								<Modal
+									animationType="slide"
+									transparent={false}
+									visible={this.props.modalVisible}
+									onRequestClose={() => {
+										alert('Modal has been closed.');
+									}}>
+									<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
+										<Camera />
+										<Button block success
+											onPress={() => this.props.showModal(false)}>
+											<Text>Close Camera</Text>
+										</Button>
+									</View>
+								</Modal>
+							</View>
+					</Content>
+
+					<Footer>
+						<FooterTab style={{ backgroundColor: "#52c234" }}>
+							<Button vertical onPress={ ()=>this.props.startQuest(true) }>
+								<Icon name='controller-play' type='Entypo' />
+								<Text>Start</Text>
+							</Button>
+							<Button vertical onPress={ ()=>this.props.startQuest(false) }>
+								<Icon name='controller-stop' type='Entypo' />
+								<Text>Stop</Text>
+							</Button>
+							<Button vertical onPress={ ()=>this.resetValues() }>
+								<Icon name='cancel' type='MaterialIcons' />
+								<Text> Abort </Text>
+							</Button>
+							<Button onPress={ ()=>this.props.showModal(true) }>
+								<Icon name='camera' type='Entypo' />
+							</Button>
+						</FooterTab>
+					</Footer>
+				</Container>
+      );
     }
 }
 
-///Maps the props from the reducers to get the appropriate piece of state in the component. 
+///Maps the props from the reducers to get the appropriate piece of state in the component.
 const mapStateToProps = (state) => {
-	const { polylines, speed, timestamp, latitude, longitude, started, modalVisible } = state.createQuest; 
+	const { polylines, speed, timestamp, latitude, longitude, started, modalVisible } = state.createQuest;
 
-	return { polylines, speed, timestamp, latitude, longitude, started, modalVisible }; 
+	return { polylines, speed, timestamp, latitude, longitude, started, modalVisible };
 }
 
 const styles = StyleSheet.create({
     MapPageStyle: {
     	flex: 1,
-        backgroundColor: 'white'
+      backgroundColor: 'white'
     },
     ButtonViewStyle: {
-		width: '100%',
-		height: '60%', 
-		flexDirection: 'row',
-		alignItems: 'flex-start',
-		justifyContent: 'flex-end'
-
+			width: '100%',
+			height: '60%',
+			flexDirection: 'row',
+			alignItems: 'flex-start',
+			justifyContent: 'flex-end'
     }
 });
 
 export default connect(mapStateToProps, { startQuest, showModal, setLocation, pushMarkers })(CreateQuest);
-
