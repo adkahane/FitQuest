@@ -108,7 +108,7 @@ class Home extends React.Component {
             </ScrollView> */}
             <ScrollView scrollEnabled>
               <Card style={{ width:'92%', alignSelf: 'center', borderColor: '#52c234', borderWidth: 1, alignItems: 'center',
-                             marginTop: '10%', paddingBottom:' 40%' }}>
+                             marginTop: '4%', paddingBottom:' 78%' }}>
                              {/* marginRight:'4%', marginLeft:'4%' }}> */}
                 <CardItem style={{ borderColor: '#aa076b', borderWidth: 1, marginTop: '7%', marginBottom:'3%' }}>
                   <Avatar
