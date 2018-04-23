@@ -11,6 +11,11 @@ import styles from './NewQuestStyles.js';
 class NewQuest extends React.Component {
 
     static navigationOptions = {
+        drawerLabel: () => (
+            <Text
+                style={{ color: '#16a085', fontWeight: 'bold' }}
+            >New Quest</Text>
+        ),
 		drawerIcon: (
 			<Image source={ require('../../assets/icons/newQuest.png') }
 				   style={{ height: 24, width: 24 }} />
