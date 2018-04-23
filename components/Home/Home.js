@@ -77,10 +77,11 @@ class Home extends React.Component {
       }
 
     render() {
+        const uName = this.state.user.name;
         const list = [
             {
                 title: 'User:',
-                subtitle: 'adkahane'
+                subtitle: uName 
             },
             {
                 title: 'Level: ',
