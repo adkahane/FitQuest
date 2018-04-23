@@ -1,8 +1,9 @@
 import React from 'react';
 import { Image, Text, Dimensions } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
-// import { Easy } from './easy-quest.json';
-import { Map } from '../common';
+import { Easy } from './easy-quest.json';
+import { Map } from '../common/CardMap.js';
+// import { ChallengeMap } from '../common';
 
 let { width, height } = Dimensions.get('window');
 let latitude = 37.8703552;
@@ -14,7 +15,7 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 export default class EasyQuest extends React.Component {
 
   _renderMap() {
-    // const easy = Easy;
+    const easy = Easy;
    const route = 
    [
     {
@@ -697,14 +698,13 @@ export default class EasyQuest extends React.Component {
                 </Body>
             </CardItem> 
             <CardItem cardBody>
-             <Map 
+             <Map
                 location={{ 
                 latitude: latitude,
                 longitude: longitude,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA}}
-                polylines= { this._renderMap() }/> 
-             <Image source={{uri: 'https://camo.githubusercontent.com/689a96e5a1b1522bf9da9001ac66b00dad621ac5/687474703a2f2f656d63636f6e76696c6c652e636f6d2f506f6c796c696e652f647573747967726f6f76652e706e67'}} style={{height: 200, width: 100, flex: 1}}/> 
+                polylines= { this._renderMap() } />
             </CardItem>
             <CardItem>
               <Left>
