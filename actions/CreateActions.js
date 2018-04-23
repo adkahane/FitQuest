@@ -1,8 +1,8 @@
-import { START_QUEST, SHOW_MODAL, SET_LOCATION, PUSH_MARKERS } from './types.js';
+import { CREATE_START_QUEST, SHOW_MODAL, CREATE_SET_LOCATION, PUSH_MARKERS, PUSH_SPEED_TIME } from './types.js';
 
-export const startQuest = (started) => {
+export const createStartQuest = (started) => {
 	return {
-		type: START_QUEST, 
+		type: CREATE_START_QUEST, 
 		payload: started
 	}
 }
@@ -14,9 +14,9 @@ export const showModal = (visible) => {
 	}
 }
 
-export const setLocation = ({lat, long}) =>{
+export const createSetLocation = ({lat, long}) =>{
 	return{
-		type: SET_LOCATION, 
+		type: CREATE_SET_LOCATION, 
 		payload: { lat, long }
 	}
 }
