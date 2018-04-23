@@ -44,8 +44,8 @@ const Map = (props) => {
 
 const styles = StyleSheet.create({
   MapStyle: {
-  	height: '100%',
-    width: '100%',
+  	height: 200,
+    width: 400,
   },
 });
 
