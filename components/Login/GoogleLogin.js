@@ -16,8 +16,8 @@ export default class GoogleLogin extends Component {
       // Object that uses the client IDs created for each platform
       const result = await Expo.Google.logInAsync({
         behavior: 'web',
-        androidClientId: '1037327035065-ajdv9id43hfneomj9vn06m95nbv31399.apps.googleusercontent.com',
-        iosClientId: '1037327035065-valj41h4a4qal4qn8ki45lqnthlqa23v.apps.googleusercontent.com',
+        androidClientId: '101222014296-vl3io9m5ga8rf8qcii1kas7p2lsjsqb3.apps.googleusercontent.com',
+        iosClientId: '101222014296-24greqvj9l32brissi30k5cr0thrio68.apps.googleusercontent.com',
         scopes: ['profile', 'email'],
       });
 
