@@ -17,6 +17,11 @@ import { Font } from 'expo';
 class Home extends React.Component {
 
     static navigationOptions = {
+        drawerLabel: () => (
+            <Text
+                style={{ color: '#16a085', fontWeight: 'bold' }}
+            >Home</Text>
+        ),
       drawerIcon: (
           <Image source={ require('../../assets/icons/home.png') }
                  style={{ height: 24, width: 24 }} />
