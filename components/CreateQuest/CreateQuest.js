@@ -17,6 +17,11 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 class CreateQuest extends Component {
 
 	static navigationOptions = {
+		drawerLabel: () => (
+			<Text
+				style={{ color: '#16a085', fontWeight: 'bold' }}
+			>Create Quest</Text>
+		),
 		drawerIcon: (
 			<Image source={ require('../../assets/icons/createQuest.png') }
 				   style={{ height: 24, width: 24 }} />
