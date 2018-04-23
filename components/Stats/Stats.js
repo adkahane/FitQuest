@@ -8,6 +8,11 @@ import styles from './StatsStyles.js';
 class Stats extends React.Component {
     
     static navigationOptions = {
+      drawerLabel: () => (
+        <Text
+          style={{ color: '#aa076b', fontWeight: 'bold', fontSize: '20px' }}
+        >Stats</Text>
+      ),
       drawerIcon: (
         <Image source={ require('../../assets/icons/stats.png') }
              style={{ height: 24, width: 24 }} />
