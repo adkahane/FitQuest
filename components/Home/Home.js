@@ -2,9 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../../reducers';
-import { AsyncStorage, StyleSheet, Text, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
+import { AsyncStorage, StyleSheet, View, TouchableHighlight, ScrollView, Image, Platform } from 'react-native';
 import { Avatar, List, ListItem } from 'react-native-elements';
-import { Icon, Container, Header, Content, Left, Title, Body, Right, Card, CardItem, Thumbnail } from 'native-base';
+import { Icon, Container, Header, Content, Left, Title, Body, Right, Card, CardItem, Thumbnail, Text } from 'native-base';
 import { CardSection, Input } from '../common';
 import styles from './HomeStyles.js';
 import { NavButtons, DrawerStack} from '../Navigation';
@@ -28,6 +28,7 @@ class Home extends React.Component {
         this.state = {
             enabled:true,
             fontLoaded:false,
+            userLoaded:false,
             user:{
                 auth_id: '',
                 name:'',
@@ -38,11 +39,11 @@ class Home extends React.Component {
         };
     }
 
-    getUser = () => {
+    async getUser(){
         console.log("in getUser()");
         
         AsyncStorage.getItem('auth_id').then(auth_id => {
-            this.setState({user: { auth_id: auth_id } });
+            this.setState({ user: { ...this.state.user, auth_id: auth_id } });
   
             console.log('auth_id: ' + this.state.user.auth_id);
             // const currUser = db.User.find({'auth_id': auth_id});
@@ -51,23 +52,27 @@ class Home extends React.Component {
             // }
         });
         AsyncStorage.getItem('name').then(name => {
-            this.setState({user: { name: name } });
+            this.setState({ user: { ...this.state.user, name: name } });
             console.log('name: ' + this.state.user.name);
         });
 
         AsyncStorage.getItem('email').then(email => {
-            this.setState({user: { email: email } });
+            this.setState({ user: { ...this.state.user, email: email } });
             console.log('email: ' + this.state.user.email);
         });
 
         AsyncStorage.getItem('avatar_url').then(avatar_url => {
-            this.setState({user: { avatar_url: avatar_url } });
+            this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
             console.log('avatar_url: ' + this.state.user.avatar_url);
         });
+        console.log( this.state.userLoaded ); 
+        this.setState({ userLoaded: true });
+        console.log( this.state.userLoaded ); 
     }
     
     async componentWillMount() {
-        this.getUser();
+        await this.getUser();
+        this.setState({ userLoaded: true });
     }
 
     async componentDidMount() {
@@ -79,8 +84,9 @@ class Home extends React.Component {
     }
 
     render() {
-
-        if (this.state.fontLoaded){
+        if (this.state.fontLoaded && this.state.userLoaded){
+          console.log(this.state);
+          console.log("\n\n\nThis is being rendered\n\n\n");
           return (
           <Container>
               <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
@@ -100,7 +106,7 @@ class Home extends React.Component {
                       <Avatar
                           xlarge
                           source={{
-                              uri: "https://avatars2.githubusercontent.com/u/28679029?s=460&v=4" }}
+                              uri: this.state.user.avatar_url }}
                           onPress={() => console.log("Works!")}
                           activeOpacity={0.7}
                       />
@@ -112,7 +118,7 @@ class Home extends React.Component {
                             User:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-                            adkahane
+                            { this.state.user.name }
                           </Text>
                         </Text>
 
