@@ -1,7 +1,31 @@
-1. Make sure to have mongod running in the terminal
+1. Make sure to have mongod running in the terminal if running local
 2. In a new terminal run the following commands in the server/models/db folder
-3. Order of these seeds does not matter 
+3. Order of these seeds does not matter
+
+====================================
+
+local instance
 
 mongoimport --db fitquestdb --collection users --drop --file ./userseeds.json
 
 mongoimport --db fitquestdb --collection quests --drop --file ./questseeds.json
+
+=======================
+
+heroku mLab Mongo Seeding
+
+mongoimport -h ds133659.mlab.com:33659 -d heroku_5fms6vx2 -c users -u heroku_5fms6vx2 -p fa0sp77822ck1ka87a27og2c7u --file userseeds.json
+
+mongoimport -h ds133659.mlab.com:33659 -d heroku_5fms6vx2 -c quests -u heroku_5fms6vx2 -p fa0sp77822ck1ka87a27og2c7u --file questseeds.json
+
+=======================
+
+heroku mLab Mongo cli login
+
+mongo mongodb://ds133659.mlab.com:33659/heroku_5fms6vx2 -u heroku_5fms6vx2 -p fa0sp77822ck1ka87a27og2c7u    
+
+
+
+
+Add CommentCollapse 
+
