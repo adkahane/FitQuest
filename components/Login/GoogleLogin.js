@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage, View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import Expo from 'expo';
+
 // import { StackNavigator } from 'react-navigation';
 
 // create a component
@@ -23,6 +24,10 @@ export default class GoogleLogin extends Component {
 
 
       if (result.type === 'success') {
+        AsyncStorage.setItem('auth_id', result.user.id);
+        AsyncStorage.setItem('email', result.user.email);
+        AsyncStorage.setItem('name', result.user.givenName);
+        AsyncStorage.setItem('avatar_url', result.user.photoUrl);
         // If the user logs in successfully, make a server request with their email
         //   var serverRequest = { email: result.user.email };
 
