@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage, View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import Expo from 'expo';
+
 // import { StackNavigator } from 'react-navigation';
 
 // create a component
@@ -16,13 +17,17 @@ export default class GoogleLogin extends Component {
       // Object that uses the client IDs created for each platform
       const result = await Expo.Google.logInAsync({
         behavior: 'web',
-        androidClientId: '1037327035065-ajdv9id43hfneomj9vn06m95nbv31399.apps.googleusercontent.com',
-        iosClientId: '1007400859501-lo894svtlk3hst4nc2am8imc5u32hs23.apps.googleusercontent.com',
+        androidClientId: '101222014296-vl3io9m5ga8rf8qcii1kas7p2lsjsqb3.apps.googleusercontent.com',
+        iosClientId: '101222014296-24greqvj9l32brissi30k5cr0thrio68.apps.googleusercontent.com',
         scopes: ['profile', 'email'],
       });
 
 
       if (result.type === 'success') {
+        AsyncStorage.setItem('auth_id', result.user.id);
+        AsyncStorage.setItem('email', result.user.email);
+        AsyncStorage.setItem('name', result.user.givenName);
+        AsyncStorage.setItem('avatar_url', result.user.photoUrl);
         // If the user logs in successfully, make a server request with their email
         //   var serverRequest = { email: result.user.email };
 

@@ -1,4 +1,4 @@
-import Quest from './models';
+const Quest = require('../models/index');
 
 
 module.exports = {
