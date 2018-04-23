@@ -11,7 +11,7 @@ import { NavButtons, DrawerStack} from '../Navigation';
 import { DrawerNavigator } from 'react-navigation';
 import { Spinner } from '../common';
 import { Font } from 'expo';
-import { User } from '../../server/models/User';
+// import { User } from '../../server/models/User';
 
 
 class Home extends React.Component {
@@ -29,23 +29,40 @@ class Home extends React.Component {
             enabled:true,
             fontLoaded:false,
             user:{
-                auth_id: '106439431954835815191',
-                name:'Mark',
-                email:'email@email.com',
-                avatar_url:'https://lh5.googleusercontent.com/-dFLWoGccsPY/AAAAAAAAAAI/AAAAAAAAGzk/T-EnjExwPJE/photo.jpg',
-                points:3333
+                auth_id: '',
+                name:'',
+                email:'',
+                avatar_url:'',
+                points:9333
               }
         };
     }
 
     getUser = () => {
         console.log("in getUser()");
+        
         AsyncStorage.getItem('auth_id').then(auth_id => {
-            console.log('auth_id: ' + auth_id);
-            const currUser = db.User.find({'auth_id': auth_id});
-            if(currUser){
-                console.log(currUser);
-            }
+            this.setState({user: { auth_id: auth_id } });
+  
+            console.log('auth_id: ' + this.state.user.auth_id);
+            // const currUser = db.User.find({'auth_id': auth_id});
+            // if(currUser){
+            //     console.log(currUser);
+            // }
+        });
+        AsyncStorage.getItem('name').then(name => {
+            this.setState({user: { name: name } });
+            console.log('name: ' + this.state.user.name);
+        });
+
+        AsyncStorage.getItem('email').then(email => {
+            this.setState({user: { email: email } });
+            console.log('email: ' + this.state.user.email);
+        });
+
+        AsyncStorage.getItem('avatar_url').then(avatar_url => {
+            this.setState({user: { avatar_url: avatar_url } });
+            console.log('avatar_url: ' + this.state.user.avatar_url);
         });
     }
     async componentWillMount() {
@@ -105,8 +122,8 @@ class Home extends React.Component {
                     <Avatar
                         xlarge
                         source={{
-                            uri: "https://avatars2.githubusercontent.com/u/28679029?s=460&v=4" }}
-                        onPress={() => console.log("Works!")}
+                            uri: this.state.user.avatar_url }}
+                        onPress={() => console.log("Works! " + this.state.user)}
                         activeOpacity={0.7}
                         containerStyle={{ justifyContent: 'flex-start', alignSelf: 'flex-start', marginTop: '1%', marginBottom: "5%", marginLeft: '5%' }}
                     />

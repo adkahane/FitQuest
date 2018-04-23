@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage, View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import Expo from 'expo';
+
 // import { StackNavigator } from 'react-navigation';
 
 // create a component
