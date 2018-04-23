@@ -17,10 +17,10 @@ import { Font } from 'expo';
 class Home extends React.Component {
 
     static navigationOptions = {
-        drawerIcon: (
-            <Image source={ require('../../assets/icons/home.png') }
-                   style={{ height: 24, width: 24 }} />
-        )
+      drawerIcon: (
+          <Image source={ require('../../assets/icons/home.png') }
+                 style={{ height: 24, width: 24 }} />
+      )
     }
 
     constructor() {
@@ -68,45 +68,24 @@ class Home extends React.Component {
             console.log('avatar_url: ' + this.state.user.avatar_url);
         });
     }
+    
     async componentWillMount() {
         this.getUser();
-      }
+    }
+
     async componentDidMount() {
-        await Font.loadAsync({
-          'Roboto': require('native-base/Fonts/Roboto.ttf'),
-          'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
-        });
-        this.setState({ fontLoaded: true });
-      }
+      await Font.loadAsync({
+        'Roboto': require('native-base/Fonts/Roboto.ttf'),
+        'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+      });
+      this.setState({ fontLoaded: true });
+    }
 
     render() {
-        const uName = this.state.user.name;
-        const list = [
-            {
-                title: 'User:',
-                subtitle: uName 
-            },
-            {
-                title: 'Level: ',
-                subtitle: '3'
-            },
-            {
-                title: 'Steps:',
-                subtitle: '8,547'
-            },
-            {
-                title: 'Distance:',
-                subtitle: '4.23 miles'
-            },
-            {
-                title: 'Time',
-                subtitle: '1.5 hours'
-            }
 
-        ]
         if (this.state.fontLoaded){
-            return (
-            <Container>
+          return (
+          <Container>
               <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
                 <Left>
                   <Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
@@ -117,11 +96,9 @@ class Home extends React.Component {
                 <Right />
               </Header>
               <Content style={{ height: '100%' }}>
-               
                 <ScrollView scrollEnabled>
                   <Card style={{ width:'92%', alignSelf: 'center', borderColor: '#52c234', borderWidth: 1, alignItems: 'center',
                                  marginTop: '4%', paddingBottom:' 78%' }}>
-                                 {/* marginRight:'4%', marginLeft:'4%' }}> */}
                     <CardItem style={{ borderColor: '#aa076b', borderWidth: 1, marginTop: '7%', marginBottom:'3%' }}>
                       <Avatar
                           xlarge
@@ -150,7 +127,6 @@ class Home extends React.Component {
                             3
                           </Text>
                         </Text>
-    
                         <Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Steps:&nbsp;&nbsp;
