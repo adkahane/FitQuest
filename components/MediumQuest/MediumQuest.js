@@ -35,9 +35,10 @@ export default class MediumQuest extends React.Component {
               <Left>
                 <Button transparent>
                   <Icon active name="walk" />
-                  <Text>&nbsp;3,600 Steps &nbsp;&nbsp;&nbsp;&nbsp;</Text>
+                  <Text>&nbsp;Steps: 3,600&nbsp;&nbsp;&nbsp;</Text>
                   <Icon active name="stopwatch" />
-                  <Text>&nbsp;Average Time: 43:00</Text>
+                  <Text>&nbsp;Time: 43:00</Text>
+                  <Text>&nbsp;Climb: 200 ft</Text>
                 </Button>
               </Left>
             </CardItem>
