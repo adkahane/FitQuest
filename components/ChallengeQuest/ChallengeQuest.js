@@ -687,7 +687,7 @@ class ChallengeQuest extends Component {
   static navigationOptions = {
 	  drawerLabel: () => (
 		  <Text
-			  style={{ color: '#16a085', fontWeight: 'bold' }}
+			  style={{ color: '#aa076b', fontWeight: 'bold', fontSize: 20, lineHeight: 50  }}
 		  >Challenge Quest</Text>
 	  ),
     drawerIcon: (
