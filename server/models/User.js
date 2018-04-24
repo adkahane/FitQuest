@@ -25,22 +25,23 @@ const UserSchema = new Schema({
         type: Number,
         default: 0
     },
-    quest:{
-        type:Schema.Types.ObjectId,
-        ref:"Quest"
-    },
     steps:{
         type: Number,
         required: false
     },
     distance: {
         type: Number,
-        V
+        required: false
     },
     time: {
         type:String,
         required: false
+    },
+    quest:{
+        type:Schema.Types.ObjectId,
+        ref:"Quest"
     }
+    
 });
 
 var User = mongoose.model('User', UserSchema);
