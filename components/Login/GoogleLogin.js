@@ -28,28 +28,7 @@ export default class GoogleLogin extends Component {
         AsyncStorage.setItem('email', result.user.email);
         AsyncStorage.setItem('name', result.user.givenName);
         AsyncStorage.setItem('avatar_url', result.user.photoUrl);
-        // If the user logs in successfully, make a server request with their email
-        //   var serverRequest = { email: result.user.email };
-
-        //   // Make a POST request to the database to create a new user if the email is not found in the database
-        //   fetch('#', {
-        //     method: 'POST',
-        //     body: JSON.stringify(serverRequest),
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //   }).then(response => {          
-        //     // Store login to global async storage
-        //     AsyncStorage.setItem('userEmail', serverRequest.email);
-
-        //     // navigate to the home page
-        //     this.props.navigation.navigate('Home');
-
-        //   }).catch(error => console.log(error));
-        // } else {
-        //   return { cancelled: true };
-        // }
-
+       
         console.log(result);
         // DEVELOPMENT ONLY: NAVIGATE DIRECTLY TO HOME PAGE
         this.props.navigation.navigate('Home');
