@@ -8,6 +8,7 @@ import { Icon, Container, Header, Content,
 import { createStartQuest, showModal, createSetLocation, pushMarkers, abortCreate } from '../../actions';
 import Camera from '../../components/Camera/camera.js';
 import { MapButton, CreateMap } from '../common';
+// const Quest = require('../../server/models/Quest');
 let { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
