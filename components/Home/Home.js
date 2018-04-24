@@ -36,13 +36,7 @@ class Home extends React.Component {
                 auth_id: '',
                 name:'',
                 email:'',
-<<<<<<< HEAD
                 avatar_url:'../../assets/images/placeholder.png',
-=======
-
-                avatar_url:'../../assets/images/placeholder.png',
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                 points:9333,
                 steps:'8,547',
                 distance:'4.23 miles',
@@ -63,13 +57,8 @@ class Home extends React.Component {
             console.log('email: ' + this.state.user.email);
         });
         AsyncStorage.getItem('avatar_url').then(avatar_url => {
-            
-            // this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
+            this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
         });
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
     }
 
     async componentWillMount() {
@@ -123,68 +112,36 @@ class Home extends React.Component {
                         </Text>
 
                         <Text>
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                             Level:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-<<<<<<< HEAD
-=======
-r
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                             3
                           </Text>
                         </Text>
                         <Text>
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Steps:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                            { this.state.user.steps }
                           </Text>
                         </Text>
 
                         <Text>
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Distance:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                             { this.state.user.distance }
                           </Text>
                         </Text>
 
                         <Text>
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Time:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-<<<<<<< HEAD
-=======
-
->>>>>>> 71c59da2d02bf50ca462285139af3fe2d58f4691
                             { this.state.user.time }
                           </Text>
                         </Text>
