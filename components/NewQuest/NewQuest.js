@@ -60,7 +60,7 @@ class NewQuest extends React.Component {
         			<Right />
         		</Header>
     	    <ScrollView contentContainerStyle={{alignItems: 'center'}} scrollEnabled={this.state.enabled}>
-                <View style={{height:330, width: '90%', backgroundColor:'white'}}>
+                <View style={{height:330, width: '70%', backgroundColor:'white'}}>
                     <EasyQuest />
                     <Button
                         onPress={ () => this._navigateEasy() }
@@ -68,7 +68,7 @@ class NewQuest extends React.Component {
                         color="#841584"
                         />
                 </View>
-                <View style={{ height: 330, width: '90%', backgroundColor:'white'}}>
+                <View style={{ height: 330, width: '70%', backgroundColor:'white'}}>
                     <MediumQuest />
                     <Button
                         onPress={ () => this._navigateMedium() }
@@ -76,7 +76,7 @@ class NewQuest extends React.Component {
                         color="#841584"
                         />
                 </View>
-                <View style={{ height: 330, width: '90%', backgroundColor:'white'}}>
+                <View style={{ height: 330, width: '70%', backgroundColor:'white'}}>
                     <HardQuest />
                     <Button
                         onPress={ () => this._navigateHard() }
