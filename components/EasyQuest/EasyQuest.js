@@ -3,7 +3,7 @@ import { Image, Text, Dimensions } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
 import { Easy } from './easy-quest.json';
 import { Map } from '../common/CardMap.js';
-// import { ChallengeMap } from '../common';
+// import medQuest from '../MediumQuest/medium-quest.json';
 
 let { width, height } = Dimensions.get('window');
 let latitude = 37.8703552;
@@ -704,7 +704,7 @@ export default class EasyQuest extends React.Component {
                 longitude: longitude,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA}}
-                polylines= { this._renderMap() } />
+                polylines= { _renderMap() } />
             </CardItem>
             <CardItem>
               <Left>

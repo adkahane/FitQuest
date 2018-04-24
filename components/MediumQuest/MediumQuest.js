@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, Text } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
+import medQuest from '../MediumQuest/medium-quest.json';
 
 export default class MediumQuest extends React.Component {
   render() {
@@ -14,6 +15,13 @@ export default class MediumQuest extends React.Component {
                 </Body>
             </CardItem> 
             <CardItem cardBody>
+              <Map
+              location={{ 
+              latitude: latitude,
+              longitude: longitude,
+              latitudeDelta: LATITUDE_DELTA,
+              longitudeDelta: LONGITUDE_DELTA}}
+              polylines= { medQuest } />
               <Image source={{uri: 'https://camo.githubusercontent.com/689a96e5a1b1522bf9da9001ac66b00dad621ac5/687474703a2f2f656d63636f6e76696c6c652e636f6d2f506f6c796c696e652f647573747967726f6f76652e706e67'}} style={{height: 200, width: 100, flex: 1}}/>
             </CardItem>
             <CardItem>

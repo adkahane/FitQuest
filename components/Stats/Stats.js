@@ -10,7 +10,7 @@ class Stats extends React.Component {
     static navigationOptions = {
       drawerLabel: () => (
         <Text
-          style={{ color: '#aa076b', fontWeight: 'bold', fontSize: '20px' }}
+          style={{ color: '#aa076b', fontWeight: 'bold', fontSize: 20 }}
         >Stats</Text>
       ),
       drawerIcon: (
