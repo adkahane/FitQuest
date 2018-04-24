@@ -60,7 +60,7 @@ class Home extends React.Component {
         });
         AsyncStorage.getItem('avatar_url').then(avatar_url => {
             
-            // this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
+            this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
         });
 
     }
@@ -121,7 +121,6 @@ class Home extends React.Component {
                             Level:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-r
                             3
                           </Text>
                         </Text>
