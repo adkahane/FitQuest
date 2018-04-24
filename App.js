@@ -10,7 +10,9 @@ import MyHeader from './components/MyHeader';
 import { NavButtons, DrawerStack} from './components/Navigation';
 // import { Spinner } from './components/common';
 import GoogleLogin from './components/Login/GoogleLogin';
-import Home from './components/Home/Home';
+// import Home from './components/Home/Home';
+import ChallengeQuest from './components/ChallengeQuest/ChallengeQuest';
+import EasyQuest from './components/NewQuest/NewQuest';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -44,6 +46,12 @@ const AppSwitchNavigator = SwitchNavigator({
   },
   Home: {
     screen: DrawerStack
+  },
+  Challenge: {
+    screen: ChallengeQuest
+  },
+  Easy: {
+    screen: EasyQuest
   }
 })
 

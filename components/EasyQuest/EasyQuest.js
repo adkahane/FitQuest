@@ -13,6 +13,10 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class EasyQuest extends React.Component {
 
+  static navigationOptions = {
+    header: null
+  }
+
   _renderMap() {
    const route = 
    [
@@ -684,6 +688,11 @@ export default class EasyQuest extends React.Component {
    return route;
   }
 
+  challengeNavigate = () => {
+    this.props.navigation.navigate('Challenge');
+    console.log("hello");
+  }
+
   render() {
     // console.log(this._renderMap());
     return (
@@ -706,7 +715,7 @@ export default class EasyQuest extends React.Component {
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent>
+                <Button transparent onPress={ this.challengeNavigate() }>
                   <Icon active name="walk" />
                   <Text>&nbsp;1,800 Steps &nbsp;&nbsp;&nbsp;&nbsp;</Text>
                   <Icon active name="stopwatch" />
@@ -720,3 +729,4 @@ export default class EasyQuest extends React.Component {
     );
   }
 }
+
