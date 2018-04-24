@@ -19,7 +19,7 @@ class CreateQuest extends Component {
 	static navigationOptions = {
 		drawerLabel: () => (
 			<Text
-				style={{ color: '#16a085', fontWeight: 'bold' }}
+				style={{ color: '#aa076b', fontWeight: 'bold', fontSize: 20, lineHeight: 50  }}
 			>Create Quest</Text>
 		),
 		drawerIcon: (
@@ -73,7 +73,7 @@ class CreateQuest extends Component {
 				if(this.props.started){
 					this.props.pushMarkers({latitude: latitude, longitude: longitude, speed: speed, timestamp: location.timestamp});
 				}
-				
+
 				this.props.createSetLocation({lat: latitude, long: longitude});
 			}
 		);

@@ -11,23 +11,22 @@ import { NavButtons, DrawerStack} from '../Navigation';
 import { DrawerNavigator } from 'react-navigation';
 import { Spinner } from '../common';
 import { Font } from 'expo';
-// import { User } from '../../server/models/User';
 
 
 class Home extends React.Component {
-    
+
     static navigationOptions = {
-        drawerLabel: () => (
-            <Text
-                style={{ color: '#16a085', fontWeight: 'bold' }}
-            >Home</Text>
-        ),
+      drawerLabel: () => (
+        <Text
+          style={{ color: '#aa076b', fontWeight: 'bold', fontSize: 20, lineHeight: 50  }}
+        >Home</Text>
+      ),
       drawerIcon: (
           <Image source={ require('../../assets/icons/home.png') }
                  style={{ height: 24, width: 24 }} />
       )
     }
-    
+
     constructor() {
         super();
         this.state = {
@@ -45,42 +44,35 @@ class Home extends React.Component {
               }
         };
     }
-    
+
     getUser = () => {
         console.log("in getUser()");
-        
+
         AsyncStorage.getItem('auth_id').then(auth_id => {
             this.setState({ user: { ...this.state.user, auth_id: auth_id } });
-  
-            console.log('auth_id: ' + this.state.user.auth_id);
-            // const currUser = db.User.find({'auth_id': auth_id});
-            // if(currUser){
-            //     console.log(currUser);
-            // }
         });
         AsyncStorage.getItem('name').then(name => {
             this.setState({ user: { ...this.state.user, name: name } });
-            console.log('name: ' + this.state.user.name);
         });
- 
+
         AsyncStorage.getItem('email').then(email => {
             this.setState({ user: { ...this.state.user, email: email } });
             console.log('email: ' + this.state.user.email);
         });
- 
+
         AsyncStorage.getItem('avatar_url').then(avatar_url => {
             this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
-            console.log('avatar_url: ' + this.state.user.avatar_url);
         });
-        
+
+        console.log(`This is the state of the app`);
+        console.log(this.state);
     }
-    
+
     async componentWillMount() {
-        // this.getUser();
+      this.getUser();
     }
 
     async componentDidMount() {
-        this.getUser();
       await Font.loadAsync({
         'Roboto': require('native-base/Fonts/Roboto.ttf'),
         'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
@@ -89,10 +81,8 @@ class Home extends React.Component {
     }
 
     render() {
-        
-        if (this.state.fontLoaded){
-            console.log(this.state.user.name);
-          return (
+      if (this.state.fontLoaded){
+        return (
           <Container>
               <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
                 <Left>
@@ -123,11 +113,10 @@ class Home extends React.Component {
                             User:&nbsp;&nbsp;
                           </Text>
                           <Text  style={{ fontSize: 14, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-                           {this.state.user.name}
-                            
+                           { this.state.user.name }
                           </Text>
                         </Text>
-    
+
                         <Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                             Level:&nbsp;&nbsp;
@@ -141,25 +130,25 @@ class Home extends React.Component {
                              Steps:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-                           {this.state.user.steps}
+                           { this.state.user.steps }
                           </Text>
                         </Text>
-    
+
                         <Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Distance:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-                            {this.state.user.distance}
+                            { this.state.user.distance }
                           </Text>
                         </Text>
-    
+
                         <Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Time:&nbsp;&nbsp;
                           </Text>
                           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#52c234', width: 300 }}>
-                            {this.state.user.time}
+                            { this.state.user.time }
                           </Text>
                         </Text>
                       </Body>
@@ -168,16 +157,12 @@ class Home extends React.Component {
                 </ScrollView>
               </Content>
             </Container>
-    
-    
-    
-    
-            );
+          );
         }
         else {
             return <Spinner />;
         }
-        }
+      }
     }
-    
+
     export default Home;

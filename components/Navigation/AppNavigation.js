@@ -12,23 +12,22 @@ import NewQuest from './../NewQuest';
 
 const styles = StyleSheet.create({
 	drawerImage: {
-		height: 100, 
-		width: 100, 
-		borderRadius: 50
+		height: 100,
+		width: 200
 	}
 });
 
 const CustomDrawerContentComponent = (props) =>(
-	<Container> 
-		<Header style={{ height: 150, backgroundColor: '#52c234' }}> 
-			<Body> 
-				<Image style={ styles.drawerImage } source={require('../../assets/images/art2.png')}/>
-			</Body> 
-		</Header> 
+	<Container>
+		<Header style={{ height: 150, backgroundColor: '#52c234', alignSelf: 'center' }}>
+			<Body>
+				<Image style={ styles.drawerImage } source={require('../../assets/images/logo.png')}/>
+			</Body>
+		</Header>
 		<Content>
 			<DrawerItems { ...props } />
 		</Content>
-	</Container> 
+	</Container>
 );
 
 
@@ -36,13 +35,13 @@ export const DrawerStack = DrawerNavigator({
     Home: { screen: Home },
     Stats: { screen: Stats },
     CreateQuest: { screen: CreateQuest },
-	ChallengeQuest: { screen: ChallengeQuest },
-	NewQuest: { screen: NewQuest }
-},{
-	initialRouteName: 'Home', 
-	contentComponent: CustomDrawerContentComponent,
-	drawerOpenRoute: 'DrawerOpen',
-	drawerCloseRoute: 'DrawerClose', 
-	drawerToggleRoute: 'DrawerToggle'
-}
+		ChallengeQuest: { screen: ChallengeQuest },
+		NewQuest: { screen: NewQuest }
+	},{
+		initialRouteName: 'Home',
+		contentComponent: CustomDrawerContentComponent,
+		drawerOpenRoute: 'DrawerOpen',
+		drawerCloseRoute: 'DrawerClose',
+		drawerToggleRoute: 'DrawerToggle'
+	}
 );
