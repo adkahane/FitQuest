@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Image, Text, Dimensions } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
 import easyQuest from '../EasyQuest/easy-quest.json';
@@ -11,7 +11,8 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00380;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-export default class EasyQuest extends React.Component {
+export default class EasyQuest extends Component {
+  
   render() {
     return (
       <Container>
@@ -33,7 +34,7 @@ export default class EasyQuest extends React.Component {
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent>
+                <Button transparent >
                   <Icon active name="walk" />
                   <Text>&nbsp;Steps: 1,800&nbsp;&nbsp;&nbsp;</Text>
                   <Icon active name="stopwatch" />
@@ -48,3 +49,4 @@ export default class EasyQuest extends React.Component {
     );
   }
 }
+
