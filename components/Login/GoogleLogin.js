@@ -7,8 +7,16 @@ import Expo from 'expo';
 
 // create a component
 export default class GoogleLogin extends Component {
+
   static navigationOptions = {
     header: null
+  }
+
+  constructor() {
+      super();
+      this.state = {
+          loaded:false,
+      };
   }
 
   // Function to use Google OAuth
@@ -38,7 +46,7 @@ export default class GoogleLogin extends Component {
         //     headers: {
         //       'Content-Type': 'application/json',
         //     },
-        //   }).then(response => {          
+        //   }).then(response => {
         //     // Store login to global async storage
         //     AsyncStorage.setItem('userEmail', serverRequest.email);
 
@@ -59,7 +67,7 @@ export default class GoogleLogin extends Component {
       console.log(e);
       return { error: e }
     }
-  } 
+  }
 
   // Render the background image and login button at start
   render() {
