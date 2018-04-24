@@ -6,11 +6,11 @@ import styles from './StatsStyles.js';
 
 
 class Stats extends React.Component {
-    
+
     static navigationOptions = {
       drawerLabel: () => (
         <Text
-          style={{ color: '#aa076b', fontWeight: 'bold', fontSize: '20px' }}
+          style={{ color: '#aa076b', fontWeight: 'bold', fontSize: 20, lineHeight: 50 }}
         >Stats</Text>
       ),
       drawerIcon: (
@@ -22,7 +22,7 @@ class Stats extends React.Component {
 
     render() {
         let sampleData = [
-          
+
                  {
               seriesName: 'series1',
               data: [
@@ -33,7 +33,7 @@ class Stats extends React.Component {
                 {x: '2018-04-05', y: 10000}
               ],
             color: '#52c234'
-              
+
                 },
             {
               seriesName: 'series2',
@@ -49,7 +49,7 @@ class Stats extends React.Component {
               ];
 
         let exampleData = [
-          
+
                  {
               seriesName: 'series1',
               data: [
@@ -60,7 +60,7 @@ class Stats extends React.Component {
                 {x: '2018-04-05', y: 10}
               ],
             color: '#52c234'
-              
+
                 },
             {
               seriesName: 'series2',
@@ -101,9 +101,9 @@ class Stats extends React.Component {
           ];
 
         return (
-          <Container> 
-            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}> 
-              <Left> 
+          <Container>
+            <Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
+              <Left>
                 <Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
               </Left>
               <Body>
