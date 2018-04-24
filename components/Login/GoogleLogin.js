@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage, View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import Expo from 'expo';
-
+const config = require('../../config.js');
 // import { StackNavigator } from 'react-navigation';
 
 // create a component
@@ -17,8 +17,8 @@ export default class GoogleLogin extends Component {
       // Object that uses the client IDs created for each platform
       const result = await Expo.Google.logInAsync({
         behavior: 'web',
-        androidClientId: '101222014296-vl3io9m5ga8rf8qcii1kas7p2lsjsqb3.apps.googleusercontent.com',
-        iosClientId: '101222014296-24greqvj9l32brissi30k5cr0thrio68.apps.googleusercontent.com',
+        androidClientId:  config.androidClient.key,
+        iosClientId: config.iosClient.key,
         scopes: ['profile', 'email'],
       });
 
