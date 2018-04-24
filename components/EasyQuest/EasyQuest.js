@@ -1,21 +1,19 @@
 import React from 'react';
 import { Image, Text, Dimensions } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
-import { Easy } from './easy-quest.json';
+import easyQuest from './easy-quest.json';
 import { Map } from '../common/CardMap.js';
-// import medQuest from '../MediumQuest/medium-quest.json';
 
 let { width, height } = Dimensions.get('window');
-let latitude = 37.8703552;
-let longitude = -122.2706618;
+let latitude = 37.870443;
+let longitude = -122.271473;
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.00490;
+const LATITUDE_DELTA = 0.00380;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class EasyQuest extends React.Component {
 
   _renderMap() {
-    const easy = Easy;
    const route = 
    [
     {
@@ -704,15 +702,15 @@ export default class EasyQuest extends React.Component {
                 longitude: longitude,
                 latitudeDelta: LATITUDE_DELTA,
                 longitudeDelta: LONGITUDE_DELTA}}
-                polylines= { _renderMap() } />
+                polylines= { easyQuest } />
             </CardItem>
             <CardItem>
               <Left>
                 <Button transparent>
                   <Icon active name="walk" />
-                  <Text>&nbsp;12,000 Steps &nbsp;&nbsp;&nbsp;&nbsp;</Text>
+                  <Text>&nbsp;1,800 Steps &nbsp;&nbsp;&nbsp;&nbsp;</Text>
                   <Icon active name="stopwatch" />
-                  <Text>&nbsp;Average Time: 60:00</Text>
+                  <Text>&nbsp;Average Time: 14:00</Text>
                 </Button>
               </Left>
             </CardItem>
