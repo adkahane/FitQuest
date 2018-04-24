@@ -28,8 +28,19 @@ const UserSchema = new Schema({
     quest:{
         type:Schema.Types.ObjectId,
         ref:"Quest"
+    },
+    steps:{
+        type: Number,
+        required: false
+    },
+    distance: {
+        type: Number,
+        V
+    },
+    time: {
+        type:String,
+        required: false
     }
-    
 });
 
 var User = mongoose.model('User', UserSchema);

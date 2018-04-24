@@ -30,7 +30,7 @@ export default class App extends Component<Props> {
     return (
       <Provider store={ createStore(reducers) }>
         <View style={ styles.container }>
-        <AppSwitchNavigator />
+          <AppSwitchNavigator />
         </View>
       </Provider>
     );

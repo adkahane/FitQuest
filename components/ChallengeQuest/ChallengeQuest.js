@@ -7,7 +7,7 @@ import { Icon, Container, Header, Content,
 				 FooterTab, Footer } from 'native-base';
 import { Constants, Location, Permissions, MapView } from 'expo';
 import { MapButton, ChallengeMap } from '../common'
-import { challengeStartQuest, challengeSetLocation, pushSpeedTime } from '../../actions';
+import { challengeStartQuest, challengeSetLocation, pushSpeedTime, abortChallenge } from '../../actions';
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -683,7 +683,6 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class ChallengeQuest extends Component {
 
-
   static navigationOptions = {
 	  drawerLabel: () => (
 		  <Text
@@ -696,32 +695,32 @@ class ChallengeQuest extends Component {
     )
   }
 
-    /*Makes sure the component is mounted before the virtual DOM is rendered*/
-    componentWillMount() {
-        //Make sure Android is not a simulator (Won't work for Android Simulator)
-        if (Platform.OS === 'android' && !Constants.isDevice) {
-            this.setState({
-                errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
-            });
-        } else {
-            this._getLocationAsync();
-            this._updateLocationAsync();
-        }
-    }
+  /*Makes sure the component is mounted before the virtual DOM is rendered*/
+  componentWillMount() {
+      //Make sure Android is not a simulator (Won't work for Android Simulator)
+      if (Platform.OS === 'android' && !Constants.isDevice) {
+          this.setState({
+              errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
+          });
+      } else {
+          this._getLocationAsync();
+          this._updateLocationAsync();
+      }
+  }
 
-		/*Gets the Initial Position of the user. Uses async to wait for permissions and to allow google to return position.*/
-		 _getLocationAsync = async () => {
-				let { status } = await Permissions.askAsync(Permissions.LOCATION);
-				if (status !== 'granted') {
-					this.setState({
-						errorMessage: 'Permission to access location was denied',
-					});
-				}
+	/*Gets the Initial Position of the user. Uses async to wait for permissions and to allow google to return position.*/
+	 _getLocationAsync = async () => {
+			let { status } = await Permissions.askAsync(Permissions.LOCATION);
+			if (status !== 'granted') {
+				this.setState({
+					errorMessage: 'Permission to access location was denied',
+				});
+			}
 
-				let location = await Location.getCurrentPositionAsync({});
-				const { latitude , longitude } = location.coords;
-				this.props.challengeSetLocation({lat: latitude, long: longitude});
-			};
+			let location = await Location.getCurrentPositionAsync({});
+			const { latitude , longitude } = location.coords;
+			this.props.challengeSetLocation({lat: latitude, long: longitude});
+		};
 
 
 	/*Updates the users positon every 5 meters. Uses async to wait for permissions and to allow google to return position.
@@ -748,26 +747,30 @@ class ChallengeQuest extends Component {
 		);
 	};
 
-    renderMap() {
-            return (
-                <ChallengeMap
-                    location={
-						{ latitude: this.props.latitude,
-						longitude: this.props.longitude,
-						latitudeDelta: LATITUDE_DELTA,
-						longitudeDelta: LONGITUDE_DELTA }
-					}
-                    polylines={ tempPolylines }
-					started={ this.props.started }
-                />
-            )
+	abortQuest(){
+		this.props.abortChallenge();
+		this.props.navigation.navigate('Home');
+ 	}
 
-    }
+  renderMap() {
+    return (
+      <ChallengeMap
+        location={
+					{ latitude: this.props.latitude,
+					longitude: this.props.longitude,
+					latitudeDelta: LATITUDE_DELTA,
+					longitudeDelta: LONGITUDE_DELTA }
+				}
+      	polylines={ tempPolylines }
+				started={ this.props.started }
+			/>
+    )
+  }
 
-    render() {
-        const { MapPageStyle, ButtonViewStyle } = styles;
-        /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
-        return (
+  render() {
+    const { MapPageStyle, ButtonViewStyle } = styles;
+    /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
+    return (
 			<Container>
 				<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
 					<Left>
@@ -793,15 +796,15 @@ class ChallengeQuest extends Component {
 							<Icon name='controller-stop' type='Entypo' />
 							<Text>Stop</Text>
 						</Button>
-						<Button vertical onPress={ ()=>this.resetValues() }>
+						<Button vertical onPress={ ()=>this.abortQuest() }>
 							<Icon name='cancel' type='MaterialIcons' />
 							<Text> Abort </Text>
 						</Button>
 					</FooterTab>
 				</Footer>
 			</Container>
-        );
-    }
+    );
+  }
 }
 
 ///Maps the props from the reducers to get the appropriate piece of state in the component.
@@ -824,4 +827,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, { challengeStartQuest, challengeSetLocation, pushSpeedTime })(ChallengeQuest);
+export default connect(mapStateToProps, { challengeStartQuest, challengeSetLocation, pushSpeedTime, abortChallenge })(ChallengeQuest);
