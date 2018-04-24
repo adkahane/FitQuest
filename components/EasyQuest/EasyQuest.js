@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Image, Text, Dimensions } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
 import easyQuest from './easy-quest.json';
@@ -11,11 +11,7 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00380;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-export default class EasyQuest extends React.Component {
-
-  static navigationOptions = {
-    header: null
-  }
+export default class EasyQuest extends Component {
 
   _renderMap() {
    const route = 
@@ -688,11 +684,6 @@ export default class EasyQuest extends React.Component {
    return route;
   }
 
-  challengeNavigate = () => {
-    this.props.navigation.navigate('Challenge');
-    console.log("hello");
-  }
-
   render() {
     // console.log(this._renderMap());
     return (
@@ -715,7 +706,7 @@ export default class EasyQuest extends React.Component {
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent onPress={ this.challengeNavigate() }>
+                <Button transparent >
                   <Icon active name="walk" />
                   <Text>&nbsp;1,800 Steps &nbsp;&nbsp;&nbsp;&nbsp;</Text>
                   <Icon active name="stopwatch" />

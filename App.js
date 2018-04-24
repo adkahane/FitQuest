@@ -49,9 +49,6 @@ const AppSwitchNavigator = SwitchNavigator({
   },
   Challenge: {
     screen: ChallengeQuest
-  },
-  Easy: {
-    screen: EasyQuest
   }
 })
 
