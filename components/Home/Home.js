@@ -103,45 +103,45 @@ class Home extends React.Component {
                     <CardItem >
                       <Body style={{ marginLeft: '20%'}}>
                         <Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                             User:&nbsp;&nbsp;
                           </Text>
-                          <Text  style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
+                          <Text  style={{ fontSize: 25, fontWeight: 'bold', color: '#52c234', width: 300 }}>
                            { this.state.user.name }
                           </Text>
                         </Text>
 
                         <Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                             Level:&nbsp;&nbsp;
                           </Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#52c234', width: 300 }}>
                             3
                           </Text>
                         </Text>
                         <Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Steps:&nbsp;&nbsp;
                           </Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#52c234', width: 300 }}>
                            { this.state.user.steps }
                           </Text>
                         </Text>
 
                         <Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Distance:&nbsp;&nbsp;
                           </Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#52c234', width: 300 }}>
                             { this.state.user.distance }
                           </Text>
                         </Text>
 
                         <Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#aa076b', width: 300}}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Time:&nbsp;&nbsp;
                           </Text>
-                          <Text style={{ fontSize: 27, fontWeight: 'bold', color: '#52c234', width: 300 }}>
+                          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#52c234', width: 300 }}>
                             { this.state.user.time }
                           </Text>
                         </Text>
