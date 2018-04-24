@@ -46,27 +46,20 @@ class Home extends React.Component {
     }
 
     getUser = () => {
-        console.log("in getUser()");
-
         AsyncStorage.getItem('auth_id').then(auth_id => {
             this.setState({ user: { ...this.state.user, auth_id: auth_id } });
         });
         AsyncStorage.getItem('name').then(name => {
             this.setState({ user: { ...this.state.user, name: name } });
         });
-
         AsyncStorage.getItem('email').then(email => {
             this.setState({ user: { ...this.state.user, email: email } });
             console.log('email: ' + this.state.user.email);
         });
-
         AsyncStorage.getItem('avatar_url').then(avatar_url => {
             
             // this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
         });
-
-        // console.log(`This is the state of the app`);
-        // console.log(this.state);
     }
 
     async componentWillMount() {
