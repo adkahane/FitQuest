@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Platform } from 'react-native';
 import { ButtonGroup, Button } from 'react-native-elements';
 import { StackNavigator, DrawerNavigator, DrawerItems } from 'react-navigation';
 import { Container, Header, Body, Content } from 'native-base';
