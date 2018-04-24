@@ -109,10 +109,10 @@ class Home extends React.Component {
                     <CardItem >
                       <Body style={{ marginLeft: '20%'}}>
                         <Text>
-                          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#aa076b', width: 300}}>
+                          <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                             User:&nbsp;&nbsp;
                           </Text>
-                          <Text  style={{ fontSize: 14, fontWeight: 'bold', color: '#52c234', width: 300 }}>
+                          <Text  style={{ fontSize: 23, fontWeight: 'bold', color: '#52c234', width: 300 }}>
                            { this.state.user.name }
                           </Text>
                         </Text>
