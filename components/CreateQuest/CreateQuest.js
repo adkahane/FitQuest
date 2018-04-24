@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Icon, Container, Header, Content,
 				 Left, Body, Title, Right, Button, Text,
 				 FooterTab, Footer } from 'native-base';
-import { createStartQuest, showModal, createSetLocation, pushMarkers } from '../../actions';
+import { createStartQuest, showModal, createSetLocation, pushMarkers, abortCreate } from '../../actions';
 import Camera from '../../components/Camera/camera.js';
 import { MapButton, CreateMap } from '../common';
 let { width, height } = Dimensions.get('window');
@@ -103,70 +103,74 @@ class CreateQuest extends Component {
 					latitudeDelta: LATITUDE_DELTA,
 					longitudeDelta: LONGITUDE_DELTA }
 				}
-      		/>
+      />
 		)
-
 	}
 
-    render() {
-    	const { MapPageStyle, ButtonViewStyle } = styles;
-        /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
+	abortQuest(){
+		this.props.abortCreate();
+		this.props.navigation.navigate('Home');
+	}
 
-        return (
-        	<Container>
-				<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
-        			<Left>
-						<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
-        			</Left>
-        			<Body>
-						<Title style={{ color: '#fff' }}>FitQuest</Title>
-        			</Body>
-        			<Right />
-        		</Header>
+  render() {
+  	const { MapPageStyle, ButtonViewStyle } = styles;
+      /*Renders the Mapview with updated region when user moves. And polylines that draw where the user has gone.*/
 
-	          	<Content contentContainerStyle={ MapPageStyle }>
-	            	{this.renderMap()}
-					<View style={ ButtonViewStyle }>
-						<Modal
-							animationType="slide"
-							transparent={false}
-							visible={this.props.modalVisible}
-							onRequestClose={() => {
-								alert('Modal has been closed.');
-							}}>
-							<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
-								<Camera />
-								<Button block success
-									onPress={() => this.props.showModal(false)}>
-									<Text>Close Camera</Text>
-								</Button>
-							</View>
-						</Modal>
-					</View>
-				</Content>
+      return (
+      	<Container>
+			<Header style={{ paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight, backgroundColor: '#aa076b'}}>
+      			<Left>
+					<Icon name="ios-menu" style={{ color: '#fff' }} onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+      			</Left>
+      			<Body>
+					<Title style={{ color: '#fff' }}>FitQuest</Title>
+      			</Body>
+      			<Right />
+      		</Header>
 
-				<Footer>
-					<FooterTab style={{ backgroundColor: "#52c234" }}>
-						<Button vertical onPress={ ()=>this.props.createStartQuest(true) }>
-							<Icon name='controller-play' type='Entypo' />
-							<Text>Start</Text>
-						</Button>
-						<Button vertical onPress={ ()=>this.props.createStartQuest(false) }>
-							<Icon name='controller-stop' type='Entypo' />
-							<Text>Stop</Text>
-						</Button>
-						<Button vertical onPress={ ()=>this.resetValues() }>
-							<Icon name='cancel' type='MaterialIcons' />
-							<Text> Abort </Text>
-						</Button>
-						<Button onPress={ ()=>this.props.showModal(true) }>
-							<Icon name='camera' type='Entypo' />
-						</Button>
-					</FooterTab>
-				</Footer>
-			</Container>
-      );
-    }
+          	<Content contentContainerStyle={ MapPageStyle }>
+            	{this.renderMap()}
+				<View style={ ButtonViewStyle }>
+					<Modal
+						animationType="slide"
+						transparent={false}
+						visible={this.props.modalVisible}
+						onRequestClose={() => {
+							alert('Modal has been closed.');
+						}}>
+						<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
+							<Camera />
+							<Button block success
+								onPress={() => this.props.showModal(false)}>
+								<Text>Close Camera</Text>
+							</Button>
+						</View>
+					</Modal>
+				</View>
+			</Content>
+
+			<Footer>
+				<FooterTab style={{ backgroundColor: "#52c234" }}>
+					<Button vertical onPress={ ()=>this.props.createStartQuest(true) }>
+						<Icon name='controller-play' type='Entypo' />
+						<Text>Start</Text>
+					</Button>
+					<Button vertical onPress={ ()=>this.props.createStartQuest(false) }>
+						<Icon name='controller-stop' type='Entypo' />
+						<Text>Stop</Text>
+					</Button>
+					<Button vertical onPress={ ()=>this.abortQuest() }>
+						<Icon name='cancel' type='MaterialIcons' />
+						<Text> Abort </Text>
+					</Button>
+					<Button onPress={ ()=>this.props.showModal(true) }>
+						<Icon name='camera' type='Entypo' />
+					</Button>
+				</FooterTab>
+			</Footer>
+		</Container>
+    );
+  }
 }
 
 ///Maps the props from the reducers to get the appropriate piece of state in the component.
@@ -190,4 +194,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, { createStartQuest, showModal, createSetLocation, pushMarkers })(CreateQuest);
+export default connect(mapStateToProps, { createStartQuest, showModal, createSetLocation, pushMarkers, abortCreate })(CreateQuest);

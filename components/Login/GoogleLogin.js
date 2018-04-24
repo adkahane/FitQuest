@@ -7,6 +7,7 @@ import Expo from 'expo';
 
 // create a component
 export default class GoogleLogin extends Component {
+
   static navigationOptions = {
     header: null
   }
@@ -28,8 +29,7 @@ export default class GoogleLogin extends Component {
         AsyncStorage.setItem('email', result.user.email);
         AsyncStorage.setItem('name', result.user.givenName);
         AsyncStorage.setItem('avatar_url', result.user.photoUrl);
-       
-        console.log(result);
+
         // DEVELOPMENT ONLY: NAVIGATE DIRECTLY TO HOME PAGE
         this.props.navigation.navigate('Home');
       }
@@ -38,29 +38,29 @@ export default class GoogleLogin extends Component {
       console.log(e);
       return { error: e }
     }
-  } 
+  }
 
   // Render the background image and login button at start
   render() {
-    return (
-      <ImageBackground
-        source={require('../../assets/images/splashScreen.png')}
-        style={styles.backgroundImage}
-      >
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View style={styles.emptyContainer} />
+      return (
+        <ImageBackground
+          source={require('../../assets/images/splashScreen.png')}
+          style={styles.backgroundImage}
+        >
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={styles.emptyContainer} />
 
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              onPress={this.signInWithGoogleAsync.bind(this)}
-              style={styles.button}
-            >
-              <Text style={styles.text}>Sign in with Google</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                onPress={this.signInWithGoogleAsync.bind(this)}
+                style={styles.button}
+              >
+                <Text style={styles.text}>Sign in with Google</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </ImageBackground>
-    );
+        </ImageBackground>
+      );
   }
 }
 

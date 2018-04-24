@@ -1,29 +1,35 @@
-import { CREATE_START_QUEST, SHOW_MODAL, CREATE_SET_LOCATION, PUSH_MARKERS, PUSH_SPEED_TIME } from './types.js';
+import { CREATE_START_QUEST, SHOW_MODAL, CREATE_SET_LOCATION, PUSH_MARKERS, ABORT_CREATE } from './types.js';
 
 export const createStartQuest = (started) => {
 	return {
-		type: CREATE_START_QUEST, 
+		type: CREATE_START_QUEST,
 		payload: started
 	}
 }
 
 export const showModal = (visible) => {
 	return {
-		type: SHOW_MODAL, 
+		type: SHOW_MODAL,
 		payload: visible
 	}
 }
 
 export const createSetLocation = ({lat, long}) =>{
 	return{
-		type: CREATE_SET_LOCATION, 
+		type: CREATE_SET_LOCATION,
 		payload: { lat, long }
 	}
 }
 
 export const pushMarkers = ({latitude, longitude, speed, timestamp}) =>{
 	return{
-		type: PUSH_MARKERS, 
+		type: PUSH_MARKERS,
 		payload: { latitude, longitude, speed, timestamp }
+	}
+}
+
+export const abortCreate = () =>{
+	return {
+		type: ABORT_CREATE
 	}
 }
