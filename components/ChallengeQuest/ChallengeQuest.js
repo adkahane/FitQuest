@@ -39,8 +39,6 @@ class ChallengeQuest extends Component {
 		} else {
 			const { params } = this.props.navigation.state;
 			if( params ){
-				//console.log("The params I'm getting when I'm navigated here are !!!")
-				//console.log(params.questLines);
 				this.props.addChallengeLines(params.questLines);
 			}
 			this._getLocationAsync();
