@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require('react-native-mongoose');
 
 
 mongoose.promise = global.Promise;
 const Schema = mongoose.Schema;
 
-const QuestSchema = new Schema({
+const Quest = mongoose.model('Quest',{
     name:{
       type:String,
       required:true
@@ -52,6 +52,6 @@ const QuestSchema = new Schema({
             }]    
 });
 
-var Quest = mongoose.model('Quest', QuestSchema);
+// var Quest = mongoose.model('Quest', QuestSchema);
 
 module.exports = Quest;

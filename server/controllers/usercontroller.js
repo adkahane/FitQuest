@@ -1,7 +1,7 @@
-import User from './models';
+import User from '../models/User';
 
 
-module.exports= {
+module.exports = {
 
     getUser: function(req,res){
         User.findOne({auth_id: req.params.id}), function(err, dbObj){

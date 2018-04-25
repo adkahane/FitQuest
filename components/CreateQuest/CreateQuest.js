@@ -17,6 +17,32 @@ const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 class CreateQuest extends Component {
 
+	constructor() {
+        super();
+        this.state = {
+            enabled:true,
+            quest:{
+                name: '',
+				challenged_id: '',
+				new_quest:true,
+				diff_level: '',
+				time: '',
+				distance: 0,
+				elevation: 0,
+				quest_score: 0,
+				steps: 0,
+				route:[{
+					latitude: 0, 
+					longitude:0
+					}],
+				  waypoints:[{
+						url:'', 
+						lat:0, 
+						lng:0
+						}]  
+        	}
+		}
+	}
 	static navigationOptions = {
 		drawerLabel: () => (
 			<Text

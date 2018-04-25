@@ -11,7 +11,7 @@ import { NavButtons, DrawerStack} from '../Navigation';
 import { DrawerNavigator } from 'react-navigation';
 import { Spinner } from '../common';
 import { Font } from 'expo';
-
+import { UserController } from '../../server/controllers/usercontroller';
 
 class Home extends React.Component {
 
