@@ -7,7 +7,7 @@ import { Icon, Container, Header, Content,
 				 FooterTab, Footer } from 'native-base';
 import { Constants, Location, Permissions, MapView } from 'expo';
 import { MapButton, ChallengeMap } from '../common'
-import { challengeStartQuest, challengeSetLocation, addMarkers, abortChallenge } from '../../actions';
+import { challengeStartQuest, challengeSetLocation, addMarkers, abortChallenge, addChallengeLines } from '../../actions';
 
 let { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -37,6 +37,12 @@ class ChallengeQuest extends Component {
 				errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
 			});
 		} else {
+			const { params } = this.props.navigation.state;
+			if( params ){
+				//console.log("The params I'm getting when I'm navigated here are !!!")
+				//console.log(params.questLines);
+				this.props.addChallengeLines(params.questLines);
+			}
 			this._getLocationAsync();
 			this._updateLocationAsync();
 		}
@@ -177,4 +183,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, { challengeStartQuest, challengeSetLocation, addMarkers, abortChallenge })(ChallengeQuest);
+export default connect(mapStateToProps, { challengeStartQuest, challengeSetLocation, addMarkers, abortChallenge, addChallengeLines })(ChallengeQuest);

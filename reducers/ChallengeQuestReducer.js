@@ -1,4 +1,4 @@
-import { CHALLENGE_START_QUEST, CHALLENGE_SET_LOCATION, ADD_MARKERS, ABORT_CHALLENGE } from '../actions/types';
+import { CHALLENGE_START_QUEST, CHALLENGE_SET_LOCATION, ADD_MARKERS, ABORT_CHALLENGE, ADD_CHALLENGE_LINES } from '../actions/types';
 import pastQuestLines from './pastQuestLines.json';
 
 const INITIAL_STATE = {
@@ -25,6 +25,8 @@ export default(state = INITIAL_STATE, action) =>{
 					"speed": [...state.speed, speed],
 					"timestamp": [...state.timestamp, timestamp]
 					}
+		case ADD_CHALLENGE_LINES: 
+			return {...state, "pastQuestLines": action.payload }
 		case ABORT_CHALLENGE:
 			return INITIAL_STATE
 		default:

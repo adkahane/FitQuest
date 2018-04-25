@@ -7,3 +7,4 @@ export const CHALLENGE_SET_LOCATION = 'challenge_set_location';
 export const CHALLENGE_START_QUEST = 'challenge_start_quest';
 export const ABORT_CREATE = 'abort_create';
 export const ABORT_CHALLENGE = 'abort_challenge';
+export const ADD_CHALLENGE_LINES = 'add_challenge_lines';

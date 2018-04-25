@@ -2,8 +2,11 @@ import React from 'react';
 import { StyleSheet, View, ScrollView, Button, Component, Text, Image, Platform } from 'react-native';
 import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base';
 import EasyQuest from '../../components/EasyQuest';
+import easyLines from '../../components/EasyQuest/easy-quest.json';
 import MediumQuest from '../../components/MediumQuest';
+import mediumLines from '../../components/MediumQuest/medium-quest.json';
 import HardQuest from '../../components/HardQuest';
+import hardLines from '../../components/HardQuest/hard-quest.json';
 import CreateQuest from '../../components/CreateQuest';
 import styles from './NewQuestStyles.js';
 
@@ -32,19 +35,19 @@ class NewQuest extends React.Component {
     // Navigate to the challenge easy-quest page
     async _navigateEasy() {
         console.log("easy");
-        this.props.navigation.navigate('Challenge');
+        this.props.navigation.navigate('Challenge', { questLines: easyLines });
     }
 
     // Navigate to the challenge medium-quest page
     async _navigateMedium() {
         console.log("medium");
-        this.props.navigation.navigate('Challenge');
+        this.props.navigation.navigate('Challenge', { questLines: mediumLines });
     }
 
     // Navigate to the challenge hard-quest page
     async _navigateHard() {
         console.log("hard");
-        this.props.navigation.navigate('Challenge');
+        this.props.navigation.navigate('Challenge', { questLines: hardLines });
     }
 
     render() {
