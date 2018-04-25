@@ -42,7 +42,6 @@ export default class GoogleLogin extends Component {
 
   // Render the background image and login button at start
   render() {
-    console.log(this.props);
       return (
         <ImageBackground
           source={require('../../assets/images/splashScreen.png')}
