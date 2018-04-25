@@ -89,9 +89,9 @@ class Home extends React.Component {
               </Header>
               <Content style={{ height: '100%' }}>
                 <ScrollView scrollEnabled>
-                  <Card style={{ width:'92%', alignSelf: 'center', borderColor: '#52c234', borderWidth: 1, alignItems: 'center',
+                  <Card style={{ width:'92%', alignSelf: 'center', borderColor: '#52c234', borderWidth: 5, alignItems: 'center',
                                  marginTop: '4%', paddingBottom:' 78%' }}>
-                    <CardItem style={{ borderColor: '#aa076b', borderWidth: 1, marginTop: '7%', marginBottom:'3%' }}>
+                    <CardItem style={{ borderColor: '#aa076b', borderWidth: 3, marginTop: '7%', marginBottom:'3%' }}>
                       <Avatar
                           xlarge
                           source={{
@@ -145,6 +145,36 @@ class Home extends React.Component {
                             { this.state.user.time }
                           </Text>
                         </Text>
+                      <View style={{
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        marginTop: '10%',
+
+                      }}>
+                        <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#aa076b', width: 300 }}>
+                          Badges:
+                          </Text>
+                        <Icon type="FontAwesome" active={true} name="compass" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                        <Icon type="FontAwesome" active={true} name="bolt" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                        <Icon type="FontAwesome" active={true} name="shield" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                      </View>
+                      <View style={{
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        marginTop: '10%',
+
+                      }}>
+                        <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#aa076b', width: 300 }}>
+                          Progress:
+                          </Text>
+                        <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                        <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                        <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                        <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                        <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                      </View>
                       </Body>
                     </CardItem>
                   </Card>
