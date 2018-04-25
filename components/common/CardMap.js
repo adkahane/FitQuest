@@ -9,6 +9,7 @@ const Map = (props) => {
 		if ('polylines' in props){
 			return (
 				<MapView
+					scrollEnabled={ false }
 					provider={ MapView.PROVIDER_GOOGLE }
 					style={ MapStyle }
 					showsUserLocation={ true }
@@ -34,6 +35,7 @@ const Map = (props) => {
 		}
 		return (
 				<MapView
+					scrollEnabled={ false }
 					provider={ MapView.PROVIDER_GOOGLE }
 					style={ MapStyle }
 					showsUserLocation={ true }

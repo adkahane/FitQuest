@@ -76,6 +76,7 @@ class Map extends React.Component {
 		return (
 			<View>
 				<MapView
+					scrollEnabled='false'
 					provider={ MapView.PROVIDER_GOOGLE }
 					style={ styles.container }
 					showsUserLocation={ true }

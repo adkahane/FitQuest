@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Image, Text, Dimensions } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
+import { Image, Text, Dimensions, StyleSheet } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right, View } from 'native-base';
 import easyQuest from '../EasyQuest/easy-quest.json';
 import { Map } from '../common/CardMap.js';
 
@@ -23,14 +23,15 @@ export default class EasyQuest extends Component {
                   <Text>Easy Quest</Text>
                 </Body>
             </CardItem> 
-            <CardItem cardBody>
-             <Map
-                location={{ 
-                latitude: latitude,
-                longitude: longitude,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA}}
-                polylines= { easyQuest } />
+            <CardItem cardBody> 
+                  <Map
+                    location={{ 
+                    latitude: latitude,
+                    longitude: longitude,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA}}
+                    polylines= { easyQuest } >  
+                  </Map>  
             </CardItem>
             <CardItem>
               <Left>
@@ -47,6 +48,6 @@ export default class EasyQuest extends Component {
         </Content>
       </Container>
     );
-  }
+  }  
 }
 

@@ -35,7 +35,7 @@ export const DrawerStack = DrawerNavigator({
     Home: { screen: Home },
     Stats: { screen: Stats },
     CreateQuest: { screen: CreateQuest },
-	ChallengeQuest: { screen: ChallengeQuest },
+	// ChallengeQuest: { screen: ChallengeQuest },
 	NewQuest: { screen: NewQuest }
 	},{
 		initialRouteName: 'Home',
