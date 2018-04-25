@@ -54,7 +54,6 @@ class Home extends React.Component {
         });
         AsyncStorage.getItem('email').then(email => {
             this.setState({ user: { ...this.state.user, email: email } });
-            console.log('email: ' + this.state.user.email);
         });
         AsyncStorage.getItem('avatar_url').then(avatar_url => {
             this.setState({ user: { ...this.state.user, avatar_url: avatar_url } });
@@ -66,7 +65,7 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
-        this.getUser();
+      this.getUser();
       await Font.loadAsync({
         'Roboto': require('native-base/Fonts/Roboto.ttf'),
         'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),

@@ -1,4 +1,4 @@
-import { CHALLENGE_START_QUEST, CHALLENGE_SET_LOCATION, PUSH_SPEED_TIME, ABORT_CHALLENGE } from './types.js';
+import { CHALLENGE_START_QUEST, CHALLENGE_SET_LOCATION, ADD_MARKERS, ABORT_CHALLENGE } from './types.js';
 
 export const challengeStartQuest = (started) => {
 	return {
@@ -7,17 +7,17 @@ export const challengeStartQuest = (started) => {
 	}
 }
 
-export const challengeSetLocation = ({lat, long}) => {
+export const challengeSetLocation = ({ lat, long }) => {
 	return {
 		type: CHALLENGE_SET_LOCATION,
 		payload: { lat, long }
 	}
 }
 
-export const pushSpeedTime = ({ speed, timestamp}) => {
+export const addMarkers = ({ latitude, longitude, speed, timestamp }) => {
 	return {
-		type: PUSH_SPEED_TIME,
-		payload: { speed, timestamp }
+		type: ADD_MARKERS,
+		payload: { latitude, longitude, speed, timestamp }
 	}
 }
 
