@@ -98,10 +98,10 @@ class CreateQuest extends Component {
 				const { latitude, longitude, speed } = location.coords;
 
 				if(this.props.started){
-					this.props.pushMarkers({latitude: latitude, longitude: longitude, speed: speed, timestamp: location.timestamp});
+					this.props.pushMarkers({ latitude: latitude, longitude: longitude, speed: speed, timestamp: location.timestamp });
 				}
 
-				this.props.createSetLocation({lat: latitude, long: longitude});
+				this.props.createSetLocation({ lat: latitude, long: longitude });
 			}
 		);
 	};

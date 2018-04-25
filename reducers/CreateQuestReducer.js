@@ -28,7 +28,7 @@ export default(state = INITIAL_STATE, action) =>{
 				   }
 		case ABORT_CREATE:
 			return INITIAL_STATE
-		default: 
+		default:
 			return state;
 	}
 }
