@@ -1,23 +1,36 @@
 
 
     {
-      "auth_id":"8ureuoe09",
+      "auth_id":"106439431954835815191",
       "name":"Jim Bob",
-      "avatar_url":"url/to/placeholder.jpg",
-      "points": "27"
+      "email": "thricethree@gmail.com",
+      "avatar_url":"https://lh5.googleusercontent.com/-dFLWoGccsPY/AAAAAAAAAAI/AAAAAAAAGzk/T-EnjExwPJE/photo.jpg",
+      "points": 27,
+      "steps": 8425,
+      "distance":1.5,
+      "time":25
       }{
-      "auth_id":"8ureuoe09",
+      "auth_id":"106439431925974815191",
       "name":"Joe Bob",
-      "avatar_url":"url/to/placeholder.jpg",
-      "points": "33"
+      "avatar_url":"../../assets/images/placeholder.png",
+      "points": 33,
+      "steps": 8425,
+      "distance":1.5,
+      "time":25
       }{
-      "auth_id":"8ureuoe09",
+      "auth_id":"69415431954835815191",
       "name":"Cray Cray Ray",
-      "avatar_url":"url/to/placeholder.jpg",
-      "points": "89"
+      "avatar_url":"../../assets/images/placeholder.png",
+      "points": 89,
+      "steps": 8425,
+      "distance":1.5,
+      "time":25
       }{
-      "auth_id":"8ureuoe09",
+      "auth_id":"12654781954835815191",
       "name":"Billie Joe Jim Bob",
-      "avatar_url":"url/to/placeholder.jpg",
-      "points": "36"
+      "avatar_url":"../../assets/images/placeholder.png",
+      "points": 36,
+      "steps": 8425,
+      "distance":1.5,
+      "time":25
       }
