@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Slider, Vibration } from 'rea
 
 const PORT = process.env.PORT || 3333;
 const photos = [];
-const savePhotoUrl = 'http://localhost:' +PORT+ '/assets/images';
+const savePhotoUrl = 'http://localhost:' +PORT+ '/assets/images/';
 const landmarkSize = 2;
 
 const flashModeOrder = {
@@ -74,7 +74,7 @@ export default class CameraScreen extends React.Component {
     });
   }
 
-  _savePhotos = (photos) =>{
+  _savePhotos = () =>{
     let i = 0;
     photos.forEach(function()  {
         const photo ={
@@ -110,7 +110,11 @@ export default class CameraScreen extends React.Component {
           from: data.uri,
           to: `${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
         }).then(() => {
-          photos.push(`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`);
+          if (photos.length < 4){
+            photos.push(`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`);
+          } else {
+            this._savePhotos();
+          }
           this.setState({
             photoId: this.state.photoId + 1,
           });
