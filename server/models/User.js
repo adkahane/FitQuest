@@ -34,7 +34,7 @@ const UserSchema = new Schema({
         required: false
     },
     time: {
-        type:String,
+        type:Number,
         required: false
     },
     quest:{

@@ -18,11 +18,11 @@ const Quest = mongoose.model('Quest',{
         default: true
     },
     diff_level:{
-        type:String,
+        type: Number,
         required: false
     },
     time:{
-        type: String,
+        type: Number,
         required:false
     },
     distance:{
