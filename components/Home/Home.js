@@ -148,21 +148,21 @@ class Home extends React.Component {
                         flexWrap: 'wrap',
                         alignItems: 'center',
                         flexDirection: 'row',
-                        marginTop: '10%',
+                        marginTop: '1%',
 
                       }}>
                         <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#aa076b', width: 300 }}>
                           Badges:
                           </Text>
-                        <Icon type="FontAwesome" active={true} name="compass" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
-                        <Icon type="FontAwesome" active={true} name="bolt" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
-                        <Icon type="FontAwesome" active={true} name="shield" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
+                        <Icon type="FontAwesome" active={true} name="compass" style={{ color: "#16a085", fontSize: 54, marginTop: '7%', marginRight: '4%' }} />
+                        <Icon type="FontAwesome" active={true} name="bolt" style={{ color: "#16a085", fontSize: 54, marginTop: '7%', marginRight: '4%' }} />
+                        <Icon type="FontAwesome" active={true} name="shield" style={{ color: "#16a085", fontSize: 54, marginTop: '7%', marginRight: '4%' }} />
                       </View>
                       <View style={{
                         flexWrap: 'wrap',
                         alignItems: 'center',
                         flexDirection: 'row',
-                        marginTop: '10%',
+                        marginTop: '1%',
 
                       }}>
                         <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#aa076b', width: 300 }}>
