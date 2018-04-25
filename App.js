@@ -6,11 +6,9 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { DrawerNavigator, SwitchNavigator } from 'react-navigation';
 import reducers from './reducers';
-import MyHeader from './components/MyHeader';
 import { NavButtons, DrawerStack} from './components/Navigation';
 // import { Spinner } from './components/common';
 import GoogleLogin from './components/Login/GoogleLogin';
-// import Home from './components/Home/Home';
 import ChallengeQuest from './components/ChallengeQuest/ChallengeQuest';
 import EasyQuest from './components/NewQuest/NewQuest';
 
@@ -22,7 +20,6 @@ export default class App extends Component<Props> {
     this.state = {
       visible: false,
       loggedIn: false,
-      // fontLoaded: false
     }
   }
 
