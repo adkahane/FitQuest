@@ -1,12 +1,12 @@
 {
   "expo": {
     "name" : "FitQuest",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "slug": "fitquest",
     "description": "Walk your own path! Create a quest! share it with your friends! Get Fit!",
     "privacy": "public",
     "githubUrl": "https://github.com/adkahane/FitQuest",
-    "icon": "./assets/images/art.png",
+    "icon": "./assets/images/iconLogo.png",
     "sdkVersion": "25.0.0",
     "orientation": "portrait",
     "splash": {
