@@ -1,6 +1,6 @@
 import express from ('express');
 import bodyParser from ('body-parser');
-import mongoose from ('react-native-mongoose');
+import mongoose from ('mongoose')//('react-native-mongoose');
 import routes from ('./routes/apiroutes/index');
 import path from ('path');
 import Quest from ('../../server/models/Quest');

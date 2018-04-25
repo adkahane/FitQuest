@@ -1,4 +1,4 @@
-const mongoose = require('react-native-mongoose');
+const mongoose = require('mongoose');
 
 
 mongoose.promise = global.Promise;
