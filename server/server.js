@@ -1,10 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('react-native-mongoose');
-const routes = require('./routes/apiroutes/index');
-const path = require('path');
-const Quest = require('../../server/models/Quest');
-const User = require('../../server/models/User');
+import express from ('express');
+import bodyParser from ('body-parser');
+import mongoose from ('react-native-mongoose');
+import routes from ('./routes/apiroutes/index');
+import path from ('path');
+import Quest from ('../../server/models/Quest');
+import User from ('../../server/models/User');
 // app.use(express.static('./');
 const app = new express();
 const PORT = process.env.PORT || 3333;
