@@ -141,10 +141,10 @@ class CreateQuest extends Component {
 						}}>
 						<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
 							<Camera />
-							<Button block success
+							{/* <Button block success
 								onPress={() => this.props.showModal(false)}>
 								<Text>Close Camera</Text>
-							</Button>
+							</Button> */}
 						</View>
 					</Modal>
 				</View>
