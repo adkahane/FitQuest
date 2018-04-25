@@ -3,6 +3,9 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Slider, Vibration } from 'react-native';
 
 
+const PORT = process.env.PORT || 3333;
+const photos = [];
+const savePhotoUrl = 'http://localhost:' +PORT+ '/assets/images';
 const landmarkSize = 2;
 
 const flashModeOrder = {
@@ -85,7 +88,7 @@ export default class CameraScreen extends React.Component {
 
         $.ajax({
           method:'POST',
-          url: photoUrl,
+          url: savePhotoUrl,
           data: body,
           cache:false,
           contentType:false,
@@ -107,6 +110,7 @@ export default class CameraScreen extends React.Component {
           from: data.uri,
           to: `${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`,
         }).then(() => {
+          photos.push(`${FileSystem.documentDirectory}photos/Photo_${this.state.photoId}.jpg`);
           this.setState({
             photoId: this.state.photoId + 1,
           });
