@@ -32,8 +32,8 @@ class CreateQuest extends Component {
 				quest_score: 0,
 				steps: 0,
 				route:[{
-					latitude: 0, 
-					longitude:0
+					lat: 0, 
+					lng:0
 					}],
 				  waypoints:[{
 						url:'', 
