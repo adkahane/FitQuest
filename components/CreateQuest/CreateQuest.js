@@ -138,7 +138,8 @@ class CreateQuest extends Component {
 						visible={this.props.modalVisible}
 // 						onRequestClose={() => {
 							
-// 						}}>
+// 						}}
+					>
 						<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
 							<Camera />
 						</View>
