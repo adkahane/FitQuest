@@ -66,7 +66,7 @@ class CreateQuest extends Component {
 			});
 		}
 		let location = await Expo.Location.watchPositionAsync(
-			{enableHighAccuracy: true, distanceInterval: 20},
+			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
 
 				const { latitude, longitude, speed } = location.coords;
