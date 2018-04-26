@@ -35,6 +35,7 @@
     "react": "^16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-elements": "^1.0.0-beta3",
+    "react-native-progress-bar-classic": "^1.2.1",
     "react-native-pure-chart": "^0.0.19",
     "react-navigation": "^1.5.8",
     "react-redux": "^5.0.7",
