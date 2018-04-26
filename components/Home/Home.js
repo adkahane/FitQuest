@@ -172,7 +172,6 @@ class Home extends React.Component {
                         <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
                         <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
                         <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
-                        <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
                       </View>
                       </Body>
                     </CardItem>
