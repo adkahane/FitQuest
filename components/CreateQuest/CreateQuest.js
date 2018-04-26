@@ -136,9 +136,9 @@ class CreateQuest extends Component {
 						animationType="slide"
 						transparent={false}
 						visible={this.props.modalVisible}
-						onRequestClose={() => {
-							alert('Modal has been closed.');
-						}}>
+// 						onRequestClose={() => {
+							
+// 						}}>
 						<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
 							<Camera />
 						</View>
