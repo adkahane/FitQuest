@@ -35,7 +35,7 @@ export default class EasyQuest extends Component {
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent >
+                <Button transparent>
                   <Icon active name="walk" />
                   <Text>&nbsp;Steps: 1,800&nbsp;&nbsp;&nbsp;</Text>
                   <Icon active name="stopwatch" />

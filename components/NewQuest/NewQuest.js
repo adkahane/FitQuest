@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, Button, Component, Text, Image, Platform } from 'react-native';
-import { Icon, Container, Header, Content, Left, Title, Body, Right } from 'native-base';
+import { StyleSheet, View, ScrollView,  Component,  Image, Platform } from 'react-native';
+import { Icon, Container, Header, Content, Left, Title, Body, Right, Text, Button } from 'native-base';
 import EasyQuest from '../../components/EasyQuest';
 import easyLines from '../../components/EasyQuest/easy-quest.json';
 import MediumQuest from '../../components/MediumQuest';
@@ -67,25 +67,29 @@ class NewQuest extends React.Component {
                     <EasyQuest />
                     <Button
                         onPress={ () => this._navigateEasy() }
-                        title="Challenge Easy"
-                        color="#841584"
-                        />
+                        block
+                        success
+                        >
+                        <Text>Challenge Easy</Text>
+                    </Button>
                 </View>
                 <View style={{ height: 330, width: '70%', backgroundColor:'white', marginTop: 30 }}>
                     <MediumQuest />
                     <Button
                         onPress={ () => this._navigateMedium() }
-                        title="Challenge Medium"
-                        color="#841584"
-                        />
+                        block
+                        success                        >
+                        <Text>Challenge Medium</Text>
+                    </Button>    
                 </View>
                 <View style={{ height: 330, width: '70%', backgroundColor:'white', marginTop: 30 }}>
                     <HardQuest />
                     <Button
                         onPress={ () => this._navigateHard() }
-                        title="Challenge Hard"
-                        color="#841584"
-                        />
+                        block
+                        success                        >
+                        <Text>Challenge Hard</Text>
+                    </Button>    
                 </View>
 
             </ScrollView>
