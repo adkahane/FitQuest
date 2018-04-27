@@ -6,7 +6,7 @@ import { Map } from '../common/CardMap.js';
 
 let { width, height } = Dimensions.get('window');
 let latitude = 37.824634; 
-let longitude = -122.181855;
+let longitude = -122.181055;
 const ASPECT_RATIO = width / height;
 let LATITUDE_DELTA = 0.00790;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;

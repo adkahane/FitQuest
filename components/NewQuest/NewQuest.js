@@ -79,7 +79,7 @@ class NewQuest extends React.Component {
                         color="#841584"
                         />
                 </View>
-                <View style={{ height: 330, width: '70%', backgroundColor:'white', marginTop: 30 }}>
+                <View style={{ height: 330, width: '70%', backgroundColor:'white', marginTop: 30, marginBottom: 30 }}>
                     <HardQuest />
                     <Button
                         onPress={ () => this._navigateHard() }
