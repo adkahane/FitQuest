@@ -1,6 +1,8 @@
 import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Slider, Vibration } from 'react-native';
+import { connect } from 'react-redux';
+import { showModal } from '../../actions';
 
 
 const landmarkSize = 2;
@@ -21,7 +23,7 @@ const wbOrder = {
   incandescent: 'auto',
 };
 
-export default class CameraScreen extends React.Component {
+class CameraScreen extends React.Component {
   state = {
     flash: 'auto',
     zoom: 0,
@@ -112,6 +114,8 @@ export default class CameraScreen extends React.Component {
           });
           Vibration.vibrate();
         });
+      }).then(() => {
+        this.props.showModal(false);
       });
     }
   };
@@ -173,6 +177,13 @@ export default class CameraScreen extends React.Component {
     return <View style={styles.container}>{content}</View>;
   }
 }
+
+const mapStateToProps = (state) => {
+  const { modalVisible } = state.createQuest;
+  return { modalVisible }
+}
+
+export default connect(mapStateToProps, { showModal } )(CameraScreen);
 
 const styles = StyleSheet.create({
   container: {

@@ -89,7 +89,7 @@ class Home extends React.Component {
               <Content style={{ height: '100%' }}>
                 <ScrollView scrollEnabled>
                   <Card style={{ width:'92%', alignSelf: 'center', borderColor: '#52c234', borderWidth: 5, alignItems: 'center',
-                                 marginTop: '4%', paddingBottom:' 78%' }}>
+                                 marginTop: '4%' }}>
                     <CardItem style={{ borderColor: '#aa076b', borderWidth: 3, marginTop: '7%', marginBottom:'3%' }}>
                       <Avatar
                           xlarge
@@ -168,7 +168,6 @@ class Home extends React.Component {
                         <Text style={{ fontSize: 23, fontWeight: 'bold', color: '#aa076b', width: 300 }}>
                           Progress:
                           </Text>
-                        <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
                         <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
                         <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />
                         <Icon type="FontAwesome" active={true} name="minus" style={{ color: "#16a085", fontSize: 54, marginTop: '5%', marginRight: '2%' }} />

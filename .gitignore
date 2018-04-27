@@ -20,3 +20,5 @@ yarn-error.log*
 # Mac
 .DS_Store
 */.DS_Store
+
+config.js

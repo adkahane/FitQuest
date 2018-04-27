@@ -66,16 +66,15 @@ class CreateQuest extends Component {
 			});
 		}
 		let location = await Expo.Location.watchPositionAsync(
-			{enableHighAccuracy: true, distanceInterval: 20},
+			{enableHighAccuracy: true, distanceInterval: 5},
 			(location)=> {
 
 				const { latitude, longitude, speed } = location.coords;
-
 				if(this.props.started){
 					this.props.pushMarkers({ latitude: latitude, longitude: longitude, speed: speed, timestamp: location.timestamp });
 				}
-
 				this.props.createSetLocation({ lat: latitude, long: longitude });
+
 			}
 		);
 	};
@@ -108,6 +107,12 @@ class CreateQuest extends Component {
 		)
 	}
 
+	endQuest(){
+		this.props.createStartQuest(false);
+		console.log(this.props.polylines);
+
+	}
+
 	abortQuest(){
 		this.props.abortCreate();
 		this.props.navigation.navigate('Home');
@@ -136,15 +141,12 @@ class CreateQuest extends Component {
 						animationType="slide"
 						transparent={false}
 						visible={this.props.modalVisible}
-						onRequestClose={() => {
-							alert('Modal has been closed.');
-						}}>
+// 						onRequestClose={() => {
+							
+// 						}}
+					>
 						<View style={{marginTop: 0, opacity: .9999, height: '100%'}}>
 							<Camera />
-							<Button block success
-								onPress={() => this.props.showModal(false)}>
-								<Text>Close Camera</Text>
-							</Button>
 						</View>
 					</Modal>
 				</View>
@@ -156,7 +158,7 @@ class CreateQuest extends Component {
 						<Icon name='controller-play' type='Entypo' />
 						<Text>Start</Text>
 					</Button>
-					<Button vertical onPress={ ()=>this.props.createStartQuest(false) }>
+					<Button vertical onPress={ ()=>this.endQuest()}>
 						<Icon name='controller-stop' type='Entypo' />
 						<Text>Stop</Text>
 					</Button>

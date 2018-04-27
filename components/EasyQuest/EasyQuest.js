@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Image, Text, Dimensions } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
+import { Image, Text, Dimensions, StyleSheet } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right, View } from 'native-base';
 import easyQuest from '../EasyQuest/easy-quest.json';
 import { Map } from '../common/CardMap.js';
 
 let { width, height } = Dimensions.get('window');
-let latitude = 37.870443;
-let longitude = -122.271473;
+let latitude = 37.812990;
+let longitude = -122.266794;
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00380;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
@@ -23,14 +23,15 @@ export default class EasyQuest extends Component {
                   <Text>Easy Quest</Text>
                 </Body>
             </CardItem> 
-            <CardItem cardBody>
-             <Map
-                location={{ 
-                latitude: latitude,
-                longitude: longitude,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA}}
-                polylines= { easyQuest } />
+            <CardItem cardBody> 
+                  <Map
+                    location={{ 
+                    latitude: latitude,
+                    longitude: longitude,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA}}
+                    polylines= { easyQuest } >  
+                  </Map>  
             </CardItem>
             <CardItem>
               <Left>
@@ -47,6 +48,6 @@ export default class EasyQuest extends Component {
         </Content>
       </Container>
     );
-  }
+  }  
 }
 
