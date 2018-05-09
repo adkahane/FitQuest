@@ -1,4 +1,4 @@
-# FitQuest
+# FitQuest (The improved version)
 
 ## About Our App
   What is a Quest? According to Oxford a quest is  '_a long arduous search for something_'. In other words life is a quest. And in
@@ -63,12 +63,12 @@ route they are they are challenging.
 
   A user will be able to start the quest. Stop the Quest and Abandon the Quest if they do not want to complete it.
   (Not Yet Completed: They will also be reminded of the waypoints that the creator of the quest charted. )
-  
+
   ## Stats
    A user can click on __Stats__ to see how they are performing on their quests.
-   
+
    ![Stats pic](/README_IMAGES/Stats.gif)
-   
+
    It will show them their Steps Taken. Distance they covered and their average speed for their quest. We plan on also making it
 so that the quest will score users based on waypoints and accomplishments like fastest time, but it is in the works at the moment.
 
@@ -80,4 +80,3 @@ so that the quest will score users based on waypoints and accomplishments like f
 * Provide a list of challenges for the users to challenge based on difficulty.
 * Gamify the quests a bit more by adding extras like waypoint validation to motivate users.
 * Add styling on routes to mark where they should head, and where start and stop points are.
-
