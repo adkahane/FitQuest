@@ -5,8 +5,8 @@ import easyQuest from '../EasyQuest/easy-quest.json';
 import { Map } from '../common/CardMap.js';
 
 let { width, height } = Dimensions.get('window');
-let latitude = 37.870443;
-let longitude = -122.271473;
+let latitude = 37.812990;
+let longitude = -122.266794;
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.00380;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;

@@ -8,7 +8,7 @@ let { width, height } = Dimensions.get('window');
 let latitude = 	37.868243; 
 let longitude = -121.926388;
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.02280;
+const LATITUDE_DELTA = 0.02780;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class HardQuest extends React.Component {
