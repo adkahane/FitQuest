@@ -3,7 +3,7 @@ const Quest = require('../models/index');
 
 module.exports = {
     getQuests: function(req,res){
-        Quest.find().sort(-1), function(err,dBObj){
+        Quest.find().sort(-1), function(err,dbObj){
             if(err){
                 return err;
             } else {
