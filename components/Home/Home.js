@@ -11,7 +11,7 @@ import { NavButtons, DrawerStack} from '../Navigation';
 import { DrawerNavigator } from 'react-navigation';
 import { Spinner } from '../common';
 import { Font } from 'expo';
-
+import ProgressBarClassic from 'react-native-progress-bar-classic';
 
 class Home extends React.Component {
 
@@ -87,10 +87,10 @@ class Home extends React.Component {
                 <Right />
               </Header>
               <Content style={{ height: '100%' }}>
-                <ScrollView scrollEnabled>
-                  <Card style={{ width:'92%', alignSelf: 'center', borderColor: '#52c234', borderWidth: 5, alignItems: 'center',
+                <ScrollView scrollEnabled>                
+                  <Card transparent style={{ width:'92%', alignSelf: 'center', borderColor: '#FFFFFF', borderWidth: 0, alignItems: 'center',
                                  marginTop: '4%' }}>
-                    <CardItem style={{ borderColor: '#aa076b', borderWidth: 3, marginTop: '7%', marginBottom:'3%' }}>
+                    <CardItem style={{ borderColor: '#FFFFFF', borderWidth: 0, marginTop: '7%', marginBottom:'3%' }}>
                       <Avatar
                           xlarge
                           source={{
@@ -118,6 +118,7 @@ class Home extends React.Component {
                             3
                           </Text>
                         </Text>
+                        
                         <Text>
                           <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#aa076b', width: 300}}>
                              Steps:&nbsp;&nbsp;
@@ -176,6 +177,14 @@ class Home extends React.Component {
                       </Body>
                     </CardItem>
                   </Card>
+                  <View style={{width: '92%', alignSelf: 'center' }}>
+                  <ProgressBarClassic
+                    progress={70}
+                    valueStyle={'default'}
+                    label={'Level'}
+                    value={'3'}
+                  />
+                  </View>
                 </ScrollView>
               </Content>
             </Container>
