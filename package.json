@@ -33,7 +33,7 @@
     "mongojs": "^2.5.0",
     "mongoose": "^5.0.15",
     "native-base": "2.0.0",
-    "npm": "^5.8.0",
+    "npm": "^6.13.4",
     "path": "^0.12.7",
     "react": "16.3.1",
     "react-native": "^0.55.4",
